@@ -2,6 +2,10 @@
     font-family: "Public Sans", sans-serif;
     font-optical-sizing: auto;
 }
+
+nav a{
+    color: black;
+}
    
 
 @media (max-width:565px){
