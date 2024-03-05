@@ -22,28 +22,37 @@
     </head>
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
-          <div class="container">
+        <div class="container">
             <div class="row">
-              <!-- Product Card -->
-              <div class="col-12 col-md-6 col-lg-4 d-flex flex-column gap-3">
-                <!-- Product Image -->
-                <div class="d-flex justify-content-center position-relative ">
-                  <img src="https://picsum.photos/300
-                  " alt="Product Image" class="img-fluid w-100">
-                  <div class="position-absolute" style="bottom: 15px; right: 15px">
-                    <button class="btn btn-success">Na sklade</button>
-                  </div>
+                <!-- Product Card -->
+                <div class="col-6 col-md-6 col-lg-3 d-flex flex-column gap-3">
+                    <!-- Product Image -->
+                    <div
+                        class="d-flex justify-content-center position-relative"
+                    >
+                        <img
+                            src="https://picsum.photos/300
+                  "
+                            alt="Product Image"
+                            class="img-fluid w-100"
+                        />
+                        <div
+                            class="position-absolute"
+                            style="bottom: 15px; right: 15px"
+                        >
+                            <span class="badge bg-success fs-6">Na sklade</span>
+                        </div>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="d-flex flex-column gap-2">
+                        <!--<button class="btn btn-success">Na sklade</button>-->
+                        <h5>Lorem Ipsum</h5>
+                        <p class="text-secondary">Výrobca XYZ</p>
+                        <p class="fw-bold">15.99 €</p>
+                    </div>
                 </div>
-                
-                <!-- Product Info -->
-                <div class="d-flex flex-column gap-2">
-                  <!--<button class="btn btn-success">Na sklade</button>-->
-                  <h5>Lorem Ipsum</h5>
-                  <p class="text-secondary">Výrobca XYZ</p>
-                  <p class="fw-bold">15.99 €</p>
-                </div>
-              </div>
             </div>
-          </div>
+        </div>
     </body>
 </html>
