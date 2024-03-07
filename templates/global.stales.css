@@ -3,21 +3,27 @@
     font-optical-sizing: auto;
 }
 
+
 header a{
     color: black;
 }
-   
+
+
+main.container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
 
 @media (max-width:565px){
     .container{
         padding-left: 24px;
         padding-right: 24px;
     }
-}
 
-main.container {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    main.container {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
 }
 
 
@@ -38,10 +44,13 @@ h4, .fs-4 {
 }
 
 .brand-filter button.active, .brand-filter button:hover {
-    border: 5px solid rgba(13,110,253,.35);
-    
+    border: 5px solid rgba(13,110,253,.35);   
 }
 
+
+.filter-col a[aria-expanded="false"] i.fa-angle-up{
+    transform: rotate(180deg);
+}
 
 
 .brand-filter button:first-of-type{

@@ -82,6 +82,14 @@
                     document.querySelector(".brand-filter button:first-of-type")
                 );
             }
+
+            window.onload = (event) => {
+                const width = window.innerWidth;
+                if (width > 920) {
+                    console.log(document.getElementById("filter"));
+                    document.getElementById("filter").classList.add("show");
+                }
+            };
         </script>
         <header>
             <div>
@@ -353,195 +361,232 @@
         <main class="container">
             <div class="d-flex flex-column gap-3">
                 <div class="row">
-                    <div class="col-3">
-                        <h2 class="fw-bold">Filter</h2>
-                    </div>
-                    <div class="col-9">
-                        <div class="row">
-                            <div class="col">
-                                <h2 class="fw-bold">Produkty</h2>
-                            </div>
-
-                            <div class="col d-flex justify-content-end">
-                                <form action="/obchod/">
-                                    <select
-                                        class="form-select w-auto"
-                                        aria-label="Default select example"
-                                    >
-                                        <option selected>
-                                            Open this select menu
-                                        </option>
-                                        <option value="1">
-                                            Order by name ascending
-                                        </option>
-                                        <option value="2">Order by 1</option>
-                                        <option value="3">Order by 2</option>
-                                        <option value="4">Order by 3</option>
-                                    </select>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-3">
-                        <form>
-                            <div class="d-flex flex-column gap-5">
-                                <div class="price-filter">
-                                    <label
-                                        for="priceRange"
-                                        class="form-label fs-4"
-                                        >Cena</label
-                                    >
-                                    <input
-                                        type="range"
-                                        class="form-range"
-                                        id="priceRange"
-                                        max="123"
-                                        value="123"
-                                        onchange="updatePriceFilter(this)"
-                                        oninput="updatePriceFilter(this)"
-                                    />
-                                    <span>0€ - 123€</span>
+                    <div class="col-12 col-lg-3 filter-col">
+                        <a
+                            class="text-black link-light text-decoration-none"
+                            data-bs-toggle="collapse"
+                            href="#filter"
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls="filter"
+                        >
+                            <div class="d-flex gap-5 align-items-center">
+                                <div
+                                    class="d-flex align-items-center gap-1 p-2 bg-primary rounded-2"
+                                >
+                                    <i class="fas fa-solid fa-filter fs-6"></i>
+                                    <h2 class="fw-bold mb-0">Filter</h2>
                                 </div>
-                                <div class="row avaliability-filter">
-                                    <h4 class="fs-4 fw-semibold">Dostupnosť</h4>
-                                    <div class="btn-group w-100" role="group">
-                                        <button
-                                            data-avaliability="all"
-                                            type="button"
-                                            class="btn btn-sm btn-outline-dark active"
-                                            onclick="setActiveAvaliability(event, this)"
+                                <!-- <div class="d-block d-lg-none">
+                                    <i
+                                        class="fas fa-solid fa-angle-up fs-2"
+                                    ></i>
+                                </div> -->
+                            </div>
+                        </a>
+
+                        <div class="collapse" id="filter">
+                            <form>
+                                <div class="d-flex flex-column gap-5 mt-4">
+                                    <div class="price-filter">
+                                        <label
+                                            for="priceRange"
+                                            class="form-label fs-4"
+                                            >Cena</label
                                         >
-                                            Všetky
-                                        </button>
-                                        <button
-                                            data-avaliability="sklad"
-                                            type="button"
-                                            class="btn btn-sm btn-outline-dark"
-                                            onclick="setActiveAvaliability(event, this)"
-                                        >
-                                            Na sklade
-                                        </button>
-                                        <button
-                                            data-avaliability="predajna"
-                                            class="btn btn-sm btn-outline-dark"
-                                            onclick="setActiveAvaliability(event, this)"
-                                        >
-                                            V predajni
-                                        </button>
+                                        <input
+                                            type="range"
+                                            class="form-range"
+                                            id="priceRange"
+                                            max="123"
+                                            value="123"
+                                            onchange="updatePriceFilter(this)"
+                                            oninput="updatePriceFilter(this)"
+                                        />
+                                        <span>0€ - 123€</span>
                                     </div>
-                                </div>
-
-                                <div class="brand-filter">
-                                    <h4 class="fs-4 fw-semibold p-0">
-                                        Značky produktov
-                                    </h4>
-                                    <div
-                                        class="row row-cols-2 column-gap-3 gx-1 gy-1"
-                                    >
-                                        <div class="col">
+                                    <div class="row avaliability-filter">
+                                        <h4 class="fs-4 fw-semibold">
+                                            Dostupnosť
+                                        </h4>
+                                        <div
+                                            class="btn-group w-100"
+                                            role="group"
+                                        >
                                             <button
-                                                onclick="setActiveBrand(event, this)"
-                                                data-manufacturer-id="all"
-                                                class="p-0 active overflow-hidden"
+                                                data-avaliability="all"
+                                                type="button"
+                                                class="btn btn-sm btn-outline-dark active"
+                                                onclick="setActiveAvaliability(event, this)"
                                             >
                                                 Všetky
                                             </button>
-                                        </div>
-                                        <div class="col">
                                             <button
-                                                onclick="setActiveBrand(event, this)"
-                                                data-manufacturer-id="brand-1"
-                                                class="p-0 overflow-hidden"
+                                                data-avaliability="sklad"
+                                                type="button"
+                                                class="btn btn-sm btn-outline-dark"
+                                                onclick="setActiveAvaliability(event, this)"
                                             >
-                                                <img
-                                                    style="
-                                                        width: 100%;
-                                                        object-fit: cover;
-                                                    "
-                                                    src="https://picsum.photos/300"
-                                                    alt=""
-                                                />
+                                                Na sklade
                                             </button>
-                                        </div>
-                                        <div class="col">
                                             <button
-                                                onclick="setActiveBrand(event, this)"
-                                                data-manufacturer-id="brand-2"
-                                                class="p-0 overflow-hidden"
+                                                data-avaliability="predajna"
+                                                class="btn btn-sm btn-outline-dark"
+                                                onclick="setActiveAvaliability(event, this)"
                                             >
-                                                <img
-                                                    style="
-                                                        width: 100%;
-                                                        object-fit: cover;
-                                                    "
-                                                    src="https://picsum.photos/300"
-                                                    alt=""
-                                                />
-                                            </button>
-                                        </div>
-                                        <div class="col">
-                                            <button
-                                                onclick="setActiveBrand(event, this)"
-                                                data-manufacturer-id="brand-3"
-                                                class="p-0 overflow-hidden"
-                                            >
-                                                <img
-                                                    style="
-                                                        width: 100%;
-                                                        object-fit: cover;
-                                                    "
-                                                    src="https://picsum.photos/300"
-                                                    alt=""
-                                                />
-                                            </button>
-                                        </div>
-                                        <div class="col">
-                                            <button
-                                                onclick="setActiveBrand(event, this)"
-                                                data-manufacturer-id="brand-4"
-                                                class="p-0 overflow-hidden"
-                                            >
-                                                <img
-                                                    style="
-                                                        width: 100%;
-                                                        object-fit: cover;
-                                                    "
-                                                    src="https://picsum.photos/300"
-                                                    alt=""
-                                                />
+                                                V predajni
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="action-buttons">
-                                    <div class="row">
-                                        <div class="col">
-                                            <button
-                                                type="button"
-                                                class="btn btn-primary w-100"
-                                            >
-                                                Aplikovať filter
-                                            </button>
-                                        </div>
 
-                                        <div class="col">
-                                            <button
-                                                onclick="resetFilter(event)"
-                                                type="button"
-                                                class="btn btn-outline-secondary w-100"
-                                            >
-                                                Resetovať filter
-                                            </button>
+                                    <div class="brand-filter">
+                                        <h4 class="fs-4 fw-semibold p-0">
+                                            Značky produktov
+                                        </h4>
+                                        <div
+                                            class="row row-cols-2 column-gap-3 gx-1 gy-1"
+                                        >
+                                            <div class="col">
+                                                <button
+                                                    onclick="setActiveBrand(event, this)"
+                                                    data-manufacturer-id="all"
+                                                    class="p-0 active overflow-hidden"
+                                                >
+                                                    Všetky
+                                                </button>
+                                            </div>
+                                            <div class="col">
+                                                <button
+                                                    onclick="setActiveBrand(event, this)"
+                                                    data-manufacturer-id="brand-1"
+                                                    class="p-0 overflow-hidden"
+                                                >
+                                                    <img
+                                                        style="
+                                                            width: 100%;
+                                                            object-fit: cover;
+                                                        "
+                                                        src="https://picsum.photos/300"
+                                                        alt=""
+                                                    />
+                                                </button>
+                                            </div>
+                                            <div class="col">
+                                                <button
+                                                    onclick="setActiveBrand(event, this)"
+                                                    data-manufacturer-id="brand-2"
+                                                    class="p-0 overflow-hidden"
+                                                >
+                                                    <img
+                                                        style="
+                                                            width: 100%;
+                                                            object-fit: cover;
+                                                        "
+                                                        src="https://picsum.photos/300"
+                                                        alt=""
+                                                    />
+                                                </button>
+                                            </div>
+                                            <div class="col">
+                                                <button
+                                                    onclick="setActiveBrand(event, this)"
+                                                    data-manufacturer-id="brand-3"
+                                                    class="p-0 overflow-hidden"
+                                                >
+                                                    <img
+                                                        style="
+                                                            width: 100%;
+                                                            object-fit: cover;
+                                                        "
+                                                        src="https://picsum.photos/300"
+                                                        alt=""
+                                                    />
+                                                </button>
+                                            </div>
+                                            <div class="col">
+                                                <button
+                                                    onclick="setActiveBrand(event, this)"
+                                                    data-manufacturer-id="brand-4"
+                                                    class="p-0 overflow-hidden"
+                                                >
+                                                    <img
+                                                        style="
+                                                            width: 100%;
+                                                            object-fit: cover;
+                                                        "
+                                                        src="https://picsum.photos/300"
+                                                        alt=""
+                                                    />
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="action-buttons">
+                                        <div class="row g-2">
+                                            <div class="col-6 col-md-12">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-primary w-100"
+                                                >
+                                                    Aplikovať filter
+                                                </button>
+                                            </div>
+
+                                            <div class="col-6 col-md-12">
+                                                <button
+                                                    onclick="resetFilter(event)"
+                                                    type="button"
+                                                    class="btn btn-outline-secondary w-100"
+                                                >
+                                                    Resetovať filter
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                    <div class="col-9 product-grid">
+                    <div class="col-12 col-lg-9 product-grid mt-4 mt-lg-0">
+                        <div class="row mb-3 justify-content-between gap-3">
+                            <div class="col-12 col-lg-auto">
+                                <h2 class="fw-bold mb-0">Produkty</h2>
+                            </div>
+                            <div
+                                class="col-12 col-lg-auto d-flex justify-content-start"
+                            >
+                                <form action="/obchod/" class="order-by">
+                                    <div class="input-group">
+                                        <select
+                                            class="form-select form-select-sm w-auto"
+                                            aria-label="Vyberte poradie"
+                                        >
+                                            <option selected>
+                                                Open this select menu
+                                            </option>
+                                            <option value="1">
+                                                Order by name ascending
+                                            </option>
+                                            <option value="2">
+                                                Order by 1
+                                            </option>
+                                            <option value="3">
+                                                Order by 2
+                                            </option>
+                                            <option value="4">
+                                                Order by 3
+                                            </option>
+                                        </select>
+                                        <button
+                                            type="button"
+                                            class="btn btn-primary"
+                                        >
+                                            Použiť
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="row row-cols-2 row-cols-lg-3">
                             <!-- Product Card -->
                             <div class="d-flex flex-column gap-3">
@@ -804,6 +849,44 @@
                                     <p class="fw-bold">15.99 €</p>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center mt-5">
+                            <nav aria-label="Paginácia">
+                                <ul class="pagination pagination-lg">
+                                    <li class="page-item">
+                                        <a
+                                            class="page-link"
+                                            href="#"
+                                            aria-label="Previous"
+                                        >
+                                            <i
+                                                class="fas fa-solid fa-chevron-left"
+                                            ></i>
+                                        </a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a
+                                            class="page-link"
+                                            href="#"
+                                            aria-label="Next"
+                                        >
+                                            <i
+                                                class="fas fa-solid fa-chevron-right"
+                                            ></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
