@@ -3,7 +3,7 @@
     font-optical-sizing: auto;
 }
 
-nav a{
+header a{
     color: black;
 }
    
@@ -13,4 +13,38 @@ nav a{
         padding-left: 24px;
         padding-right: 24px;
     }
+}
+
+main.container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+
+h4, .fs-4 {
+    font-weight: 600;
+}
+
+.brand-filter button {
+    background: none;
+    max-height: 100px;
+    border: 5px solid transparent;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+}
+
+.brand-filter button:focus{
+    outline: none;
+}
+
+.brand-filter button.active, .brand-filter button:hover {
+    border: 5px solid rgba(13,110,253,.35);
+    
+}
+
+
+
+.brand-filter button:first-of-type{
+    height: 100%;
+    width: 100%;
 }
