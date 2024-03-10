@@ -14,6 +14,7 @@ main.container {
     padding-bottom: 80px;
 }
 
+
 @media (max-width:565px){
     .container{
         padding-left: 24px;
@@ -35,6 +36,10 @@ main.container {
     .filter-col a[aria-expanded="true"] > div{
         border-radius: 4px 4px 0px 0px !important;
     }
+}
+
+.object-fit-cover{
+    object-fit: cover;
 }
 
 
