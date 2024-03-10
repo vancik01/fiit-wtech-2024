@@ -1,37 +1,139 @@
 <!DOCTYPE html>
 <html lang="sk">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <!-- Bootstrap CSS -->
-        <!-- https://cdnjs.com/libraries/twitter-bootstrap/5.0.0-beta1 -->
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css"
-        />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <!-- Icons: https://getbootstrap.com/docs/5.0/extend/icons/ -->
-        <!-- https://cdnjs.com/libraries/font-awesome -->
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-        />
+    <!-- Bootstrap CSS -->
+    <!-- https://cdnjs.com/libraries/twitter-bootstrap/5.0.0-beta1 -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet"
-        />
+    <!-- Icons: https://getbootstrap.com/docs/5.0/extend/icons/ -->
+    <!-- https://cdnjs.com/libraries/font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 
-        <link rel="stylesheet" href="../global.stales.css" />
-        <title>Page - homepage</title>
-    </head>
-    <body>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
-        <main class="container">
-            <!-- Content goes here -->
-        </main>
-    </body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="../global.stales.css" />
+    <title>Page - homepage</title>
+
+    <!-- toto pojde do css file -->
+    <style>
+        .category-card {
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-image-placeholder {
+            border-radius: 10px;
+            width: 36px;
+            height: 36px;
+        }
+    </style>
+    <!-- toto pojde do css file -->
+
+</head>
+
+<body>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+    <!-- intro -->
+    <div class="intro d-flex flex-column justify-content-center align-items-center bg-secondary" style="height: 280px;">
+        <h1>Introduction Text</h1>
+    </div>
+    <!-- intro -->
+
+    <!-- telo -->
+    <div class="container-fluid">
+        <!-- ketegorie produktov -->
+        <h2>Kategórie produktov</h2>
+                <div class="d-flex flex-wrap gap-3">
+                    <div class="d-flex">
+                        <div class="d-flex justify-content-start">
+                            <!-- Category Card -->
+                            <div class="category-card d-flex gap-3 p-2 align-items-center">
+                                <!-- Placeholder for Category Image -->
+                                <div class="category-image-placeholder bg-secondary"></div>
+                                <!-- Category Name -->
+                                <h5 class="m-0">Zľavnené produky</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="d-flex justify-content-start">
+                            <!-- Category Card -->
+                            <div class="category-card d-flex gap-3 p-3 align-items-center">
+                                <!-- Placeholder for Category Image -->
+                                <div class="category-image-placeholder bg-secondary"></div>
+                                <!-- Category Name -->
+                                <h5 class="m-0">Elektrické kefky</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="d-flex justify-content-start">
+                            <!-- Category Card -->
+                            <div class="category-card d-flex gap-3 p-3 align-items-center">
+                                <!-- Placeholder for Category Image -->
+                                <div class="category-image-placeholder bg-secondary"></div>
+                                <!-- Category Name -->
+                                <h5 class="m-0">Kefky</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="d-flex justify-content-start">
+                            <!-- Category Card -->
+                            <div class="category-card d-flex gap-3 p-3 align-items-center">
+                                <!-- Placeholder for Category Image -->
+                                <div class="category-image-placeholder bg-secondary"></div>
+                                <!-- Category Name -->
+                                <h5 class="m-0">Pasty</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="d-flex justify-content-start">
+                            <!-- Category Card -->
+                            <div class="category-card d-flex gap-3 p-3 align-items-center">
+                                <!-- Placeholder for Category Image -->
+                                <div class="category-image-placeholder bg-secondary"></div>
+                                <!-- Category Name -->
+                                <h5 class="m-0">Príslušenstvo</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="d-flex justify-content-start">
+                            <!-- Category Card -->
+                            <div class="category-card d-flex gap-3 p-3 align-items-center">
+                                <!-- Placeholder for Category Image -->
+                                <div class="category-image-placeholder bg-secondary"></div>
+                                <!-- Category Name -->
+                                <h5 class="m-0">Category name</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+    <!-- ketegorie produktov -->
+
+    <!-- najpredavanejsie produkty -->
+
+    </div>
+
+
+
+</body>
+
 </html>
