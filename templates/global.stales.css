@@ -24,6 +24,17 @@ main.container {
         padding-top: 40px;
         padding-bottom: 40px;
     }
+
+    #filter{
+        transition: all 0.3s;
+        background-color: #f8faff;
+        padding: 16px;
+        border-radius: 0px 0px 8px 8px;
+    }
+
+    .filter-col a[aria-expanded="true"] > div{
+        border-radius: 4px 4px 0px 0px !important;
+    }
 }
 
 
@@ -48,7 +59,7 @@ h4, .fs-4 {
 }
 
 
-.filter-col a[aria-expanded="false"] i.fa-angle-up{
+.filter-col a[aria-expanded="true"] i.fa-chevron-down{
     transform: rotate(180deg);
 }
 
@@ -57,3 +68,4 @@ h4, .fs-4 {
     height: 100%;
     width: 100%;
 }
+
