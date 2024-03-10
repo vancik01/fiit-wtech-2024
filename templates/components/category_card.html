@@ -18,16 +18,10 @@
   <style>
     .category-card {
       border-radius: 20px;
-      padding: 10px 32px 10px 8px;
-      background-color: #fff;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      display: flex;
-      align-items: center;
-      gap: 1em;
     }
 
     .category-image-placeholder {
-      background-color: #e1e1e1;
       border-radius: 10px;
       width: 64px;
       height: 64px;
@@ -40,15 +34,13 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
   <div class="container">
     <div class="d-flex">
-      <div class="d-flex">
-        <div class="d-flex justify-content-start">
-          <!-- Category Card -->
-          <div class="category-card d-flex">
-            <!-- Placeholder for Category Image -->
-            <div class="category-image-placeholder"></div>
-            <!-- Category Name -->
-            <h3 class="m-0">Category name</h3>
-          </div>
+      <div class="d-flex justify-content-start">
+        <!-- Category Card -->
+        <div class="category-card d-flex gap-3 p-3 align-items-center">
+          <!-- Placeholder for Category Image -->
+          <div class="category-image-placeholder bg-secondary"></div>
+          <!-- Category Name -->
+          <h3 class="m-0">Category name</h3>
         </div>
       </div>
     </div>
