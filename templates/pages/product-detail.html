@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS -->
+  <!-- https://cdnjs.com/libraries/twitter-bootstrap/5.0.0-beta1 -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css" />
+
+  <!-- Icons: https://getbootstrap.com/docs/5.0/extend/icons/ -->
+  <!-- https://cdnjs.com/libraries/font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../global.stales.css" />
+  <title>Page - product detail</title>
+</head>
+
+<body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+  <main class="container">
+
+    <div class="detail d-flex">
+      <div class="d-flex flex-column p-4 ">
+        <img src="https://picsum.photos/400" alt="">
+      </div>
+      <div class="d-flex flex-column gap-5 p-5">
+        <div class="d-flex flex-column  ">
+          <div class="d-flex flex-column">
+            <h2 class="h4">Názov produktu</h2>
+          </div>
+          <div class="d-flex flex-column">
+            <h2 class="h6">Na sklade</h2>
+          </div>
+          <div class="d-flex flex-column">
+            <p class="text-secondary">99.99€</p>
+          </div>
+          <div class="d-flex flex-column">
+            <p>Renew your style with the latest designer trends in men's clothing or achieve a perfectly curated
+              wardrobe thanks to our line of timeless pieces.</p>
+          </div>
+          <div class="d-flex flex-row align-items-between">
+            <div class="d-flex flex-row">
+              <button class="btn btn-outline-secondary" type="button">-</button>
+              <input type="text" class="d-flex text-center" value="2">
+              <button class="btn btn-outline-secondary" type="button">+</button>
+            </div>
+            <button class="btn btn-primary">Pridať do košíka</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="d-flex flex-column p-5">
+      <div class="d-flex flex-column">
+        <h3 class="h5">Informácie o produkte</h3>
+        <p>lorem, laoreet volutpat elit. Sed scelerisque nibh nisl, in bibendum nibh maximus tempor. Cras volutpat volutpat
+          nisi, vel egestas neque pharetra id. Curabitur eget luctus justo, eget ullamcorper turpis. Duis at dolor vel turpis
+          accumsan vulputate. Maecenas iaculis sit amet urna ut ullamcorper. Quisque a placerat eros.
+          Morbi sed rutrum dolor. Sed eleifend erat lectus, ultrices tempus arcu laoreet in. Sed ac magna a felis varius
+          euismod quis ut libero. Morbi ac ex at metus ultrices tincidunt. Curabitur cursus, eros eu tincidunt dignissim,
+          lectus ante tempor lectus, nec faucibus nulla sapien a odio. Vestibulum a varius nulla, eu interdum nunc. Sed
+          scelerisque mi at blandit consequat. Proin gravida augue nec augue faucibus pulvinar. Quisque tincidunt dapibus
+          congue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc sit amet iaculis
+          nibh. Phasellus non pretium felis, in maximus est. Vestibulum interdum eget purus ut porta. Curabitur tortor elit,
+          luctus vel justo eu, pellentesque congue ligula. Nulla facilisi. Nulla facilisi. Nulla facilisi. Nulla facilisi.</p>
+      </div>
+      <div class="d-flex flex-column">
+        <div class="d-flex flex-column">
+          <div class="d-flex flex-column ">
+            <h4 class="h6">Ďalšie informácie</h4>
+            <p><strong>Kategória produktu:</strong> Category XYZ</p>
+            <p><strong>Výrobca:</strong> XYZ</p>
+            <!-- Add more details as required -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- najpredavanejsie produkty -->
+    <div class="d-flex justify-content-between mt-5">
+      <h2>Podobné produkty</h2>
+      <button class="btn btn-link">Zobraziť všetky</button>
+    </div>
+    <div class="row row-cols-2 row-cols-lg-4 justify-content-between">
+
+      <!-- Product Card -->
+      <div class="d-flex flex-column gap-3">
+        <!-- Product Image -->
+        <div class="d-flex justify-content-center position-relative">
+          <img src="https://picsum.photos/300" alt="Product Image" class="img-fluid w-100" />
+          <div class="position-absolute" style="bottom: 15px; right: 15px">
+            <span class="badge bg-success fs-6">Na sklade</span>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="d-flex flex-column gap-3">
+          <!--<button class="btn btn-success">Na sklade</button>-->
+          <h5>Lorem Ipsum</h5>
+          <p class="text-secondary">Výrobca XYZ</p>
+          <p class="fw-bold">15.99 €</p>
+        </div>
+      </div>
+
+      <div class=" d-flex flex-column gap-3">
+        <!-- Product Image -->
+        <div class="d-flex justify-content-center position-relative">
+          <img src="https://picsum.photos/300" alt="Product Image" class="img-fluid w-100" />
+          <div class="position-absolute" style="bottom: 15px; right: 15px">
+            <span class="badge bg-success fs-6">Na sklade</span>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="d-flex flex-column gap-2">
+          <!--<button class="btn btn-success">Na sklade</button>-->
+          <h5>Lorem Ipsum</h5>
+          <p class="text-secondary">Výrobca XYZ</p>
+          <p class="fw-bold">15.99 €</p>
+        </div>
+      </div>
+
+      <div class=" d-flex flex-column gap-3">
+        <!-- Product Image -->
+        <div class="d-flex justify-content-center position-relative">
+          <img src="https://picsum.photos/300" alt="Product Image" class="img-fluid w-100" />
+          <div class="position-absolute" style="bottom: 15px; right: 15px">
+            <span class="badge bg-success fs-6">Na sklade</span>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="d-flex flex-column gap-2">
+          <!--<button class="btn btn-success">Na sklade</button>-->
+          <h5>Lorem Ipsum</h5>
+          <p class="text-secondary">Výrobca XYZ</p>
+          <p class="fw-bold">15.99 €</p>
+        </div>
+      </div>
+
+      <div class=" d-flex flex-column gap-3">
+        <!-- Product Image -->
+        <div class="d-flex justify-content-center position-relative">
+          <img src="https://picsum.photos/300" alt="Product Image" class="img-fluid w-100" />
+          <div class="position-absolute" style="bottom: 15px; right: 15px">
+            <span class="badge bg-success fs-6">Na sklade</span>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="d-flex flex-column gap-2">
+          <!--<button class="btn btn-success">Na sklade</button>-->
+          <h5>Lorem Ipsum</h5>
+          <p class="text-secondary">Výrobca XYZ</p>
+          <p class="fw-bold">15.99 €</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</body>
+
+</html>
