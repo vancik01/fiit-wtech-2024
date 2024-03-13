@@ -36,6 +36,16 @@ main.container {
     .filter-col a[aria-expanded="true"] > div{
         border-radius: 4px 4px 0px 0px !important;
     }
+    .category-card {
+        border-radius: 12px !important;
+    }
+}
+
+.product-detail {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 .object-fit-cover{
@@ -72,5 +82,16 @@ h4, .fs-4 {
 .brand-filter button:first-of-type{
     height: 100%;
     width: 100%;
+}
+
+.category-card {
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.category-image-placeholder {
+    border-radius: 10px;
+    width: 36px;
+    height: 36px;
 }
 
