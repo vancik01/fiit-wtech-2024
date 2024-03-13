@@ -187,7 +187,7 @@
     </div>
   </header>
 
-  <div class="container-fluid ">
+  <main class="container">
     <div class="gap-5 w-full max-w-[1200px] mx-auto">
       <div class="flex flex-col gap-4">
 
@@ -200,59 +200,58 @@
         </div>
         <!-- Pokladna uvodny text -->
         <div class="row gap-5 flex justify-between">
-          <div class="col-12 col-md-6 max-w-[600px] flex flex-col gap-10 p-0">
+          <div class="col-12 col-md-6 md:max-w-[600px] flex flex-col gap-8 bg-gray-50 h-fit p-8">
 
             <!-- Formular -->
-            <div class="flex cart-card gap-3 align-items-start bg-gray-50">
-              <div class="d-flex flex-col py-3 w-full h-full justify-between gap-2">
+            <div class="row flex cart-card gap-3 align-items-start bg-gray-50">
+              <div class="d-flex flex-col  w-full h-full justify-between gap-2">
 
-                <div class="flex flex-col gap-2">
+                <div class="d-flex flex-column gap-2">
                   <h2 class="fs-2">Dodacie údaje</h2>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-content-between ">
-                  <form action="/login">
+                  <form action="/login" class="d-flex flex-column gap-2">
 
-                    <div class="d-flex">
-                        <input required type="text" class="form-control" id="name" aria-describedby="Meno"
-                          placeholder="Vaše meno" />
-                        <input required type="text" class="form-control" id="surname" aria-describedby="Priezvisko"
-                          placeholder="Vaše priezvisko" />
+                    <div class="d-flex flex-row gap-2 ">
+                      <input required type="text" class="form-control rounded-0" id="name" aria-describedby="Meno"
+                        placeholder="Vaše meno" />
+                      <input required type="text" class="form-control rounded-0" id="surname"
+                        aria-describedby="Priezvisko" placeholder="Vaše priezvisko" />
+                    </div>
+
+                    <div class="d-flex flex-row gap-2 "> <input required type="email" class="form-control rounded-0"
+                        id="email" aria-describedby="Email" placeholder="Váš email" />
+
+                      <input required type="tel" class="form-control rounded-0" id="phone" aria-describedby="Telefon"
+                        placeholder="Váš telefón" />
+                    </div>
+
+                    <div class="d-flex flex-row gap-2 "> <input required type="text"
+                        class="form-control d-flex w-75 rounded-0" id="address" aria-describedby="Adresa"
+                        placeholder="Adresa" />
+
+                      <input required type="text" class="form-control d-flex w-25 rounded-0" id="homenumber"
+                        aria-describedby="Cislo" placeholder="Číslo domu" />
+                    </div>
+
+                    <div class="d-flex flex-row gap-2 "> <input required type="text"
+                        class="form-control d-flex w-75 rounded-0 " id="city" aria-describedby="Mesto"
+                        placeholder="Mesto" />
+                      <input required type="text" class="form-control d-flex w-25 rounded-0" id="zip"
+                        aria-describedby="PSC" placeholder="PSČ" />
                     </div>
 
                     <div class="d-flex">
-                        <input required type="email" class="form-control" id="email" aria-describedby="Email"
-                          placeholder="Váš email" />
-
-                        <input required type="tel" class="form-control" id="phone" aria-describedby="Telefon"
-                          placeholder="Váš telefón" />
-                    </div>
-
-                    <div class="d-flex">
-                        <input required type="text" class="form-control d-flex w-75" id="address" aria-describedby="Adresa"
-                          placeholder="Adresa" />
-
-                        <input required type="text" class="form-control d-flex w-25" id="homenumber" aria-describedby="Cislo"
-                          placeholder="Číslo domu" />
-                    </div>
-
-                    <div class="d-flex">
-                        <input required type="text" class="form-control d-flex w-75 " id="city" aria-describedby="Mesto"
-                          placeholder="Mesto" />
-                        <input required type="text" class="form-control d-flex w" id="zip" aria-describedby="PSC"
-                          placeholder="PSČ" />
-                    </div>
-
-                    <div class="d-flex">
-                        <textarea type="text" class="form-control d-flex w-100" id="note" aria-describedby="Poznamka"
-                          placeholder="Poznámka k objednávke"></textarea>
+                      <textarea type="text" class="form-control d-flex w-100 rounded-0" id="note"
+                        aria-describedby="Poznamka" placeholder="Poznámka k objednávke"></textarea>
                     </div>
 
                   </form>
 
 
                 </div>
-                <div class="col-12 col-md-12 flex flex-col gap-8 bg-gray-50 h-fit p-8">
+                <div class="col-12 col-md-12 flex flex-col gap-8 bg-gray-50 p-8">
                   <h2 class="text-2xl font-semibold">
                     Detail objednávky
                   </h2>
@@ -325,6 +324,8 @@
             </div>
           </div>
         </div>
+      </div>
+  </main>
 </body>
 
 </html>
