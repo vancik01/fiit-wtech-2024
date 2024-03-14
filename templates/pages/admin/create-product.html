@@ -29,14 +29,17 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
 
   <main class="container mt-4">
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column p-md-5 justify-content-between ">
 
+
+      <!-- Back navigation -->
+      <div class="d-flex flex-column">
+        <a href="#" class="text-black text-decoration-underline fw-bold">
+          <i class="fas fa-arrow-left me-2"></i>Späť domov
+        </a>
+      </div>
       <form>
-        <!-- Back navigation -->
-        <div class="d-flex flex-column">
-          <a href="#" class="text-black text-decoration-underline fw-bold">
-            <i class="fas fa-arrow-left me-2"></i>Späť domov
-          </a>
+        <div class="d-flex flex-column col-12 col-md-5">
           <h1 class="h1 mt-3">Nový produkt</h1>
           <input type="text" class="form-control mt-3 rounded-0" id="productName" placeholder="Zadajte názov produktu">
         </div>
@@ -47,48 +50,50 @@
             <img src="https://via.placeholder.com/150" alt="Product image" class="img-fluid">
           </div>
           <input class="form-control rounded-0 mt-2" type="file" id="productImage">
-          <button class="btn btn-primary mt-2">Nahrať obrázok</button>
+          <div class="d-flex">
+            <button class="btn btn-primary mt-2">Nahrať obrázok</button>
+          </div>
         </div>
 
-        <div class="d-flex flex-row">
-          <div class="d-flex flex-column col-5">
+        <div class="d-flex flex-wrap justify-content-between gap-2">
+          <div class="d-flex flex-column col-10 col-md-5">
             <!-- Short description -->
             <div class="mb-3 d-flex flex-column">
               <label for="shortDescription" class="form-label">Krátky opis</label>
-              <textarea class="form-control" id="shortDescription" rows="2"
+              <textarea class="form-control rounded-0" id="shortDescription" rows="4"
                 placeholder="Krátky opis produktu"></textarea>
             </div>
 
             <!-- Detailed description -->
             <div class="mb-3 d-flex flex-column">
               <label for="detailedDescription" class="form-label">Dlhý opis</label>
-              <textarea class="form-control" id="detailedDescription" rows="3"
+              <textarea class="form-control rounded-0" id="detailedDescription" rows="7"
                 placeholder="Dlhý opis produktu"></textarea>
             </div>
           </div>
 
-          <div class="d-flex flex-column col-5">
+          <div class="d-flex flex-column col-10 col-md-5">
             <!-- Price, Category, Manufacturer, and Availability -->
             <div class="col-md-6 d-flex flex-column">
               <label for="price" class="form-label">Cena</label>
-              <input type="text" class="form-control" id="price" placeholder="Zadajte cenu v EUR">
+              <input type="text" class="form-control rounded-0" id="price" placeholder="Zadajte cenu v EUR">
             </div>
             <div class="col-md-6 d-flex flex-column">
-              <label for="category" class="form-label">Kategória produktu</label>
+              <label for="category" class="form-label rounded-0">Kategória produktu</label>
               <select class="form-select" id="category">
                 <option selected>Vyberte z ponuky</option>
                 <!-- Add category options here -->
               </select>
             </div>
             <div class="col-md-6 d-flex flex-column">
-              <label for="manufacturer" class="form-label">Výrobca</label>
+              <label for="manufacturer" class="form-label rounded-0">Výrobca</label>
               <select class="form-select" id="manufacturer">
                 <option selected>Vyberte z ponuky</option>
                 <!-- Add manufacturer options here -->
               </select>
             </div>
             <div class="col-md-6 d-flex flex-column">
-              <label for="availability" class="form-label">Dostupnosť</label>
+              <label for="availability" class="form-label rounded-0">Dostupnosť</label>
               <select class="form-select" id="availability">
                 <option selected>Vyberte dostupnosť</option>
                 <!-- Add availability options here -->
@@ -97,10 +102,11 @@
           </div>
         </div>
         <!-- Publish button -->
-        <div class="mt-4 d-flex flex-column">
-          <button type="" class="btn btn-primary">Publikovať produkt</button>
+        <div class="d-flex">
+          <div class="mt-0 d-flex flex-column">
+            <button type="" class="btn btn-primary">Publikovať produkt</button>
+          </div>
         </div>
-
       </form>
     </div>
   </main>
