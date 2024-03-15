@@ -95,3 +95,53 @@ h4, .fs-4 {
     height: 36px;
 }
 
+
+
+.admin-product-listing .product-row{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 120px ;
+    gap: 32px;
+}
+
+.admin-product-listing .product-row.heading{
+    font-weight: 700;
+}
+
+.admin-product-listing .product-row:not(.heading){
+    box-shadow: 0px 2px 8px 0px rgba(207, 207, 207, 0.34);
+    border-radius: 6px;
+}
+
+.action-button-wraper{
+    position: relative;
+}
+
+.action-button-wraper .custom-tooltip {
+    font-size: 10px;
+    opacity: 0;
+    transform: translateY(-8px);
+    position: absolute;
+    transition: all 0.2s ease;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}
+.action-button-wraper:hover .custom-tooltip {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.action-button-wraper i{
+    transition: all 0.2s ease;
+}
+
+.action-button-wraper:hover i {
+    color: inherit;
+}
+
+.action-button-wraper a:hover{
+    color: inherit;
+}
+

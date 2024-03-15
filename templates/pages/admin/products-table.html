@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="sk">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Bootstrap CSS -->
+        <!-- https://cdnjs.com/libraries/twitter-bootstrap/5.0.0-beta1 -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css"
+        />
+
+        <!-- Icons: https://getbootstrap.com/docs/5.0/extend/icons/ -->
+        <!-- https://cdnjs.com/libraries/font-awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <link rel="stylesheet" href="../../global.stales.css" />
+        <title>Page - ...</title>
+    </head>
+    <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+        <script>
+            window.onload = () => {
+                var tooltipTriggerList = [].slice.call(
+                    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+                );
+                var tooltipList = tooltipTriggerList.map(function (
+                    tooltipTriggerEl
+                ) {
+                    return new bootstrap.Tooltip(tooltipTriggerEl);
+                });
+            };
+        </script>
+        <header>
+            <div>
+                <div class="" style="background-color: #dddddd">
+                    <div class="py-2 container">
+                        <p
+                            class="container m-0 p-0"
+                            style="font-size: 14px; font-weight: 600"
+                        >
+                            Doprava ZADARMO pri nákupe nad 50€
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="d-none d-lg-flex container py-4 justify-content-between align-items-center"
+                >
+                    <a href="/">
+                        <div class="fs-3 fw-bold">LOGO</div>
+                    </a>
+
+                    <form
+                        action="/search"
+                        class="d-none d-lg-block"
+                        style="width: 350px"
+                    >
+                        <div class="input-group rounded">
+                            <input
+                                type="search"
+                                class="form-control rounded"
+                                placeholder="Hladajte produkty..."
+                                aria-label="Hladajte produkty..."
+                                aria-describedby="search-addon"
+                            />
+                            <button
+                                class="input-group-text border-0"
+                                id="search-addon"
+                                type="submit"
+                            >
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="d-flex align-items-center gap-5">
+                        <div>
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/domov">Domov</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/o-nas">O nás</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/obchod"
+                                        >Obchod</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div
+                            class="d-flex flex-row gap-2 justify-content-center align-items-center"
+                        >
+                            <a
+                                href="/kosik.html"
+                                class="text-decoration-none position-relative"
+                            >
+                                <i class="fas fa-shopping-cart"></i>
+                                <div
+                                    class="position-absolute"
+                                    style="
+                                        font-size: 12px;
+                                        line-height: 12px;
+                                        top: -8px;
+                                        right: -12px;
+                                        padding: 2px 4px;
+                                        border-radius: 100%;
+                                        background-color: black;
+                                        color: white;
+                                    "
+                                >
+                                    3
+                                </div>
+                            </a>
+                            <a class="nav-link" href="/prihlasit-sa">
+                                Prihlásiť sa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="d-flex w-100 d-lg-none container py-4 justify-content-between align-items-center"
+                >
+                    <a href="/">
+                        <div class="fs-3 fw-bold" style="justify-self: center">
+                            LOGO
+                        </div>
+                    </a>
+
+                    <div
+                        class="d-flex justify-content-start align-items-center gap-3"
+                    >
+                        <button
+                            class="btn p-1 border-0"
+                            data-bs-toggle="modal"
+                            data-bs-target="#search-modal"
+                        >
+                            <i class="fas fa-search"></i>
+                        </button>
+
+                        <a
+                            href="/kosik.html"
+                            class="text-decoration-none position-relative"
+                            style="margin-right: 8px; color: black"
+                        >
+                            <i class="fas fa-shopping-cart"></i>
+                            <div
+                                class="position-absolute"
+                                style="
+                                    font-size: 10px;
+                                    line-height: 12px;
+                                    top: -8px;
+                                    right: -12px;
+                                    padding: 1px 4px;
+                                    border-radius: 100%;
+                                    background-color: black;
+                                    color: white;
+                                "
+                            >
+                                3
+                            </div>
+                        </a>
+                        <div>
+                            <button
+                                class="btn p-1 border-0"
+                                data-bs-toggle="modal"
+                                data-bs-target="#mobile-menu"
+                            >
+                                <i class="fas fa-align-justify"></i>
+                            </button>
+
+                            <div
+                                class="modal fade"
+                                id="mobile-menu"
+                                tabindex="-1"
+                                aria-labelledby="exampleModalLabel"
+                                aria-hidden="true"
+                            >
+                                <div class="modal-dialog modal-fullscreen m-0">
+                                    <div class="modal-content rounded-0">
+                                        <div class="modal-header">
+                                            <h5
+                                                class="modal-title"
+                                                id="exampleModalLabel"
+                                            >
+                                                Menu
+                                            </h5>
+                                            <button
+                                                type="button"
+                                                class="btn-close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close"
+                                            ></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <ul
+                                                    class="nav flex-column align-content-center text-center gap-4 fs-4"
+                                                >
+                                                    <li class="nav-item">
+                                                        <a
+                                                            class="nav-link"
+                                                            href="/domov"
+                                                            >Domov</a
+                                                        >
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a
+                                                            class="nav-link"
+                                                            href="/o-nas"
+                                                            >O nás</a
+                                                        >
+                                                    </li>
+
+                                                    <li class="nav-item">
+                                                        <a
+                                                            class="nav-link"
+                                                            href="/obchod"
+                                                            >Obchod</a
+                                                        >
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a
+                                                            class="nav-link"
+                                                            href="/kontakt"
+                                                            >Kontakt</a
+                                                        >
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="modal fade"
+                                id="search-modal"
+                                tabindex="-1"
+                                aria-labelledby="exampleModalLabel"
+                                aria-hidden="true"
+                            >
+                                <div
+                                    class="modal-dialog modal-dialog-centered p-4"
+                                >
+                                    <div class="modal-content rounded-2">
+                                        <div class="modal-header">
+                                            <h5
+                                                class="modal-title"
+                                                id="exampleModalLabel"
+                                            >
+                                                Vyhladávať
+                                            </h5>
+                                            <button
+                                                type="button"
+                                                class="btn-close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close"
+                                            ></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form
+                                                action="/search"
+                                                style="width: 100%"
+                                            >
+                                                <div
+                                                    class="input-group rounded"
+                                                >
+                                                    <input
+                                                        type="search"
+                                                        class="form-control rounded"
+                                                        placeholder="Hladajte produkty..."
+                                                        aria-label="Hladajte produkty..."
+                                                        aria-describedby="search-addon"
+                                                    />
+                                                    <button
+                                                        class="input-group-text border-0"
+                                                        id="search-addon"
+                                                        type="submit"
+                                                    >
+                                                        <i
+                                                            class="fas fa-search"
+                                                        ></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="container py-5 flex flex-col gap-8 admin-product-listing">
+            <div>
+                <h1 class="text-3xl font-bold">Administrátorské rozhranie</h1>
+            </div>
+            <div>
+                <a
+                    href="/admin/novy-produkt"
+                    class="btn bg-[#00C814] hover:bg-green-600 text-white"
+                >
+                    Pridať nový produkt
+                </a>
+            </div>
+            <div class="flex flex-col gap-2">
+                <div class="product-row heading">
+                    <div>Názov produktu</div>
+                    <div>Cena</div>
+                    <div>Kategória</div>
+                    <div>Výrobca</div>
+                    <div>Akcie</div>
+                </div>
+
+                <div class="product-row p-2">
+                    <div class="flex gap-2 w-full gap-3">
+                        <img
+                            src="https://picsum.photos/300"
+                            alt=""
+                            class="w-[100px] h-full rounded-md aspect-square"
+                        />
+                        <div class="w-full">
+                            <h2 class="font-semibold py-1 text-lg">
+                                Product name that can be even this long
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="py-1">12.99€</div>
+                    <div class="py-1">Kategória XYZ</div>
+                    <div class="py-1">Výrobca 123</div>
+                    <div class="py-1 flex flex-row gap-2">
+                        <div
+                            class="action-button-wraper h-fit hover:text-red-500"
+                        >
+                            <a
+                                href="/produkty/produktXYZ"
+                                class="w-[32px] h-[32px] bg-gray-100 flex justify-center items-center rounded-2 text-base"
+                            >
+                                <i class="fas fa-solid fa-trash"></i>
+                            </a>
+                            <div class="custom-tooltip">Zmazať</div>
+                        </div>
+                        <div
+                            class="action-button-wraper h-fit hover:text-blue-500"
+                        >
+                            <a
+                                href="/produkty/produktXYZ"
+                                class="w-[32px] h-[32px] bg-gray-100 flex justify-center items-center rounded-2 text-base"
+                            >
+                                <i class="fas fa-solid fa-marker"></i>
+                            </a>
+                            <div class="custom-tooltip">Upraviť</div>
+                        </div>
+                        <div
+                            class="action-button-wraper h-fit hover:text-green-500"
+                        >
+                            <a
+                                href="/produkty/produktXYZ"
+                                class="w-[32px] h-[32px] bg-gray-100 flex justify-center items-center rounded-2 text-base"
+                            >
+                                <i class="fas fa-solid fa-link"></i>
+                            </a>
+                            <div class="custom-tooltip">Zobraziť</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
