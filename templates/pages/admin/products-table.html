@@ -11,25 +11,38 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css"
         />
 
-        <link rel="stylesheet" href="../global.stales.css" />
-
         <!-- Icons: https://getbootstrap.com/docs/5.0/extend/icons/ -->
         <!-- https://cdnjs.com/libraries/font-awesome -->
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
         />
+        <script src="https://cdn.tailwindcss.com"></script>
 
-        <title>Header</title>
+        <link rel="stylesheet" href="../../global.stales.css" />
+        <title>Page - ...</title>
     </head>
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+        <script>
+            window.onload = () => {
+                var tooltipTriggerList = [].slice.call(
+                    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+                );
+                var tooltipList = tooltipTriggerList.map(function (
+                    tooltipTriggerEl
+                ) {
+                    return new bootstrap.Tooltip(tooltipTriggerEl);
+                });
+            };
+        </script>
         <header>
             <div>
                 <div class="" style="background-color: #dddddd">
@@ -297,5 +310,80 @@
                 </div>
             </div>
         </header>
+        <main class="container py-5 flex flex-col gap-8 admin-product-listing">
+            <div>
+                <h1 class="text-3xl font-bold">Zoznam produktov</h1>
+            </div>
+            <div>
+                <a
+                    href="/admin/novy-produkt"
+                    class="btn bg-[#00C814] hover:bg-green-600 text-white"
+                >
+                    Pridať nový produkt
+                </a>
+            </div>
+            <div class="flex flex-col gap-2">
+                <div class="product-row heading">
+                    <div>Názov produktu</div>
+                    <div>Cena</div>
+                    <div>Kategória</div>
+                    <div>Výrobca</div>
+                    <div>Akcie</div>
+                </div>
+
+                <div class="product-row p-2">
+                    <div class="flex gap-2 w-full gap-3">
+                        <img
+                            src="https://picsum.photos/300"
+                            alt=""
+                            class="w-[100px] h-full rounded-md aspect-square"
+                        />
+                        <div class="w-full">
+                            <h2 class="font-semibold py-1 text-lg">
+                                Product name that can be even this long
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="py-1">12.99€</div>
+                    <div class="py-1">Kategória XYZ</div>
+                    <div class="py-1">Výrobca 123</div>
+                    <div class="py-1 flex flex-row gap-2">
+                        <div
+                            class="action-button-wraper h-fit hover:text-red-500"
+                        >
+                            <a
+                                href="/produkty/produktXYZ"
+                                class="w-[32px] h-[32px] bg-gray-100 flex justify-center items-center rounded-2 text-base"
+                            >
+                                <i class="fas fa-solid fa-trash"></i>
+                            </a>
+                            <div class="custom-tooltip">Zmazať</div>
+                        </div>
+                        <div
+                            class="action-button-wraper h-fit hover:text-blue-500"
+                        >
+                            <a
+                                href="/produkty/produktXYZ"
+                                class="w-[32px] h-[32px] bg-gray-100 flex justify-center items-center rounded-2 text-base"
+                            >
+                                <i class="fas fa-solid fa-marker"></i>
+                            </a>
+                            <div class="custom-tooltip">Upraviť</div>
+                        </div>
+                        <div
+                            class="action-button-wraper h-fit hover:text-green-500"
+                        >
+                            <a
+                                href="/produkty/produktXYZ"
+                                class="w-[32px] h-[32px] bg-gray-100 flex justify-center items-center rounded-2 text-base"
+                            >
+                                <i class="fas fa-solid fa-link"></i>
+                            </a>
+                            <div class="custom-tooltip">Zobraziť</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </body>
 </html>

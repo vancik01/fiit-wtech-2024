@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS -->
+  <!-- https://cdnjs.com/libraries/twitter-bootstrap/5.0.0-beta1 -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css" />
+
+  <!-- Icons: https://getbootstrap.com/docs/5.0/extend/icons/ -->
+  <!-- https://cdnjs.com/libraries/font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="../global.stales.css" />
+  <title>Page - ...</title>
+</head>
+
+<body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+
+  <header>
+    <div>
+      <div class="" style="background-color: #dddddd">
+        <div class="py-2 container">
+          <p class="container m-0 p-0" style="font-size: 14px; font-weight: 600">
+            Doprava ZADARMO pri nákupe nad 50€
+          </p>
+        </div>
+      </div>
+
+      <div class="d-none d-lg-flex container py-4 justify-content-between align-items-center">
+        <a href="/">
+          <div class="fs-3 fw-bold">LOGO</div>
+        </a>
+
+        <form action="/search" class="d-none d-lg-block" style="width: 350px">
+          <div class="input-group rounded">
+            <input type="search" class="form-control rounded" placeholder="Hladajte produkty..."
+              aria-label="Hladajte produkty..." aria-describedby="search-addon" />
+            <button class="input-group-text border-0" id="search-addon" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </form>
+
+        <div class="d-flex align-items-center gap-5">
+          <div>
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/domov">Domov</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/o-nas">O nás</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/obchod">Obchod</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="d-flex flex-row gap-2 justify-content-center align-items-center">
+            <a href="/kosik.html" class="text-decoration-none position-relative">
+              <i class="fas fa-shopping-cart"></i>
+              <div class="position-absolute" style="
+                                      font-size: 12px;
+                                      line-height: 12px;
+                                      top: -8px;
+                                      right: -12px;
+                                      padding: 2px 4px;
+                                      border-radius: 100%;
+                                      background-color: black;
+                                      color: white;
+                                  ">
+                3
+              </div>
+            </a>
+            <a class="nav-link" href="/prihlasit-sa">
+              Prihlásiť sa
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex w-100 d-lg-none container py-4 justify-content-between align-items-center">
+        <a href="/">
+          <div class="fs-3 fw-bold" style="justify-self: center">
+            LOGO
+          </div>
+        </a>
+
+        <div class="d-flex justify-content-start align-items-center gap-3">
+          <button class="btn p-1 border-0" data-bs-toggle="modal" data-bs-target="#search-modal">
+            <i class="fas fa-search"></i>
+          </button>
+
+          <a href="/kosik.html" class="text-decoration-none position-relative" style="margin-right: 8px; color: black">
+            <i class="fas fa-shopping-cart"></i>
+            <div class="position-absolute" style="
+                                  font-size: 10px;
+                                  line-height: 12px;
+                                  top: -8px;
+                                  right: -12px;
+                                  padding: 1px 4px;
+                                  border-radius: 100%;
+                                  background-color: black;
+                                  color: white;
+                              ">
+              3
+            </div>
+          </a>
+          <div>
+            <button class="btn p-1 border-0" data-bs-toggle="modal" data-bs-target="#mobile-menu">
+              <i class="fas fa-align-justify"></i>
+            </button>
+
+            <div class="modal fade" id="mobile-menu" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-fullscreen m-0">
+                <div class="modal-content rounded-0">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Menu
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div>
+                      <ul class="nav flex-column align-content-center text-center gap-4 fs-4">
+                        <li class="nav-item">
+                          <a class="nav-link" href="/domov">Domov</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/o-nas">O nás</a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a class="nav-link" href="/obchod">Obchod</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/kontakt">Kontakt</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered p-4">
+                <div class="modal-content rounded-2">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Vyhladávať
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/search" style="width: 100%">
+                      <div class="input-group rounded">
+                        <input type="search" class="form-control rounded" placeholder="Hladajte produkty..."
+                          aria-label="Hladajte produkty..." aria-describedby="search-addon" />
+                        <button class="input-group-text border-0" id="search-addon" type="submit">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mt-4">
+    <div class="d-flex flex-column p-2 p-md-5 justify-content-between ">
+
+
+      <!-- Back navigation -->
+      <div class="d-flex flex-column">
+        <a href="#" class="text-black text-decoration-underline fw-bold">
+          <i class="fas fa-arrow-left me-2"></i>Späť domov
+        </a>
+      </div>
+      <form>
+        <div class="d-flex flex-column col-12 col-md-4">
+          <h1 class="h1 mt-3">Nový produkt</h1>
+          <input type="text" class="form-control mt-3 rounded-0" id="productName" placeholder="Zadajte názov produktu"
+            value="New product name">
+        </div>
+
+        <!-- Product image upload -->
+        <div class="d-flex flex-column col-md-5 mb-3 mt-5">
+          <div>
+            <h4 class="h4">Obrázok produktu</h4>
+            <img src="https://picsum.photos/150" alt="Product image" class="img-fluid">
+          </div>
+          <input class="form-control rounded-0 mt-2" type="file" id="productImage">
+          <div class="d-flex">
+            <button class="btn btn-warning  mt-2">Nahrať nový obrázok</button>
+          </div>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-between gap-2">
+          <div class="d-flex flex-column col-12col-md-5">
+            <!-- Short description -->
+            <div class="mb-3 d-flex flex-column">
+              <label for="shortDescription" class="form-label">Krátky opis</label>
+              <textarea class="form-control rounded-0" id="shortDescription" rows="4"
+                placeholder="Krátky opis produktu">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed odio porttitor, ullamcorper sapien cursus, mattis lacus. Aliquam luctus condimentum velit a pulvinar. </textarea>
+            </div>
+
+            <!-- Detailed description -->
+            <div class="mb-3 d-flex flex-column">
+              <label for="detailedDescription" class="form-label">Dlhý opis</label>
+              <textarea class="form-control rounded-0" id="detailedDescription" rows="7"
+                placeholder="Dlhý opis produktu">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed odio porttitor, ullamcorper sapien cursus, mattis lacus. Aliquam luctus condimentum velit a pulvinar. Sed a sollicitudin est. Cras efficitur iaculis est et laoreet. In et odio eu risus sollicitudin varius at mollis est. Aliquam commodo tellus quis erat tincidunt aliquam. Integer vulputate nec nisi ac placerat. Sed eleifend arcu at felis aliquet congue. Cras blandit varius purus, ac porta elit. Aenean facilisis, mi at cursus porttitor, est ex mattis dui, id ultrices arcu orci id massa. Proin pharetra pretium ligula a maximus. Sed sodales luctus diam id semper. 
+                Maecenas rhoncus commodo aliquam. Morbi venenatis vel dolor sit amet porttitor. Nunc venenatis massa vitae nulla auctor sodales. In vestibulum aliquet nibh, at euismod purus bibendum at. Morbi interdum ligula sapien, pellentesque rutrum tellus hendrerit quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a risus id augue vestibulum mattis. Quisque in tortor id erat dignissim accumsan vel quis nibh. Etiam aliquet mattis enim, at porta ipsum malesuada id. Sed accumsan nibh egestas, accumsan ligula eu, sollicitudin augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In imperdiet erat sagittis tristique luctus. Integer lacinia feugiat elit, vulputate lacinia lectus ullamcorper vel. Cras aliquam ac leo in porttitor. Duis id justo efficitur, molestie libero nec, ornare ligula. Sed aliquet nisl quis leo accumsan, at hendrerit tellus dictum.
+              </textarea>
+            </div>
+          </div>
+
+          <div class="d-flex flex-column gap-3 col-12 col-md-5">
+            <!-- Price, Category, Manufacturer, and Availability -->
+            <div class="col-md-6 d-flex flex-column">
+              <label for="price" class="form-label">Cena</label>
+              <input type="text" class="form-control rounded-0" id="price" placeholder="Zadajte cenu v EUR"
+                value="12,90">
+            </div>
+            <div class="col-md-6 d-flex flex-column">
+              <label for="category" class="form-label rounded-0">Kategória produktu</label>
+              <select class="form-select" id="category">
+                <option selected>Vyberte kategóriu</option>
+                <option value="2">Elektrické kefky</option>
+                <option value="3">Kefky</option>
+                <!-- Add category options here -->
+              </select>
+            </div>
+            <div class="col-md-6 d-flex flex-column">
+              <label for="manufacturer" class="form-label rounded-0">Výrobca</label>
+              <select class="form-select" id="manufacturer">
+                <option selected>Vyberte z ponuky</option>
+                <option value="1">Oral-B</option>
+                <option value="2">Philips</option>
+                <!-- Add manufacturer options here -->
+              </select>
+            </div>
+            <div class="col-md-6 d-flex flex-column">
+              <label for="availability" class="form-label rounded-0">Dostupnosť</label>
+              <select class="form-select" id="availability">
+                <option selected>Vyberte dostupnosť</option>
+                <option value="1">Skladom</option>
+                <option value="2">Na objednávku</option>
+                <!-- Add availability options here -->
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- Publish button -->
+        <div class="d-flex pt-3 gap-3">
+          <div class="d-flex flex-column">
+            <button type="" class="btn btn-success">Uložiť zmeny</button>
+          </div>
+          <div class="d-flex flex-column">
+            <button type="" class="btn btn-danger">Zahodiť zmeny</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+</body>
+
+</html>
