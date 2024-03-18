@@ -145,3 +145,25 @@ h4, .fs-4 {
     color: inherit;
 }
 
+.kosik i{
+    font-size: 10px;
+    line-height: 12px;
+    top: -8px;
+    right: -12px;
+    padding: 1px 4px;
+    border-radius: 100%;
+    background-color: black;
+    color: white;
+}
+
+#cardInfoBadge {
+    position: absolute;
+    font-size: 12px;
+    line-height: 12px;
+    top: -8px;
+    right: -12px;
+    padding: 2px 4px;
+    border-radius: 100%;
+    background-color: black;
+    color: white;
+}
