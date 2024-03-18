@@ -20,12 +20,25 @@
         rel="stylesheet" />
 
     <link rel="stylesheet" href="../global.stales.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Page - product detail</title>
 </head>
 
 <body>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function changeCount(changeBy) {
+            const input = document.getElementById("inputNumber");
+            if (input) {
+                const currentValue = parseInt(input.value, 10) || 0; // Get the current value as number or default to 0
+                input.value =  currentValue + changeBy <1 ? 1 : currentValue + changeBy; // Update the input field's value
+            } else {
+                console.error('Input element not found');
+            }
+        }
+
+    </script>
+
     <header>
         <div>
             <div class="" style="background-color: #dddddd">
@@ -196,17 +209,16 @@
                 <img src="https://picsum.photos/400" alt="" />
             </div>
             <div class="d-flex flex-column gap-5 p-0">
-                <div class="d-flex flex-column h-100 justify-content-center">
+                <div class="d-flex flex-column h-100 justify-content-center gap-6">
                     <div class="d-flex flex-column">
-                        <h2 class="h">Názov produktu</h2>
+                        <h2 class="text-4xl mb-2 font-semibold">Názov produktu</h2>
+                        <p class="">Na sklade</p>
                     </div>
+                    
                     <div class="d-flex flex-column">
-                        <h2 class="h6">Na sklade</h2>
-                    </div>
-                    <div class="d-flex flex-column">
-                        <h4 class="text-secondary">99.99€</h4>
-                    </div>
-                    <div class="d-flex flex-column">
+                        <div class="d-flex flex-column">
+                            <h4 class="text-secondary text-2xl mb-2">99.99€</h4>
+                        </div>
                         <p>
                             Renew your style with the latest designer trends
                             in men's clothing or achieve a perfectly curated
@@ -214,16 +226,16 @@
                         </p>
                     </div>
                     <div class="d-flex flex-row align-items-between">
-                        <div class="d-flex flex-row">
-                            <button class="btn btn-outline-secondary" type="button">
+                        <div class="d-flex flex-row border-1">
+                            <button onclick="changeCount(-1)" class="w-[30px] focus:outline-none hover:text-blue-500">
                                 -
                             </button>
-                            <input type="text" class="d-flex text-center" style="width: 35px" value="2" />
-                            <button class="btn btn-outline-secondary" type="button">
+                            <input id="inputNumber" type="number" min="1" class="d-flex text-center max-w-[60px]" value="2" />
+                            <button onclick="changeCount(1)" class="w-[30px] focus:outline-none  hover:text-blue-500">
                                 +
                             </button>
                         </div>
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary rounded-none">
                             Pridať do košíka
                         </button>
                     </div>
@@ -234,7 +246,7 @@
         <div class="d-flex product-detail pt-5">
             <div class="d-flex flex-column gap-4">
                 <div class="d-flex flex-column">
-                    <h2 class="">Informácie o produkte</h2>
+                    <h2 class="text-4xl mb-2 font-semibold">Informácie o produkte</h2>
                     <p>
                         lorem, laoreet volutpat elit. Sed scelerisque nibh
                         nisl, in bibendum nibh maximus tempor. Cras volutpat
@@ -262,7 +274,7 @@
                     </p>
                 </div>
                 <div class="d-flex flex-column">
-                    <h2 class="">Galéria</h2>
+                    <h2 class="text-4xl mb-2 font-semibold">Galéria</h2>
                     <div class="row row-cols-md-3 row-cols-2 g-2 ">
                         <img src="https://picsum.photos/200" alt="Product Image" class="img-fluid col" />
                         <img src="https://picsum.photos/200" alt="Product Image" class="img-fluid col" />
@@ -273,7 +285,7 @@
                 <div class="d-flex flex-column">
                     <div class="d-flex flex-column">
                         <div class="d-flex flex-column">
-                            <h2 class="">Ďalšie informácie</h2>
+                            <h2 class="text-3xl mb-2 font-semibold">Ďalšie informácie</h2>
                             <p>
                                 <strong>Kategória produktu:</strong>
                                 Category XYZ
@@ -288,7 +300,7 @@
 
         <!-- najpredavanejsie produkty -->
         <div class="d-flex justify-content-between mt-5">
-            <h2>Podobné produkty</h2>
+            <h2 class="text-2xl font-semibold">Podobné produkty</h2>
             <button class="btn btn-link">Zobraziť všetky</button>
         </div>
         <div class="row row-cols-2 row-cols-lg-4 justify-content-between">
