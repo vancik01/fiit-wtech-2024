@@ -1,0 +1,109 @@
+Table Product{
+  id uuid [pk]
+  featuredImage String
+  title varchar(48)
+  shortDescription varchar(200)
+  longDescription varchar(2000)
+  price int
+  categoryId uuid
+  manufacturerId uuid 
+  availability ProductAvailability
+  createdAt timestamp
+  deletedAt timestamp
+  updatedAt timestamp
+}
+
+Table Category {
+  id uuid [pk]
+  name varchar(32)
+  image String
+}
+
+Table Manufacturer {
+  id uuid [pk]
+  name varchar(32) [not null]
+  logoImage String [not null]
+}
+
+Table Cart {
+  id uuid [pk]
+  userId uuid
+  isActive bool
+}
+
+Table User {
+  id uuid [pk]
+  username varchar(20)
+  email varchar(254) [unique]
+  password varchar(64)
+  createdAt date
+  role Role  [default: "USER"]
+  currentCartid uuid
+}
+
+Table Order {
+  id uuid [pk]
+  userId uuid [null]
+  name varchar(48)
+  surname varchar(48)
+  address varchar(80)
+  city varchar(64)
+  zip varchar(12)
+  orderNote varchar(48)
+  shippingType ShippingType
+  paymentType PaymentType
+  createdAt timestamp
+  price Int
+}
+
+Table OrderProductRelation{
+  id uuid [pk]
+  productId uuid [not null]
+  orderId uuid [not null]
+  peiceAtPurchace int
+  quantity int
+}
+
+Table ProductCartRelation {
+  id uuid [unique]
+  cartId uuid [not null]
+  productId uuid [not null]
+  quantity int
+}
+
+Table GalleryImage {
+  id uuid [pk]
+  imageURL String
+  productId uuid [not null] 
+  createdAt timestamp
+}
+
+Enum ShippingType {
+  PERSONAL
+  COURIER
+}
+
+Enum PaymentType{
+  CARD
+  CASH_ON_DELIVERY
+}
+
+Enum Role {
+  ADMIN
+  USER
+}
+
+Ref: Product.categoryId > Category.id
+
+Ref: Product.manufacturerId > Manufacturer.id
+
+Ref: User.id > Cart.userId
+
+Ref: GalleryImage.productId > Product.id
+
+Ref: ProductCartRelation.cartId > Cart.id
+Ref: ProductCartRelation.productId > Product.id
+
+Ref: OrderProductRelation.orderId > Order.id
+Ref: OrderProductRelation.productId > Product.id
+Ref: Order.userId > User.id
