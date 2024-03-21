@@ -44,23 +44,28 @@ Table User {
 Table Order {
   id uuid [pk]
   userId uuid [null]
-  name varchar(48)
-  surname varchar(48)
-  address varchar(80)
-  city varchar(64)
-  zip varchar(12)
-  orderNote varchar(48)
-  shippingType ShippingType
+  shippingAddressId uuid
+  shippingTypeId uuid
   paymentType PaymentType
   createdAt timestamp
   price Int
 }
 
-Table OrderProductRelation{
+Table ShippingAddress {
+  id uuid [pk]
+  userId uuid [null]
+  name varchar(48)
+  surname varchar(48)
+  address varchar(80)
+  city varchar(64)
+  zip varchar(12)
+}
+
+Table OrderProductRelation {
   id uuid [pk]
   productId uuid [not null]
   orderId uuid [not null]
-  peiceAtPurchace int
+  priceAtPurchace int
   quantity int
 }
 
@@ -76,6 +81,12 @@ Table GalleryImage {
   imageURL String
   productId uuid [not null] 
   createdAt timestamp
+}
+
+Table ShippingType {
+  id uuid [pk]
+  name varchar(48)
+  fee int
 }
 
 Enum ShippingType {
@@ -107,3 +118,8 @@ Ref: ProductCartRelation.productId > Product.id
 Ref: OrderProductRelation.orderId > Order.id
 Ref: OrderProductRelation.productId > Product.id
 Ref: Order.userId > User.id
+
+Ref: Order.shippingAddressId > ShippingAddress.id
+Ref: ShippingAddress.userId > User.id
+
+Ref: Order.shippingTypeId > ShippingType.id
