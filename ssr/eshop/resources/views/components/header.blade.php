@@ -7,6 +7,8 @@
         </div>
     </div>
 
+    {{ config('urls.shop.url') }}
+
     <div class="d-none d-lg-flex container py-4 justify-content-between align-items-center ">
         <a href="/">
             <div>
