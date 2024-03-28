@@ -7,8 +7,6 @@
         </div>
     </div>
 
-    {{ config('urls.shop.url') }}
-
     <div class="d-none d-lg-flex container py-4 justify-content-between align-items-center ">
         <a href="/">
             <div>
@@ -16,7 +14,7 @@
             </div>
         </a>
 
-        <form action="/search" class="d-none d-lg-block w-[350px]">
+        <form action={{ config('urls.search_results.url') }} class="d-none d-lg-block w-[350px]">
             <div class="input-group rounded">
                 <input type="search" class="form-control rounded" placeholder="Hladajte produkty..."
                     aria-label="Hladajte produkty..." aria-describedby="search-addon" />
@@ -29,27 +27,25 @@
         <div class="d-flex align-items-center gap-5">
             <div>
                 <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/domov">Domov</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/o-nas">O nás</a>
-                    </li>
+                    @foreach (['homepage', 'about', 'shop'] as $navItem)
+                        <li class="nav-item">
+                            <a class="nav-link" href={{ config('urls')[$navItem]['url'] }}>
+                                {{ config('urls')[$navItem]['title'] }}
+                            </a>
+                        </li>
+                    @endforeach
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/obchod">Obchod</a>
-                    </li>
                 </ul>
             </div>
 
             <div class="d-flex flex-row gap-2 justify-content-center align-items-center">
-                <a href="/kosik" class="text-decoration-none position-relative">
+                <a href={{ config('urls.cart.url') }} class="text-decoration-none position-relative">
                     <i class="fas fa-shopping-cart"></i>
                     <div id="cardInfoBadge">
                         3
                     </div>
                 </a>
-                <a class="nav-link" href="/prihlasit-sa">
+                <a class="nav-link" href={{ config('urls.log_in.url') }}>
                     Prihlásiť sa
                 </a>
             </div>
@@ -58,8 +54,8 @@
 
     <div class="d-flex w-100 d-lg-none container py-4 justify-content-between align-items-center">
         <a href="/">
-            <div>
-                <img src="/logo.svg" height="48px" alt="" />
+            <div class="">
+                <img src="/logo.svg" height="32px" width="32px" alt="" />
             </div>
         </a>
 
@@ -68,7 +64,7 @@
                 <i class="fas fa-search"></i>
             </button>
 
-            <a href="/kosik" class="text-decoration-none position-relative">
+            <a href={{ config('urls.cart.url') }} class="text-decoration-none position-relative">
                 <i class="fas fa-shopping-cart"></i>
                 <div class="position-absolute kosik">
                 </div>
@@ -86,27 +82,23 @@
                                 <h5 class="modal-title" id="exampleModalLabel">
                                     Menu
                                 </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div>
-                                    <ul class="nav flex-column align-content-center text-center gap-4 fs-4">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/domov">Domov</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/o-nas">O nás</a>
-                                        </li>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 
+                                    <i class="fas fa-window-close"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body flex justify-center items-center">
+
+                                <ul class="nav flex-column align-content-center text-center gap-4 fs-4">
+                                    @foreach (['homepage', 'about', 'shop'] as $navItem)
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/obchod">Obchod</a>
+                                            <a class="nav-link" href={{ config('urls')[$navItem]['url'] }}>
+                                                {{ config('urls')[$navItem]['title'] }}
+                                            </a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/kontakt">Kontakt</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    @endforeach
+                                </ul>
+
                             </div>
                         </div>
                     </div>
@@ -124,13 +116,13 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="/search" class="w-100">
+                                <form action={{ config('urls.search_results.url') }} class="w-100">
                                     <div class="input-group rounded">
                                         <input type="search" class="form-control rounded"
                                             placeholder="Hladajte produkty..." aria-label="Hladajte produkty..."
                                             aria-describedby="search-addon" />
                                         <button class="input-group-text border-0" id="search-addon" type="submit">
-                                            <i class="fas fa-search"></i>
+                                            <i class="fas fa-search text-black"></i>
                                         </button>
                                     </div>
                                 </form>

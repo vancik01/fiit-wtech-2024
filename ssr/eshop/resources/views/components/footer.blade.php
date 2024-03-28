@@ -32,9 +32,14 @@
             <div class="d-flex flex-column">
                 <h5 class="font-semibold">Rýchle odkazy</h5>
                 <ul class="list-unstyled">
-                    <li><a href="/o-nas">O nás</a></li>
-                    <li><a href="/kontakt">Kontakt</a></li>
-                    <li><a href="/obchod">Obchod</a></li>
+                    @foreach (['homepage', 'about', 'shop'] as $navItem)
+                        <li>
+                            <a href={{ config('urls')[$navItem]['url'] }}>
+                                {{ config('urls')[$navItem]['title'] }}
+                            </a>
+                        </li>
+                    @endforeach
+
                 </ul>
             </div>
         </div>
