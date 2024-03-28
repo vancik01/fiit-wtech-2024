@@ -43,7 +43,7 @@
             </div>
 
             <div class="d-flex flex-row gap-2 justify-content-center align-items-center">
-                <a href="/kosik.html" class="text-decoration-none position-relative">
+                <a href="/kosik" class="text-decoration-none position-relative">
                     <i class="fas fa-shopping-cart"></i>
                     <div id="cardInfoBadge">
                         3
@@ -68,7 +68,7 @@
                 <i class="fas fa-search"></i>
             </button>
 
-            <a href="/kosik.html" class="text-decoration-none position-relative">
+            <a href="/kosik" class="text-decoration-none position-relative">
                 <i class="fas fa-shopping-cart"></i>
                 <div class="position-absolute kosik">
                 </div>
