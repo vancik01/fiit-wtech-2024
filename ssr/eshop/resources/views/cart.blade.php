@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', config('urls.cart.title'))
+{{$total = 0}}
 
 @section('content')
     <div class="container mt-16 flex flex-col gap-3">
@@ -22,7 +23,6 @@
                 <div
                     class="col-12 col-md-6 max-w-[600px] flex flex-col gap-10 p-0"
                 >
-
                     @for ($i = 0; $i < 3; $i++)
                         @component('components.product_in_cart', [
                             'product' => (object) [
@@ -31,6 +31,7 @@
                                 'price' => '12.90',
                             ],
                         ])
+                            {{$total += 12.90}}
                         @endcomponent
                     @endfor
 
@@ -45,7 +46,7 @@
                     <div class="flex flex-col gap-3">
                         <div class="flex justify-between items-center">
                             <div>Medzisúčet</div>
-                            <div>200.00€</div>
+                            <div>{{ $total }}€</div>
                         </div>
                         <div class="flex justify-between items-center">
                             <div>Doprava</div>
@@ -54,7 +55,7 @@
                         <div class="h-[1px] bg-black"></div>
                         <div class="flex justify-between items-center">
                             <div>Spolu</div>
-                            <div>204.50€</div>
+                            <div>{{ $total += 4.50 }}€</div>
                         </div>
                     </div>
 
