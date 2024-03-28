@@ -30,9 +30,13 @@
         <div class="flex flex-col gap-2">
             <div class="d-flex justify-content-between mt-5 items-center">
                 <h2>Najpredávanejšie produkty</h2>
-                <a class="btn btn-link p-0 h-fit text-primaryColor">Zobraziť všetky produkty -></a>
+                <a href={{ config('urls.shop.url') }}
+                    class="btn btn-link p-0 h-fit text-primaryColor hidden md:block">Zobraziť
+                    všetky
+                    produkty
+                </a>
             </div>
-            <div class="row row-cols-2 row-cols-lg-4 justify-content-between ">
+            <div class="row row-cols-2 row-cols-lg-4 justify-content-between g-3 g-md-2 ">
                 @for ($i = 0; $i < 4; $i++)
                     @component('components.product_card', [
                         'product' => (object) [
@@ -47,8 +51,11 @@
                     ])
                     @endcomponent
                 @endfor
-
             </div>
+            <a href={{ config('urls.shop.url') }}
+                class="btn btn-link p-0 h-fit text-primaryColor text-start mt-4 block md:hidden">
+                Zobraziť všetky produkty
+            </a>
         </div>
         <!-- najpredavanejsie produkty -->
 
@@ -57,9 +64,10 @@
         <div class="flex flex-col gap-3 mt-12">
             <div class="d-flex justify-content-between mt-5 items-center">
                 <h2>Najnovšie produkty</h2>
-                <a class="btn btn-link h-fit p-0 text-primaryColor">Zobraziť všetky produkty -></a>
+                <a href={{ config('urls.shop.url') }}
+                    class="btn btn-link h-fit p-0 text-primaryColor hidden md:block">Zobraziť všetky produkty -></a>
             </div>
-            <div class="row row-cols-2 row-cols-lg-4 justify-content-between">
+            <div class="row row-cols-2 row-cols-lg-4 justify-content-between g-3 g-md-2">
                 @for ($i = 0; $i < 4; $i++)
                     @component('components.product_card', [
                         'product' => (object) [
@@ -75,6 +83,10 @@
                     @endcomponent
                 @endfor
             </div>
+            <a href={{ config('urls.shop.url') }}
+                class="btn btn-link p-0 h-fit text-primaryColor text-start mt-4 block md:hidden">
+                Zobraziť všetky produkty ->
+            </a>
         </div>
 
     </div>
