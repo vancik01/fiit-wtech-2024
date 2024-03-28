@@ -13,3 +13,7 @@ Route::get(config("urls.product_detail.url"), function (Request $request) {
 
     return view('product_detail', ['productId' => $productId, 'limit' => $limit]);
 });
+
+Route::get(config("urls.cart.url"), function () {
+    return view('cart');
+});
