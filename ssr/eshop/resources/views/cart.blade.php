@@ -1,7 +1,10 @@
+<div class="hidden">
+{{$total = 0}}
+</div>
+
 @extends('layouts.app')
 
 @section('title', config('urls.cart.title'))
-{{$total = 0}}
 
 @section('content')
     <div class="container mt-16 flex flex-col gap-3">
