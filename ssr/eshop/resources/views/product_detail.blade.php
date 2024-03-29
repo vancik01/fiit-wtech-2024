@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', config('urls.product_detail.title'))
+@section('title', config('urls.product_detail.getPathBuilder')('QWER'))
 
 @section('content')
-<div class="container">
+<div class="container pt-5">
         <div class="detail d-flex gap-5 flex-column flex-md-row">
             <div class="d-flex flex-column p-0 w-100">
                 <img src="https://picsum.photos/1024" alt="" />
@@ -105,78 +105,21 @@
             <button class="btn btn-link">Zobraziť všetky</button>
         </div>
         <div class="row row-cols-2 row-cols-lg-4 justify-content-between">
-            <!-- Product Card -->
-            <div class="d-flex flex-column gap-3">
-                <!-- Product Image -->
-                <div class="d-flex justify-content-center position-relative">
-                    <img src="https://picsum.photos/300" alt="Product Image" class="img-fluid w-100" />
-                    <div class="position-absolute" style="bottom: 15px; right: 15px">
-                        <span class="badge bg-success fs-6">Na sklade</span>
-                    </div>
-                </div>
-
-                <!-- Product Info -->
-                <div class="d-flex flex-column gap-3">
-                    <!--<button class="btn btn-success">Na sklade</button>-->
-                    <h5>Lorem Ipsum</h5>
-                    <p class="text-secondary">Výrobca XYZ</p>
-                    <p class="fw-bold">15.99 €</p>
-                </div>
-            </div>
-
-            <div class="d-flex flex-column gap-3">
-                <!-- Product Image -->
-                <div class="d-flex justify-content-center position-relative">
-                    <img src="https://picsum.photos/300" alt="Product Image" class="img-fluid w-100" />
-                    <div class="position-absolute" style="bottom: 15px; right: 15px">
-                        <span class="badge bg-success fs-6">Na sklade</span>
-                    </div>
-                </div>
-
-                <!-- Product Info -->
-                <div class="d-flex flex-column gap-2">
-                    <!--<button class="btn btn-success">Na sklade</button>-->
-                    <h5>Lorem Ipsum</h5>
-                    <p class="text-secondary">Výrobca XYZ</p>
-                    <p class="fw-bold">15.99 €</p>
-                </div>
-            </div>
-
-            <div class="d-flex flex-column gap-3">
-                <!-- Product Image -->
-                <div class="d-flex justify-content-center position-relative">
-                    <img src="https://picsum.photos/300" alt="Product Image" class="img-fluid w-100" />
-                    <div class="position-absolute" style="bottom: 15px; right: 15px">
-                        <span class="badge bg-success fs-6">Na sklade</span>
-                    </div>
-                </div>
-
-                <!-- Product Info -->
-                <div class="d-flex flex-column gap-2">
-                    <!--<button class="btn btn-success">Na sklade</button>-->
-                    <h5>Lorem Ipsum</h5>
-                    <p class="text-secondary">Výrobca XYZ</p>
-                    <p class="fw-bold">15.99 €</p>
-                </div>
-            </div>
-
-            <div class="d-flex flex-column gap-3">
-                <!-- Product Image -->
-                <div class="d-flex justify-content-center position-relative">
-                    <img src="https://picsum.photos/300" alt="Product Image" class="img-fluid w-100" />
-                    <div class="position-absolute" style="bottom: 15px; right: 15px">
-                        <span class="badge bg-success fs-6">Na sklade</span>
-                    </div>
-                </div>
-
-                <!-- Product Info -->
-                <div class="d-flex flex-column gap-2">
-                    <!--<button class="btn btn-success">Na sklade</button>-->
-                    <h5>Lorem Ipsum</h5>
-                    <p class="text-secondary">Výrobca XYZ</p>
-                    <p class="fw-bold">15.99 €</p>
-                </div>
-            </div>
+            @for ($i = 0; $i < 4; $i++)
+                @component('components.product_card', [
+                    'product' => (object) [
+                        'name' => 'Wocap',
+                        'slug' => 'product-slug-123',
+                        'thumbnail' => 'https://picsum.photos/300',
+                        'status' => 'Na sklade',
+                        'manufacturer' => 'Oral-B',
+                        'manufacturerSlug' => 'vyrobca-123',
+                        'price' => '12.90',
+                    ],
+                ])
+                @endcomponent
+            @endfor
         </div>
 </div>
 @endsection
+

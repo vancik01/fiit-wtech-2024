@@ -2,7 +2,11 @@
     <div class="container d-flex flex-column py-4 gap-4">
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex">
-                <div class="fs-3 fw-bold">LOGO</div>
+                <a href="/">
+                    <div class="">
+                        <img src="/logo.svg" height="32px" width="32px" alt="" />
+                    </div>
+                </a>
             </div>
             <div class="d-flex">
                 <div class="text-center">
