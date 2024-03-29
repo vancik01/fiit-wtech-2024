@@ -17,3 +17,7 @@ Route::get(config("urls.product_detail.url"), function (Request $request) {
 Route::get(config("urls.cart.url"), function () {
     return view('cart');
 });
+
+Route::get(config("urls.checkout.url"), function () {
+    return view('checkout');
+});
