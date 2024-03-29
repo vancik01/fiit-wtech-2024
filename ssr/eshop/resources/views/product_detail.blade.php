@@ -3,6 +3,17 @@
 @section('title', config('urls.product_detail.getPathBuilder')('QWER'))
 
 @section('content')
+<script>
+        function changeCount(changeBy) {
+            const input = document.getElementById("inputNumber");
+            if (input) {
+                const currentValue = parseInt(input.value, 10) || 0; // Get the current value as number or default to 0
+                input.value =  currentValue + changeBy <1 ? 1 : currentValue + changeBy; // Update the input field's value
+            } else {
+                console.error('Input element not found');
+            }
+        }
+    </script>
 <div class="container pt-5">
         <div class="detail d-flex gap-5 flex-column flex-md-row">
             <div class="d-flex flex-column p-0 w-100">
@@ -77,10 +88,9 @@
                 <div class="d-flex flex-column">
                     <h2 class="text-4xl mb-2 font-semibold">Galéria</h2>
                     <div class="row row-cols-md-3 row-cols-2 g-2 ">
-                        <img src="https://picsum.photos/200" alt="Product Image" class="img-fluid col" />
-                        <img src="https://picsum.photos/200" alt="Product Image" class="img-fluid col" />
-                        <img src="https://picsum.photos/200" alt="Product Image" class="img-fluid col" />
-                        <img src="https://picsum.photos/200" alt="Product Image" class="img-fluid col" />
+                        @for ($i = 0; $i < 3; $i++)
+                            <img src="https://picsum.photos/200" alt="Product Image" class="img-fluid col" />
+                        @endfor
                     </div>
                 </div>
                 <div class="d-flex flex-column">
