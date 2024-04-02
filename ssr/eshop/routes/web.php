@@ -21,3 +21,7 @@ Route::get(config("urls.cart.url"), function () {
 Route::get(config("urls.checkout.url"), function () {
     return view('checkout');
 });
+
+Route::get(config("urls.admin_new_product.url"), function () {
+    return view('admin_new_product');
+});
