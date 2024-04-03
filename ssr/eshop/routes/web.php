@@ -33,6 +33,10 @@ Route::get(config("urls.checkout.url"), function () {
     return view('checkout');
 });
 
+Route::get(config("urls.admin_new_product.url"), function () {
+    return view('admin_new_product');
+});
+
 Route::get(config("urls.shop.url"), function () {
     return view('shop');
 });
