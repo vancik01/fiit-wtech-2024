@@ -10,7 +10,8 @@ export default {
             colors: {
                 primaryColor: "#04CFC9",
                 secondaryColor: "#EEFCFD",
-                backgroundColor: "#EDFBFA"
+                backgroundColor: "#EDFBFA",
+                hover: "#23a6a2"
             }
         }
     },

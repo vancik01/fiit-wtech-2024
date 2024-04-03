@@ -55,6 +55,13 @@ main.container {
     padding-bottom: 80px;
 }
 
+button.btn-primary{
+    @apply bg-primaryColor border-0 hover:bg-hover;
+}
+
+.filter .collapse {
+    visibility: visible;
+}
 
 @media (max-width:565px){
     .container{

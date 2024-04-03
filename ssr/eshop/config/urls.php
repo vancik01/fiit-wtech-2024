@@ -2,7 +2,11 @@
 return [
     'homepage' => [
         'url' => '/',
-        'title' => 'Domov'
+        'title' => 'Domov',
+        'anchors' => [
+            'most_selling' => 'najpredavanejsie',
+            'most_recent' => 'najnovsie',
+        ]
     ],
 
     'shop' =>

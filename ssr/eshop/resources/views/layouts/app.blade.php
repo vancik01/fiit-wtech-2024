@@ -30,9 +30,9 @@
     </header>
 
 
-    <main>
-        @yield('content')
-    </main>
+
+    @yield('content')
+
 
     <footer class="mt-16">
         @component('components.footer')
