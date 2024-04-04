@@ -34,7 +34,7 @@ Route::get(config("urls.checkout.url"), function () {
 });
 
 Route::get(config("urls.admin_new_product.url"), function () {
-    return view('admin_new_product');
+    return view('admin.create_product');
 });
 
 Route::get(config("urls.shop.url"), function () {
