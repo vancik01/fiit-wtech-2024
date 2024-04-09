@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', function () {
+    return view('homepage');
+})->middleware(['auth', 'verified'])->name('/');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -23,6 +23,8 @@ require __DIR__.'/auth.php';
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\ShopPageController;
+use App\Http\Controllers\UserController;
+
 
 // Route::get('/', function () {
 //     return view('homepage');
@@ -73,3 +75,4 @@ Route::get(config("urls.admin_view_products.url"), function () {
     return view('admin.view_products');
 });
 
+Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');

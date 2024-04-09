@@ -39,7 +39,7 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = User::find($id);
-        return view('users.profile')->with('user', $user);
+        return view('users.login_success')->with('user', $user);
     }
 
     /**

@@ -115,6 +115,24 @@
                                             </a>
                                         </li>
                                     @endforeach
+                                    @if (Auth::check())
+                                    <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                        <div class="m-3">
+                                            {{ Auth::user()->name }}
+                                        </div>
+                                        <!-- Authentication -->
+                                                <button href="route('logout')" 
+                                                        type="submit">
+                                                    <!-- {{ __('Log Out') }} -->
+                                                    Odhlásiť sa
+                                                </button>
+                                            </form>
+                                    @else
+                                        <a class="nav-link" href={{ config('urls.log_in.url') }}>
+                                            Prihlásiť sa
+                                        </a>
+                                    @endif
                                 </ul>
 
                             </div>

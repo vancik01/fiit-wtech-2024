@@ -10,6 +10,7 @@
                     <div>
                         <h1 class="text-2xl font-semibold">Prihlásenie úspešné</h1>
                         <p class="text-secondary">
+                            {{ $user->name }} Vítajte späť!<br>
                             Úspešne ste sa prihlásili do svojho účtu
                         </p>
                     </div>
