@@ -3,23 +3,6 @@
 @section('title', config('urls.register.title'))
 
 @section('content')
-{{--    <script>--}}
-{{--        document.addEventListener("DOMContentLoaded", function() {--}}
-{{--            document--}}
-{{--                .getElementById("togglePassword")--}}
-{{--                .addEventListener("click", function(e) {--}}
-{{--                    const password = document.getElementById("password");--}}
-{{--                    const type =--}}
-{{--                        password.getAttribute("type") === "password" ?--}}
-{{--                        "text" :--}}
-{{--                        "password";--}}
-{{--                    password.setAttribute("type", type);--}}
-
-{{--                    // Optional: Toggle the icon class--}}
-{{--                    this.classList.toggle("fa-eye-slash");--}}
-{{--                });--}}
-{{--        });--}}
-{{--    </script>--}}
     <main class="container">
         <div class="flex flex-col justify-center items-center">
             <div class="min-h-[400px] md:min-h-[600px] flex flex-col justify-center items-center gap-8">
@@ -56,9 +39,6 @@
                                           type="password"
                                           name="password"
                                           required autocomplete="new-password" />
-{{--                            <span class="absolute inset-y-0 right-0 flex items-center pr-3">--}}
-{{--                <i class="fa fa-eye w-[20px] cursor-pointer" id="togglePassword"></i>--}}
-{{--            </span>--}}
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                         </div>
 
@@ -81,23 +61,6 @@
                             </x-primary-button>
                         </div>
                     </form>
-
-{{--                    <script>--}}
-{{--                        document.addEventListener("DOMContentLoaded", function() {--}}
-{{--                            const togglePassword = document.getElementById("togglePassword");--}}
-{{--                            const password = document.getElementById("password");--}}
-
-{{--                            if (togglePassword) {--}}
-{{--                                togglePassword.addEventListener("click", function(e) {--}}
-{{--                                    const type = password.getAttribute("type") === "password" ? "text" : "password";--}}
-{{--                                    password.setAttribute("type", type);--}}
-
-{{--                                    // Optional: Toggle the icon class--}}
-{{--                                    this.classList.toggle("fa-eye-slash");--}}
-{{--                                });--}}
-{{--                            }--}}
-{{--                        });--}}
-{{--                    </script>--}}
                 </div>
                 <div>
                     Už máte účet?

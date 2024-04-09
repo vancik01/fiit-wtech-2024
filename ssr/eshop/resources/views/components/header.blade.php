@@ -45,9 +45,27 @@
                         3
                     </div>
                 </a>
-                <a class="nav-link" href={{ config('urls.log_in.url') }}>
-                    Prihlásiť sa
-                </a>
+
+                @if (Auth::check())
+                <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                    <span class="mr-2 ml-2">
+                        {{ Auth::user()->name }}
+                    </span>
+                    <!-- Authentication -->
+                            <button href="route('logout')" 
+                                    type="submit">
+                                <!-- {{ __('Log Out') }} -->
+                                Odhlásiť sa
+                            </button>
+                        </form>
+                @else
+                    <a class="nav-link" href={{ config('urls.log_in.url') }}>
+                        Prihlásiť sa
+                    </a>
+                @endif
+
+
             </div>
         </div>
     </div>

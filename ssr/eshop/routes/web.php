@@ -28,7 +28,7 @@ use App\Http\Controllers\ShopPageController;
 //     return view('homepage');
 // });
 
-Route::get('/', [HomepageController::class, 'index']);
+Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 
 
 // Route::get(config("urls.product_detail.url"), function (Request $request) {
@@ -72,3 +72,4 @@ Route::get(config("urls.register.url"), function () {
 Route::get(config("urls.admin_view_products.url"), function () {
     return view('admin.view_products');
 });
+
