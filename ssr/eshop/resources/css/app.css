@@ -89,25 +89,25 @@ button.btn-primary{
     }
 
     h1 {
-        font-size: 1.75rem; 
+        font-size: 1.75rem;
         font-weight: 700;
         margin-bottom: 0.5rem;
     }
-    
+
     h2 {
-        font-size: 1.275rem; 
+        font-size: 1.275rem;
         font-weight: 500;
         margin-bottom: 0.5rem;
     }
-    
+
     h3 {
-        font-size: 1.0rem; 
+        font-size: 1.0rem;
         font-weight: 500;
         margin-bottom: 0.5rem;
     }
-    
+
     h4 {
-        font-size: 1.0rem; 
+        font-size: 1.0rem;
         font-weight: 500;
         margin-bottom: 0.25rem;
     }
@@ -142,7 +142,7 @@ h4, .fs-4 {
 }
 
 .brand-filter button.active, .brand-filter button:hover {
-    border: 5px solid rgba(13,110,253,.35);   
+    border: 5px solid rgba(13,110,253,.35);
 }
 
 

@@ -10,10 +10,10 @@ return [
     ],
 
     'shop' =>
-    [
-        'url' => '/obchod',
-        'title' => 'Obchod'
-    ],
+        [
+            'url' => '/obchod',
+            'title' => 'Obchod'
+        ],
 
     'product_detail' => [
         'getPathBuilder' => function ($productId) {

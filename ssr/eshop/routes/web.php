@@ -1,9 +1,26 @@
 <?php
 
-use App\Http\Controllers\HomepageController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+//
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
+
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\ShopPageController;
 
@@ -45,11 +62,11 @@ Route::get(config("urls.shop.url"), [ShopPageController::class, 'index']);
 
 
 Route::get(config("urls.log_in.url"), function () {
-    return view('user.login');
+    return view('users.login');
 });
 
 Route::get(config("urls.register.url"), function () {
-    return view('user.register');
+    return view('users.register');
 });
 
 Route::get(config("urls.admin_view_products.url"), function () {
