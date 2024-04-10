@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
+
 class GalleryImageFactory extends Factory
 {
     protected $model = GalleryImage::class;
@@ -15,7 +16,7 @@ class GalleryImageFactory extends Factory
     {
         return [
             'id' => Str::uuid(),
-            'imageURL' => $this->faker->imageUrl(),
+            'imageURL' => getRandomImageUrl(),
             'productId' => Product::factory(),  // Assuming you have a ProductFactory
         ];
     }

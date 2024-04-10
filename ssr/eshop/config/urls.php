@@ -10,10 +10,22 @@ return [
     ],
 
     'shop' =>
-        [
-            'url' => '/obchod',
-            'title' => 'Obchod'
-        ],
+    [
+        'url' => '/obchod',
+        'title' => 'Obchod'
+    ],
+
+    'category_archive' => [
+        'getPathBuilder' => function ($categorySlug) {
+            return "/obchod/?kategoria=$categorySlug";
+        },
+    ],
+
+    'manufacturer_archive' => [
+        'getPathBuilder' => function ($manufacturerSlug) {
+            return "/obchod/?vyrobca=$manufacturerSlug";
+        },
+    ],
 
     'product_detail' => [
         'getPathBuilder' => function ($productId) {

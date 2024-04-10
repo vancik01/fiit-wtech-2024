@@ -52,7 +52,7 @@
                             Pridať do košíka
                         </button>
                         <form action="{{ route('cart.add') }}" method="post">
-                                @csrf
+                            @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <button type="submit">Add to Cart</button>
                         </form>
@@ -86,11 +86,16 @@
                             <div class="flex flex-col gap-2">
                                 <p>
                                     <strong>Kategória produktu:</strong>
-                                    <a href="/kategoria/123">{{ $product->category->name }}</a>
+                                    <a
+                                        href="{{ config('urls.category_archive.getPathBuilder')($product->category->slug) }}">>
+                                        {{ $product->category->name }}</a>
                                 </p>
                                 <p>
                                     <strong>Výrobca:</strong>
-                                    <a href="/kategoria/123">{{ $product->manufacturer->name }}</a>
+                                    <a
+                                        href="{{ config('urls.manufacturer_archive.getPathBuilder')($product->manufacturer->slug) }}">
+                                        {{ $product->manufacturer->name }}
+                                    </a>
                                 </p>
                             </div>
                             <!-- Add more details as required -->
@@ -102,7 +107,7 @@
 
         <div class="d-flex justify-content-between mt-5">
             <h2 class="text-2xl font-semibold">Podobné produkty</h2>
-            <button class="btn btn-link">Zobraziť všetky</button>
+            <a class="btn btn-link" href="{{ config('urls.shop.url') }}">Zobraziť všetky</a>
         </div>
         <div class="row row-cols-2 row-cols-lg-4 justify-content-between">
 
