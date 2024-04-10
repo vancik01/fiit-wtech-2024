@@ -150,7 +150,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action={{ config('urls.search_results.url') }} class="w-100">
+                                <form name="hladat" action={{ config('urls.search_results.url') }} class="w-100">
                                     <div class="input-group rounded">
                                         <input type="search" class="form-control rounded"
                                             placeholder="Hladajte produkty..." aria-label="Hladajte produkty..."
