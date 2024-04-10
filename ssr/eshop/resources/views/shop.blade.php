@@ -70,14 +70,12 @@
             const manufacturer = document.getElementById('manufacturerInput').value;
             const category = document.getElementById('categoryInput').value;
 
-            // Create an instance of URLSearchParams based on the current URL's query string
             let queryParams = new URLSearchParams(window.location.search);
 
-            // Update the query parameters based on the form inputs
             if (price && price != maxPrice) {
-                queryParams.set('cena', price); // Using set instead of append to update the value if it already exists
+                queryParams.set('cena', price);
             } else {
-                queryParams.delete('cena'); // Remove the parameter if the condition is not met
+                queryParams.delete('cena');
             }
 
             if (availability && availability != "all") {
@@ -98,9 +96,6 @@
                 queryParams.delete('kategoria');
             }
 
-            // The 'zoradit-podla' parameter will be maintained as is, no need to explicitly set it
-
-            // Redirect the browser to the new URL
             window.location.href = `/obchod?${queryParams.toString()}`;
         }
 

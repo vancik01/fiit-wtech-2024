@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 Route::post('/kosik/add', [CartController::class, 'add'])->name('cart.add');
@@ -30,24 +30,12 @@ use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\ShopPageController;
 use App\Http\Controllers\UserController;
-
-
-// Route::get('/', function () {
-//     return view('homepage');
-// });
+use App\Http\Controllers\SearchResultController;
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 
-
-// Route::get(config("urls.product_detail.url"), function (Request $request) {
-//     $productId = $request->route("productId"); // access path parameter
-//     $limit = $request->query('limit'); // access query parameter
-
-//     return view('product_detail', ['productId' => $productId, 'limit' => $limit]);
-// });
-
-
 Route::get(config("urls.product_detail.url"), [ProductDetailController::class, 'index']);
+Route::get(config("urls.search_results.url"), [SearchResultController::class, 'index']);
 
 /*
 Route::get(config("urls.cart.url"), function () {
