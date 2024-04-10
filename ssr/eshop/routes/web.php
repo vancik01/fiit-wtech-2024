@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 //
 //Route::get('/', function () {
 //    return view('welcome');
@@ -18,6 +19,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::post('/kosik/add', [CartController::class, 'add'])->name('cart.add');
+Route::post('/kosik/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('/kosik', [CartController::class, 'index'])->name('cart');
 
 
 use App\Http\Controllers\HomepageController;
@@ -43,11 +49,11 @@ Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 
 Route::get(config("urls.product_detail.url"), [ProductDetailController::class, 'index']);
 
-
+/*
 Route::get(config("urls.cart.url"), function () {
     return view('cart');
 });
-
+*/
 Route::get(config("urls.checkout.url"), function () {
     return view('checkout');
 });

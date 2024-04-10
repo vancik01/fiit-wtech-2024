@@ -49,7 +49,6 @@
         <!-- najpredavanejsie produkty -->
 
         <!-- najpredavanejsie produkty -->
-
         <div id="{{ config('urls.homepage.anchors.most_recent') }}" class="flex flex-col gap-3 mt-12">
             <div class="d-flex justify-content-between mt-5 items-center">
                 <h2>Najnovšie produkty</h2>

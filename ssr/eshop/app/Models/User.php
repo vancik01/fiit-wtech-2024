@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'cart_id',
     ];
 
     /**
@@ -43,5 +44,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the cart associated with the user.
+     */
+    public function cart()
+    {
+        return $this->hasOne(Cart::class, 'user_id', 'id');
     }
 }

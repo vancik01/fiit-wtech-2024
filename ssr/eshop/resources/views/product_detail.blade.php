@@ -1,26 +1,5 @@
 @extends('layouts.app')
 
-<!-- Len pre testovacie účely -->
-{{-- @php
-    $product = (object) [
-        'name' => 'Name',
-        'slug' => 'product-slug-123',
-        'thumbnail' => 'https://picsum.photos/1024',
-        'status' => 'Na sklade',
-        'manufacturer' => 'Oral-B',
-        'manufacturerSlug' => 'vyrobca-123',
-        'price' => '99.99',
-        'description' =>
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        'shortDescription' =>
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        'category' => 'Category XYZ',
-        'gallery' => ['https://picsum.photos/200', 'https://picsum.photos/200', 'https://picsum.photos/200'],
-    ];
-@endphp --}}
-
-
-
 @section('title', config('urls.product_detail.getPathBuilder')('QWER'))
 
 @section('content')
@@ -72,6 +51,11 @@
                         <button class="btn btn-primary rounded-none">
                             Pridať do košíka
                         </button>
+                        <form action="{{ route('cart.add') }}" method="post">
+                                @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <button type="submit">Add to Cart</button>
+                        </form>
                     </div>
                 </div>
             </div>

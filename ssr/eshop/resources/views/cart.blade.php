@@ -22,19 +22,12 @@
 
             <div class="row gap-5 flex justify-between">
                 <div class="col-12 col-md-6 max-w-[600px] flex flex-col gap-10 p-0">
-                    @for ($i = 0; $i < 3; $i++)
-                        @component('components.product_in_cart', [
-                            'product' => (object) [
-                                'slug' => 'product-id',
-                                'name' => 'Wocap',
-                                'manufacturer' => 'Oral-B',
-                                'price' => '12.90',
-                            ],
-                        ])
-                            {{ $total += 12.9 }}
-                        @endcomponent
-                    @endfor
-
+                    @if ($cart)
+                        {{ $cart }}
+                        {{ $cart->cart_id }}
+                        <hr>
+                        {{ $products }}
+                    @endif
                 </div>
                 <div class="col-12 col-md-6 md:max-w-[450px] flex flex-col gap-8 bg-gray-50 h-fit p-8">
                     <h2 class="text-2xl font-semibold">
