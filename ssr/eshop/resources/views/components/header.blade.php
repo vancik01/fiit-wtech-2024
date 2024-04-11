@@ -16,7 +16,7 @@
 
         <form action={{ config('urls.search_results.url') }} class="d-none d-lg-block w-[350px]">
             <div class="input-group rounded">
-                <input type="search" class="form-control rounded" placeholder="Hladajte produkty..."
+                <input type="search" class="form-control rounded" name="hladat" placeholder="Hladajte produkty..."
                     aria-label="Hladajte produkty..." aria-describedby="search-addon" />
                 <button class="input-group-text border-0" id="search-addon" type="submit">
                     <i class="fas fa-search"></i>
@@ -47,18 +47,17 @@
                 </a>
 
                 @if (Auth::check())
-                <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                    <span class="mr-2 ml-2">
-                        {{ Auth::user()->name }}
-                    </span>
-                    <!-- Authentication -->
-                            <button href="route('logout')" 
-                                    type="submit">
-                                <!-- {{ __('Log Out') }} -->
-                                Odhlásiť sa
-                            </button>
-                        </form>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <span class="mr-2 ml-2">
+                            {{ Auth::user()->name }}
+                        </span>
+                        <!-- Authentication -->
+                        <button href="route('logout')" type="submit">
+                            <!-- {{ __('Log Out') }} -->
+                            Odhlásiť sa
+                        </button>
+                    </form>
                 @else
                     <a class="nav-link" href={{ config('urls.log_in.url') }}>
                         Prihlásiť sa
@@ -116,18 +115,17 @@
                                         </li>
                                     @endforeach
                                     @if (Auth::check())
-                                    <form method="POST" action="{{ route('logout') }}">
-                                                @csrf
-                                        <div class="m-3">
-                                            {{ Auth::user()->name }}
-                                        </div>
-                                        <!-- Authentication -->
-                                                <button href="route('logout')" 
-                                                        type="submit">
-                                                    <!-- {{ __('Log Out') }} -->
-                                                    Odhlásiť sa
-                                                </button>
-                                            </form>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <div class="m-3">
+                                                {{ Auth::user()->name }}
+                                            </div>
+                                            <!-- Authentication -->
+                                            <button href="route('logout')" type="submit">
+                                                <!-- {{ __('Log Out') }} -->
+                                                Odhlásiť sa
+                                            </button>
+                                        </form>
                                     @else
                                         <a class="nav-link" href={{ config('urls.log_in.url') }}>
                                             Prihlásiť sa
@@ -152,7 +150,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action={{ config('urls.search_results.url') }} class="w-100">
+                                <form name="hladat" action={{ config('urls.search_results.url') }} class="w-100">
                                     <div class="input-group rounded">
                                         <input type="search" class="form-control rounded"
                                             placeholder="Hladajte produkty..." aria-label="Hladajte produkty..."

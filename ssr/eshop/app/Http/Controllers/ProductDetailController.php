@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product; // Ensure this is the correct path to your Product model
+include app_path('Helpers/availabilityEnumDecoder.php');
 
 
 class ProductDetailController extends Controller

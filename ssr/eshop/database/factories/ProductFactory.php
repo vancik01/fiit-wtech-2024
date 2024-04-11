@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class ProductFactory extends Factory
@@ -18,11 +17,12 @@ class ProductFactory extends Factory
         return [
             'id' => Str::uuid(),
             'title' => $title,
-            'featuredImage' => $this->faker->imageUrl(),
+            'featuredImage' => getRandomImageUrl(),
             'slug' => Str::slug($title),
             'shortDescription' => $this->faker->text(200),
             'longDescription' => $this->faker->text(2000),
             'price' => $this->faker->randomFloat(2, 1, 100),
+            'availability' => $this->faker->randomElement(['IN_STOCK', 'IN_SHOP', 'OUT_OF_STOCK']),
         ];
     }
 }

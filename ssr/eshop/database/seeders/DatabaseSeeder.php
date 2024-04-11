@@ -9,6 +9,8 @@ use App\Models\GalleryImage;
 use App\Models\Manufacturer;
 use Illuminate\Database\Seeder;
 
+include app_path('Helpers/randomImage.php');
+
 class DatabaseSeeder extends Seeder
 {
     /**

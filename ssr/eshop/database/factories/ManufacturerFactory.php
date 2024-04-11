@@ -26,7 +26,7 @@ class ManufacturerFactory extends Factory
             'id' => Str::uuid(),
             'name' => $name,
             'slug' => Str::slug($name),
-            'image' => $this->faker->imageUrl()
+            'image' => getRandomImageUrl()
         ];
     }
 }

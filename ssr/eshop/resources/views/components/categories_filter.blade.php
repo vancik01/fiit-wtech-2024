@@ -1,19 +1,21 @@
-<div class="row row-cols-3 column-gap-3 gx-1 gy-1">
-    {{-- "All" brand button --}}
-    <div class="col">
-        <button onclick="setActiveBrand(event, this)" data-manufacturer-id="all"
-            class="p-0 active overflow-hidden !bg-backgroundColor">
-            Všetky
-        </button>
+<div class="flex flex-col gap-2">
+    <div class="form-check">
+        <input onchange="setActiveCategory(event, this)" class="form-check-input" type="radio" name="category-filter"
+            id="all" data-category-id="all" @if ($activeCategory == 'all') checked @endif>
+        <label class="form-check-label text-md" for="all">
+            Všetky kategórie
+        </label>
     </div>
 
-    {{-- Brand buttons with images --}}
-    @foreach ($brands as $brand)
-        <div class="col">
-            <button onclick="setActiveBrand(event, this)" data-manufacturer-id="{{ $brand->id }}"
-                class="p-0 overflow-hidden">
-                <img class="w-full h-full object-cover" src="{{ $brand->imageUrl }}" alt="{{ $brand->name }}" />
-            </button>
+    {{-- Category buttons with images --}}
+    @foreach ($categories as $category)
+        <div class="form-check">
+            <input onchange="setActiveCategory(event, this)" class="form-check-input" type="radio"
+                name="category-filter" id="{{ $category->slug }}" data-category-id="{{ $category->slug }}"
+                @if ($activeCategory == $category->slug) checked @endif>
+            <label class="form-check-label" for="{{ $category->slug }}">
+                {{ $category->name }}
+            </label>
         </div>
     @endforeach
 </div>
