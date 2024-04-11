@@ -15,11 +15,11 @@ class CartController extends Controller
     
         $cart = $request->user()->cart;
         if (!$cart) {
-            $cart = new Cart;
-            $request->user()->cart()->save($cart);
+            #$cart = new Cart;
+            $request->user()->cart()->create();
         }
     
-        $cart->products()->attach($product->id, ['quantity' => $request->quantity]);
+        $cart->products()->attach($product->id, ['quantity' => 1]);
     
         return back();
     }
@@ -50,11 +50,13 @@ class CartController extends Controller
         }
         else {
             $cart = $request->user();
+            $cart = $cart->cart;
+            $products = $cart->products;
             #$randomProducts = Cart::with(['products'])->get();
 
             return view('cart', [
                 'cart' => $cart,
-                'products' => "a",
+                'products' => $cart->products,
             ]);
     }
     }

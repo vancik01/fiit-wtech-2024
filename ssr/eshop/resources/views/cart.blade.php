@@ -24,7 +24,6 @@
                 <div class="col-12 col-md-6 max-w-[600px] flex flex-col gap-10 p-0">
                     @if ($cart)
                         {{ $cart }}
-                        {{ $cart->cart_id }}
                         <hr>
                         {{ $products }}
                     @endif

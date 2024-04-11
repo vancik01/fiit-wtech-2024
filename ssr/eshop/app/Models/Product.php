@@ -29,6 +29,11 @@ class Product extends Model
         return $this->hasMany(GalleryImage::class, 'productId', 'id');
     }
 
+    public function carts()
+    {
+        return $this->belongsToMany(Cart::class);
+    }
+
     protected $fillable = [
         'featuredImage',
         'title',

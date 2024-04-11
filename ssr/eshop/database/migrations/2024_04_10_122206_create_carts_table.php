@@ -14,15 +14,17 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
 
-        Schema::create('productCartRelation', function (Blueprint $table) {
+        Schema::create('cart_product', function (Blueprint $table) {
             $table->id();
             $table->integer("cart_id");
             $table->uuid("product_id");
             $table->foreign('cart_id')->references('id')->on('carts');
             $table->foreign('product_id')->references('id')->on('Product');
             $table->integer('quantity');
+            $table->timestamps();
         });
     }
 
@@ -35,12 +37,12 @@ return new class extends Migration
             $table->dropForeign(['user_id']);
         });
 
-        Schema::table('productCartRelation', function (Blueprint $table) {
+        Schema::table('cart_product', function (Blueprint $table) {
             $table->dropForeign(['cart_id']);
             $table->dropForeign(['product_id']);
         });
 
-        Schema::dropIfExists('productCartRelation');
+        Schema::dropIfExists('cart_product');
         Schema::dropIfExists('carts');
     }
 };
