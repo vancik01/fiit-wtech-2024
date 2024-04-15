@@ -23,9 +23,7 @@
             <div class="row gap-5 flex justify-between">
                 <div class="col-12 col-md-6 max-w-[600px] flex flex-col gap-10 p-0">
                     @if ($cart)
-                        {{ $cart }}
-                        <hr>
-                        {{ $products }}
+                        {{ $products}}
                     @endif
                 </div>
                 <div class="col-12 col-md-6 md:max-w-[450px] flex flex-col gap-8 bg-gray-50 h-fit p-8">
