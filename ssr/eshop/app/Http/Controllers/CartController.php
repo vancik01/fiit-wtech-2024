@@ -64,6 +64,10 @@ class CartController extends Controller
         else {
             $user = $request->user();
             $cart = $user->cart;
+            if (!$cart) {
+                $request->user->cart()->create();
+                $cart = $user->cart;
+            }
 
             return view('cart', [
                 'cart' => $cart,

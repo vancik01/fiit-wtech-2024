@@ -1,18 +1,18 @@
 <!-- Cart card -->
 <div class="flex cart-card gap-3 align-items-start bg-gray-50">
     <div class="flex h-full w-full bg-black">
-        <img src="https://picsum.photos/id/237/1200/900" alt="product image" class="object-cover h-full w-full" />
+        <img src="{{ $product->featuredImage }}" alt="product image" class="object-cover h-full w-full" />
     </div>
     <div class="d-flex flex-col py-3 pe-4 w-full h-full justify-between gap-2">
         <div class="flex flex-col gap-2">
             <a href="{{ config('urls.product_detail.getPathBuilder')($product->slug) }}">
                 <h3 class="text-base md:text-xl font-semibold">
-                    {{ $product->name }}
+                    {{ $product->title }}
                 </h3>
             </a>
             <p class="text-sm">
                 Výrobca:
-                <a class="text-blue-500" href="/obchod?znacka=oral-b">{{ $product->manufacturer }}</a>
+                <a class="text-blue-500" href="/obchod?znacka=oral-b">{{ $product->manufacturer->name }}</a>
             </p>
         </div>
         <div class="flex w-fit gap-2">
