@@ -29,9 +29,13 @@
         </div>
         <div class="flex justify-between items-center">
             <div class="fs-5"> {{ $product->price }} </div>
-            <button type="button" class="underline">
-                Odstrániť
-            </button>
+            <form action="{{ route('cart.remove') }}" method="post">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <button class="underline" type="submit">
+                    Odstrániť
+                </button>
+            </form>
         </div>
     </div>
 </div>

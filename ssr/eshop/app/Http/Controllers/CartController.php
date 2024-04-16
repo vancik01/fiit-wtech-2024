@@ -39,9 +39,27 @@ class CartController extends Controller
     {
         $product = Product::find($request->product_id);
     
-        $cart = $request->user()->cart;
-        if ($cart) {
+//        $cart = $request->user()->cart;
+//        if ($cart) {
+//            $cart->products()->detach($product);
+//        }
+
+        if ($request->user() == null) {
+            $user = User::where('name', 'Test User')->first();
+
+            $user->cart()->create();
+            $cart = $user->cart;
             $cart->products()->detach($product);
+
+        } else {
+            $cart = $request->user()->cart;
+        
+            if (!$cart) {
+                $request->user()->cart()->create();
+            }
+        
+    
+        $cart->products()->detach($product);
         }
     
         return back();
@@ -50,11 +68,7 @@ class CartController extends Controller
     
     public function index(Request $request)
     {
-        // dont forger to solve situatuion when user has no cart
-        // user is not logged in
-        // cart has no products
         if (!$request->user() ) {
-        // create guesst host and cart
         $guest_user = User::where('name', 'Test User')->first();
             return view('cart',
                 ['cart' => $guest_user->cart,

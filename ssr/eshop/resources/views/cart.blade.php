@@ -23,10 +23,10 @@
             <div class="row gap-5 flex justify-between">
                 <div class="col-12 col-md-6 max-w-[600px] flex flex-col gap-10 p-0">
                     @if ($cart)
-                        @foreach ($products as $x)
+                        @foreach ($products as $product)
                             <div>
                                 @component('components.product_in_cart', [
-                                    'product' => $x,
+                                    'product' => $product,
                                 ])
                                 @endcomponent
                             </div>

@@ -48,13 +48,12 @@
                                 +
                             </button>
                         </div>
-                        <button class="btn btn-primary rounded-none">
-                            Pridať do košíka
-                        </button>
                         <form action="{{ route('cart.add') }}" method="post">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <button type="submit">Add to Cart</button>
+                            <button class="btn btn-primary rounded-none" type="submit">
+                                Pridať do košíka
+                            </button>
                         </form>
                     </div>
                 </div>
