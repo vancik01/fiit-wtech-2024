@@ -42,7 +42,11 @@
                 <a href={{ config('urls.cart.url') }} class="text-decoration-none position-relative">
                     <i class="fas fa-shopping-cart"></i>
                     <div id="cardInfoBadge">
-                        3
+                        @if ($totalQuantity > 0)
+                            <div class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{ $totalQuantity }}
+                            </div>
+                        @endif
                     </div>
                 </a>
 
@@ -54,7 +58,6 @@
                         </span>
                         <!-- Authentication -->
                         <button href="route('logout')" type="submit">
-                            <!-- {{ __('Log Out') }} -->
                             Odhlásiť sa
                         </button>
                     </form>
@@ -122,7 +125,6 @@
                                             </div>
                                             <!-- Authentication -->
                                             <button href="route('logout')" type="submit">
-                                                <!-- {{ __('Log Out') }} -->
                                                 Odhlásiť sa
                                             </button>
                                         </form>
