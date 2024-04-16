@@ -1,6 +1,3 @@
-<div class="hidden">
-  {{ $total = 0}}
-</div>
 @extends('layouts.app')
 
 @section('title', config('urls.checkout.url'))
@@ -64,19 +61,15 @@
                   <div class="d-flex flex-column column-gap-2 ">
                     <div class="form-check d-flex justify-content-between ">
                       <div>
-                        <input class="form-check-input" type="radio" name="doprava" id="kurier">
-                        <label class="form-check-label" for="doprava">
-                          Kuriér
-                        </label>
+                      <input class="form-check-input" type="radio" name="doprava" id="dopravaPostou" data-price="4.5" onclick="recalculateTotal()">
+                      <label class="form-check-label" for="doprava">Doprava poštou</label>
                       </div>
-                      <div id="kurierPrice">4.90€</div>
+                      <div id="kurierPrice">4.50€</div>
                     </div>
                     <div class="form-check d-flex justify-content-between ">
                       <div>
-                        <input class="form-check-input" type="radio" name="doprava" id="osobnyOdber">
-                        <label class="form-check-label" for="doprava">
-                          Osobný odber
-                        </label>
+                        <input class="form-check-input" type="radio" name="doprava" id="osobnyOdber" data-price="0" onclick="recalculateTotal()">
+                        <label class="form-check-label" for="doprava">Osobný odber</label>
                       </div>
                       <div id="osobnyOdberPrice">0.00€</div>
                     </div>
@@ -114,16 +107,16 @@
                   <div class="flex flex-col gap-3">
                     <div class="flex justify-between items-center">
                       <div>Medzisúčet</div>
-                      <div>{{ $total }}€</div>
+                      <div id="subtotal">{{ $total }}€</div>
                     </div>
                     <div class="flex justify-between items-center">
                       <div>Doprava</div>
-                      <div>4.50€</div>
+                      <div id="shipping">0€</div>
                     </div>
                     <div class="h-[1px] bg-black"></div>
                     <div class="flex justify-between items-center">
                       <div>Spolu</div>
-                      <div>{{ $total += 4.50 }}€</div>
+                      <div id="total">{{ $total }}€</div>
                     </div>
                   </div>
                   <button type="submit" class="p-[10px] bg-black text-white">
@@ -140,20 +133,33 @@
             </h2>
             <!-- Produkty -->
             <div class="flex flex-col gap-3">
-              @for ($i = 0; $i < 5; $i++)
-              <div class="flex flex-col justify-between items-start">
-                <div>Názov produktu</div>
-                <div>Počet kusov: {{ $i }} </div>
-                <div>12.90€</div>
-              </div>
-              <div class="h-[1px] bg-secondary"></div>
-              <div class="hidden">
-                {{ $total  }}
-              </div>
-              @endfor
+
+              @foreach ($products as $product) 
+                <div class="flex flex-col justify-between items-start">
+                  <div>{{ $product->title }}</div>
+                  <div>Počet kusov: {{ $product->pivot->quantity }}</div>
+                  <div>{{ $product->price * $product->pivot->quantity }}€</div>
+                </div>
+                <div class="h-[1px] bg-secondary"></div>
+              @endforeach
+
+
             </div>
           </div>
         </div>
       </div>
   </main>
+  <script>
+    function recalculateTotal() {
+        var shippingMethod = document.querySelector('input[name="doprava"]:checked');
+        var shippingPrice = parseFloat(shippingMethod.getAttribute('data-price'));
+
+        var subtotal = parseFloat(document.getElementById('subtotal').textContent);
+
+        var total = subtotal + shippingPrice;
+
+        document.getElementById('shipping').textContent = shippingPrice + '€';
+        document.getElementById('total').textContent = total + '€';
+    }
+  </script>
 @endsection
