@@ -41,13 +41,11 @@
             <div class="d-flex flex-row gap-2 justify-content-center align-items-center">
                 <a href={{ config('urls.cart.url') }} class="text-decoration-none position-relative">
                     <i class="fas fa-shopping-cart"></i>
-                    <div id="cardInfoBadge">
                         @if ($totalQuantity > 0)
-                            <div class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        <div id="cardInfoBadge">
                                 {{ $totalQuantity }}
-                            </div>
+                        </div>
                         @endif
-                    </div>
                 </a>
 
                 @if (Auth::check())

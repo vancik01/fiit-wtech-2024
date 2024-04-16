@@ -28,7 +28,8 @@ class AppServiceProvider extends ServiceProvider
             } else {
             $cart = Auth::user()->cart;
             }
-            $totalQuantity = $cart->products->sum('pivot.quantity');
+            // count only products id, not quantity
+            $totalQuantity = $cart->products->count();
             $view->with('totalQuantity', $totalQuantity);
         });
     }

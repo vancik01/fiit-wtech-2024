@@ -33,22 +33,13 @@
                 </div>
                 <div class="col-12 col-md-6 md:max-w-[450px] flex flex-col gap-8 bg-gray-50 h-fit p-8">
                     <h2 class="text-2xl font-semibold">
-                        Detail objednávky
+                        Spolu
                     </h2>
 
                     <div class="flex flex-col gap-3">
                         <div class="flex justify-between items-center">
-                            <div>Medzisúčet</div>
+                            <div>Suma</div>
                             <div>{{ $total }}€</div>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <div>Doprava</div>
-                            <div>4.50€</div>
-                        </div>
-                        <div class="h-[1px] bg-black"></div>
-                        <div class="flex justify-between items-center">
-                            <div>Spolu</div>
-                            <div>{{ $total += 4.5 }}€</div>
                         </div>
                     </div>
 

@@ -12,23 +12,30 @@ class CartController extends Controller
     public function add(Request $request)
     {
         $product = Product::find($request->product_id);
+        $quantity = $request->quantity;
 
         if ($request->user() == null) {
             $user = User::where('name', 'Test User')->first();
-
-            $user->cart()->create();
+    
+            if (!$user->cart) {
+                $user->cart()->create();
+            }
+    
             $cart = $user->cart;
-            $cart->products()->attach($product->id, ['quantity' =>  $request->quantity]);
-
         } else {
             $cart = $request->user()->cart;
-        
-            if (!$cart) {
-                $request->user()->cart()->create();
-            }
-        
     
-        $cart->products()->attach($product->id, ['quantity' => $request->quantity]);
+            if (!$cart) {
+                $cart = $request->user()->cart()->create();
+            }
+        }
+    
+        $pivot = $cart->products()->where('product_id', $product->id)->first();
+    
+        if ($pivot) {
+            $cart->products()->updateExistingPivot($product->id, ['quantity' => $pivot->pivot->quantity + $quantity]);
+        } else {
+            $cart->products()->attach($product->id, ['quantity' => $quantity]);
         }
     
         return back();
