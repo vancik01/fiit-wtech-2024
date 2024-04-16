@@ -3,10 +3,13 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-//
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ProductDetailController;
+use App\Http\Controllers\ShopPageController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SearchResultController;
+
 
 Route::get('/', function () {
     return view('homepage');
@@ -24,27 +27,15 @@ require __DIR__ . '/auth.php';
 Route::post('/kosik/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/kosik/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/kosik', [CartController::class, 'index'])->name('cart');
+Route::post('/kosik/update', [CartController::class, 'updateQuantity'])->name('cart.update');
 
-
-use App\Http\Controllers\HomepageController;
-use App\Http\Controllers\ProductDetailController;
-use App\Http\Controllers\ShopPageController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\SearchResultController;
+Route::get('/objednavka', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/objednavka', [CheckoutController::class, 'store'])->name('checkout.store');
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 
 Route::get(config("urls.product_detail.url"), [ProductDetailController::class, 'index']);
 Route::get(config("urls.search_results.url"), [SearchResultController::class, 'index']);
-
-/*
-Route::get(config("urls.cart.url"), function () {
-    return view('cart');
-});
-*/
-Route::get(config("urls.checkout.url"), function () {
-    return view('checkout');
-});
 
 Route::get(config("urls.admin_new_product.url"), function () {
     return view('admin.create_product');

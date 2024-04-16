@@ -28,7 +28,7 @@
             </button>
         </div>
         <div class="flex justify-between items-center">
-            <div class="fs-5"> {{ $product->price }} </div>
+            <div class="fs-5"> {{ $product->price }} €</div>
             <form action="{{ route('cart.remove') }}" method="post">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">

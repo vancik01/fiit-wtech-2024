@@ -78,7 +78,7 @@ class CartController extends Controller
             return view('cart',
                 ['cart' => $guest_user->cart,
                 'products' => $guest_user->cart->products,
-                'total' => $total,
+                'total' => $total
             ]);
         }
         else {
@@ -96,7 +96,7 @@ class CartController extends Controller
             return view('cart', [
                 'cart' => $cart,
                 'products' => $cart->products,
-                'total' => $total,
+                'total' => $total
             ]);
     }
     }

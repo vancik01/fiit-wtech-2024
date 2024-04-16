@@ -13,7 +13,7 @@
         <!-- Pokladna uvodny text-->
         <div>
           <h1 class="fs-1">Pokladňa</h1>
-          <p class="text-sm">Máte účet?<a href="/obchod" class="text-black text-decoration-underline fw-bold">Prihláste sa</a>
+          <p class="text-sm">Máte účet?<a href="{{config('urls.log_in.url')}}" class="text-black text-decoration-underline fw-bold">Prihláste sa</a>
           </p>
         </div>
         <!-- Pokladna uvodny text -->
@@ -56,6 +56,7 @@
                     </div>
                   </form>
                 </div>
+
                 <div class="col-12 col-md-12 flex flex-col gap-4 bg-gray-50 p-6">
                   <h2 class="text-2xl font-semibold">
                     Výber dopravy
@@ -81,6 +82,7 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="col-12 col-md-12 flex flex-col gap-4 bg-gray-50 p-6">
                   <h2 class="text-2xl font-semibold">
                     Spôsob platby
@@ -104,6 +106,7 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="col-12 col-md-12 flex flex-col gap-4 bg-gray-50 p-6">
                   <h2 class="text-2xl font-semibold">
                     Detail objednávky
@@ -130,6 +133,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-12 col-md-6 md:max-w-[450px] flex flex-col gap-8 bg-gray-50 h-fit p-8">
             <h2 class="text-2xl font-semibold">
               Objednávka
@@ -144,7 +148,7 @@
               </div>
               <div class="h-[1px] bg-secondary"></div>
               <div class="hidden">
-                {{ $total += 12.90 }}
+                {{ $total  }}
               </div>
               @endfor
             </div>

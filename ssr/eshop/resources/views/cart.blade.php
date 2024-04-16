@@ -44,7 +44,7 @@
                     </div>
 
                     <button type="submit" class="p-[10px] bg-black text-white">
-                        Pokračovať k objednávke
+                        <a href="{{ route('checkout') }}">Pokračovať k objednávke</a>
                     </button>
                 </div>
             </div>
