@@ -27,7 +27,7 @@ require __DIR__ . '/auth.php';
 Route::post('/kosik/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/kosik/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/kosik', [CartController::class, 'index'])->name('cart');
-Route::post('/kosik/update', [CartController::class, 'updateQuantity'])->name('cart.update');
+Route::post('kosik/', [CartController::class, 'refresh'])->name('cart.refresh');
 
 Route::get('/objednavka', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/objednavka', [CheckoutController::class, 'store'])->name('checkout.store');

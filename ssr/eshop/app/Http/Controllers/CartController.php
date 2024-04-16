@@ -66,6 +66,49 @@ class CartController extends Controller
         return back();
     }
 
+    public function refresh(Request $request) {
+        // Get the quantities array from the form data
+        $quantities = $request->input('quantity');
+        $product_id = $request->input('product_id');
+        $product = Product::find($product_id);
+    
+        // Check if the product is not null
+        if ($product !== null) {
+            if ($request->user() == null) {
+                $user = User::where('name', 'Test User')->first();
+    
+                if (!$user->cart) {
+                    $user->cart()->create();
+                }
+    
+                $cart = $user->cart;
+            } else {
+                $cart = $request->user()->cart;
+    
+                if (!$cart) {
+                    $cart = $request->user()->cart()->create();
+                }
+            }
+    
+            $pivot = $cart->products()->where('product_id', $product->id)->first();
+    
+            if ($pivot) {
+                // Get the quantity for the specific product
+                $quantity = $quantities[$product->id];
+    
+                $cart->products()->updateExistingPivot($product->id, ['quantity' => $quantity]);
+            } else {
+                // Get the quantity for the specific product
+                $quantity = $quantities[$product->id];
+    
+                $cart->products()->attach($product->id, ['quantity' => $quantity]);
+            }
+        }
+    
+        // After database is updated, return back to index function
+        return $this->index($request);
+    }
+
     
     public function index(Request $request)
     {
