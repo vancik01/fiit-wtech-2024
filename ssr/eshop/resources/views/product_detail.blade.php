@@ -4,16 +4,15 @@
 
 @section('content')
     <script>
-        function changeCount(changeBy) {
-            const input = document.getElementById("inputNumber");
-            if (input) {
-                const currentValue = parseInt(input.value, 10) || 0; // Get the current value as number or default to 0
-                input.value = currentValue + changeBy < 1 ? 1 : currentValue + changeBy; // Update the input field's value
-            } else {
-                console.error('Input element not found');
-            }
+        function changeCount(e, amount) {
+            e.preventDefault();
+            var inputNumber = document.getElementById('inputNumber');
+            var newQuantity = parseInt(inputNumber.value) + amount;
+            inputNumber.value = newQuantity < 1 ? 1 : newQuantity;
+            document.getElementById('quantity').value = inputNumber.value;
         }
     </script>
+
     <div class="container pt-5">
         <div class="detail d-flex gap-5 flex-column flex-md-row">
             <div class="d-flex flex-column p-0 col-md-7">
@@ -39,18 +38,19 @@
                     </div>
                     <div class="d-flex flex-row align-items-between">
                         <div class="d-flex flex-row border-1">
-                            <button onclick="changeCount(-1)" class="w-[30px] focus:outline-none hover:text-blue-500">
+                            <button onclick="changeCount(event, -1)" class="w-[30px] focus:outline-none hover:text-blue-500">
                                 -
                             </button>
-                            <input id="inputNumber" type="number" min="1" class="d-flex text-center max-w-[60px]"
-                                value="2" />
-                            <button onclick="changeCount(1)" class="w-[30px] focus:outline-none  hover:text-blue-500">
+                            <input id="inputNumber" type="number" min="1" class="d-flex text-center max-w-[60px]" value="1" />
+                            <button onclick="changeCount(event, 1)" class="w-[30px] focus:outline-none  hover:text-blue-500">
                                 +
                             </button>
                         </div>
+
                         <form action="{{ route('cart.add') }}" method="post">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <input type="hidden" id="quantity" name="quantity" value="1">
                             <button class="btn btn-primary rounded-none" type="submit">
                                 Pridať do košíka
                             </button>

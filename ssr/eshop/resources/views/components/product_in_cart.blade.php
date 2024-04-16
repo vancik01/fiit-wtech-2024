@@ -20,7 +20,7 @@
                 <i class="fas fa-minus"></i>
             </button>
 
-            <input id="form1" min="0" name="quantity" value="2" type="number"
+            <input id="form1" min="1" name="quantity" value="{{ $quantity }}" type="number"
                 class="w-[30px] -mr-2 text-center bg-transparent" />
 
             <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">

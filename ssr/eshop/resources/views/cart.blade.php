@@ -1,7 +1,3 @@
-<div class="hidden">
-    {{ $total = 0 }}
-</div>
-
 @extends('layouts.app')
 
 @section('title', config('urls.cart.title'))
@@ -26,7 +22,9 @@
                         @foreach ($products as $product)
                             <div>
                                 @component('components.product_in_cart', [
+                                    'cart' => $cart,
                                     'product' => $product,
+                                    'quantity' => $product->pivot->quantity,
                                 ])
                                 @endcomponent
                             </div>
