@@ -176,8 +176,8 @@
         shippingPrice = shippingPrice + paymentPrice;
         var total = subtotal + shippingPrice;
 
-        document.getElementById('shipping').textContent = shippingPrice + '€';
-        document.getElementById('total').textContent = total + '€';
+        document.getElementById('shipping').textContent = shippingPrice.toFixed(2) + '€';
+        document.getElementById('total').textContent = total.toFixed(2) + '€';
     }
   </script>
 @endsection
