@@ -14,11 +14,16 @@
     </script>
 
     <div class="container pt-5">
-    @if(session('success'))
-                <div class="alert alert-success">
-                    <h4>{{ session('success') }}</h4>
-                </div>
-            @endif
+        @if(session('success'))
+            <div class="alert alert-success">
+                <h4>{{ session('success') }}</h4>
+            </div>
+        @endif
+        @if(session('error'))
+            <div class="alert alert-danger">
+                <h4>{{ session('error') }}</h4>
+            </div>
+        @endif
         <div class="detail d-flex gap-5 flex-column flex-md-row">
             <div class="d-flex flex-column p-0 col-md-7">
                 <img src=" {{ $product->featuredImage }} " alt="{{ $product->title }}"

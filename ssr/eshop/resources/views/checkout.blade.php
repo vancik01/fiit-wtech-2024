@@ -64,14 +64,14 @@
                       <input class="form-check-input" type="radio" name="doprava" id="dopravaPostou" data-price="4.5" onclick="recalculateTotal()">
                       <label class="form-check-label" for="doprava">Doprava poštou</label>
                       </div>
-                      <div id="kurierPrice">4.50€</div>
+                      <div id="kurierPrice">+ 4.50€</div>
                     </div>
                     <div class="form-check d-flex justify-content-between ">
                       <div>
                         <input class="form-check-input" type="radio" name="doprava" id="osobnyOdber" data-price="0" onclick="recalculateTotal()">
                         <label class="form-check-label" for="doprava">Osobný odber</label>
                       </div>
-                      <div id="osobnyOdberPrice">0.00€</div>
+                      <div id="osobnyOdberPrice">+ 0.00€</div>
                     </div>
                   </div>
                 </div>
@@ -83,19 +83,21 @@
                   <div class="d-flex flex-column column-gap-2 ">
                     <div class="form-check d-flex justify-content-between ">
                       <div>
-                        <input class="form-check-input" type="radio" name="doprava" id="kurier">
-                        <label class="form-check-label" for="doprava">
+                        <input class="form-check-input" type="radio" name="payment" id="card" data-price="0" onclick="recalculateTotal()">
+                        <label class="form-check-label" for="payment">
                           Karta
                         </label>
                       </div>
+                      <div id="cashPrice">+ 0.00€</div>
                     </div>
                     <div class="form-check d-flex justify-content-between ">
                       <div>
-                        <input class="form-check-input" type="radio" name="doprava" id="osobnyOdber">
-                        <label class="form-check-label" for="doprava">
+                        <input class="form-check-input" type="radio" name="payment" id="cash" data-price="1" onclick="recalculateTotal()">
+                        <label class="form-check-label" for="payment">
                           Hotovosť
                         </label>
                       </div>
+                      <div id="cardPrice">+ 1.00€</div>
                     </div>
                   </div>
                 </div>
@@ -152,10 +154,24 @@
   <script>
     function recalculateTotal() {
         var shippingMethod = document.querySelector('input[name="doprava"]:checked');
-        var shippingPrice = parseFloat(shippingMethod.getAttribute('data-price'));
+        var paymentMethod = document.querySelector('input[name="payment"]:checked');
+        var shippingPrice = 0
+        var paymentPrice = 0
+
+        if (!document.querySelector('input[name="doprava"]:checked')) {
+          shippingPrice = 0
+       } else {
+          shippingPrice = parseFloat(shippingMethod.getAttribute('data-price')); 
+       }
+
+        if (!document.querySelector('input[name="payment"]:checked')) {
+          paymentPrice = 0
+        } else {
+          paymentPrice = parseFloat(paymentMethod.getAttribute('data-price'));
+        }
 
         var subtotal = parseFloat(document.getElementById('subtotal').textContent);
-
+        shippingPrice = shippingPrice + paymentPrice;
         var total = subtotal + shippingPrice;
 
         document.getElementById('shipping').textContent = shippingPrice + '€';

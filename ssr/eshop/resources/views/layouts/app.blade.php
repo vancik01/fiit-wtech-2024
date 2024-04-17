@@ -22,7 +22,8 @@
     <link rel="icon" type="image/x-icon" href="/favicon.png">
 </head>
 
-<body class="bg-white">
+<body class="d-flex flex-column min-vh-100 bg-white">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
     <header>
         @component('components.header')
@@ -30,9 +31,9 @@
     </header>
 
 
-
-    @yield('content')
-
+    <main class="flex-fill">
+        @yield('content')
+    </main>
 
     <footer class="mt-16">
         @component('components.footer')

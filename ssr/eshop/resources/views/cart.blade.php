@@ -43,8 +43,8 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="p-[10px] bg-black text-white">
-                        <a href="{{ route('checkout') }}">Pokračovať k objednávke</a>
+                    <button type="submit" class="p-[10px] bg-black text-white ">
+                        <a href="{{ route('checkout') }}" class="text-decoration-none text-white ">Pokračovať k objednávke</a>
                     </button>
                 </div>
             </div>

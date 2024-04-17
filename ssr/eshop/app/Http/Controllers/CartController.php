@@ -12,6 +12,12 @@ class CartController extends Controller
     public function add(Request $request)
     {
         $product = Product::find($request->product_id);
+        $product_status = $product->availability;
+
+        if($product_status == 'OUT_OF_STOCK') {
+            return back()->with('error', '"'.$product->title.'"'. ' je momentálne nedostupný!');
+        }
+    
         $quantity = $request->quantity;
 
         if ($request->user() == null) {
@@ -112,28 +118,30 @@ class CartController extends Controller
     
     public function index(Request $request)
     {
-        if (!$request->user() ) {
-        $guest_user = User::where('name', 'Test User')->first();
         $total = 0;
-        foreach ($guest_user->cart->products as $product) {
-            $total += $product->price * $product->pivot->quantity;
-        }
-            return view('cart',
-                ['cart' => $guest_user->cart,
-                'products' => $guest_user->cart->products,
-                'total' => $total
-            ]);
+
+        if (!$request->user() ) {
+            $user = User::where('name', 'Test User')->first();
+            $cart = $user->cart;
         }
         else {
             $user = $request->user();
             $cart = $user->cart()->with('products')->first();
-            $total = 0;
-            foreach ($user->cart->products as $product) {
-                $total += $product->price * $product->pivot->quantity;
-            }
+
             if (!$cart) {
                 $request->user->cart()->create();
                 $cart = $user->cart;
+            }
+        }
+
+        $num_of_products = $cart->products->count();
+
+        if ($num_of_products == 0) {
+            return view('empty_cart');
+        } else {
+
+            foreach ($user->cart->products as $product) {
+                $total += $product->price * $product->pivot->quantity;
             }
 
             return view('cart', [
@@ -141,6 +149,6 @@ class CartController extends Controller
                 'products' => $cart->products,
                 'total' => $total
             ]);
-    }
+        }
     }
 }

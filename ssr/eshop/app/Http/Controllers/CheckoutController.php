@@ -21,10 +21,13 @@ class CheckoutController extends Controller
             $total += $product->price*$product->pivot->quantity;
         };
 
+        $num_of_products = $user->cart->products->count();
+        if ($num_of_products == 0) {
+            return back();
+        }
+
         return view('checkout',
-            ['user' => $user,
-            'cart' => $user->cart,
-            'products' => $user->cart->products,
+            ['products' => $user->cart->products,
             'total' => $total,
         ]);
     }
