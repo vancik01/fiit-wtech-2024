@@ -31,9 +31,13 @@ class OrderController extends Controller
         $order->price = $request->total;
         $order->note = $request->note;
 
+        // empty cart
+        $cart = $user->cart;
+        $cart->products()->detach();
+
         $order->save();
         
 
-        return back()->with('success', 'Objednávka odoslaná!');
+        return redirect()->route('cart.empty')->with('success', 'Vaša objednávka bola úspešne odoslaná!');
     }
 }

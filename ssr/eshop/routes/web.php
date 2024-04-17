@@ -29,6 +29,7 @@ Route::post('/kosik/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/kosik/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/kosik', [CartController::class, 'index'])->name('cart');
 Route::post('kosik/', [CartController::class, 'refresh'])->name('cart.refresh');
+Route::get('kosik/e', [CartController::class, 'empty'])->name('cart.empty');
 
 Route::get('/objednavka', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/objednavka', [OrderController::class, 'store'])->name('order.store');

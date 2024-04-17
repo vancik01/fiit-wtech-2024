@@ -115,6 +115,10 @@ class CartController extends Controller
         return $this->index($request);
     }
 
+    public function empty() {  
+        return view('empty_cart')->with('success', 'Objednávka odoslaná!');
+    }
+
     
     public function index(Request $request)
     {
