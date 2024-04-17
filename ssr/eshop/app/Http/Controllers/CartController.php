@@ -129,7 +129,7 @@ class CartController extends Controller
             $cart = $user->cart()->with('products')->first();
             $total = 0;
             foreach ($user->cart->products as $product) {
-                $total += $product->price;
+                $total += $product->price * $product->pivot->quantity;
             }
             if (!$cart) {
                 $request->user->cart()->create();
