@@ -23,36 +23,36 @@
                   <h2 class="fs-2">Dodacie údaje</h2>
                 </div>
                 <div class="d-flex flex-column w-100 align-content-between ">
-                  <form action="/login" class="d-flex flex-column gap-2">
+                  <form action="{{ route('order.store') }}" method="POST" class="d-flex flex-column gap-2">
+                    @csrf
                     <div class="d-flex flex-row gap-2 ">
-                      <input required type="text" class="form-control rounded-0" id="name" aria-describedby="Meno"
+                      <input required type="text" class="form-control rounded-0" id="name" name="name" aria-describedby="Meno"
                         placeholder="Vaše meno" />
-                      <input required type="text" class="form-control rounded-0" id="surname"
+                      <input required type="text" class="form-control rounded-0" id="surname" name="surname"
                         aria-describedby="Priezvisko" placeholder="Vaše priezvisko" />
                     </div>
                     <div class="d-flex flex-row gap-2 "> <input required type="email" class="form-control rounded-0"
-                        id="email" aria-describedby="Email" placeholder="Váš email" />
+                        id="email" name="email" aria-describedby="Email" placeholder="Váš email" />
                       <input required type="tel" class="form-control rounded-0" id="phone" aria-describedby="Telefon"
                         placeholder="Váš telefón" />
                     </div>
                     <div class="d-flex flex-row gap-2 "> <input required type="text"
-                        class="form-control d-flex w-75 rounded-0" id="address" aria-describedby="Adresa"
+                        class="form-control d-flex w-75 rounded-0" id="address" name="street" aria-describedby="Adresa"
                         placeholder="Adresa" />
                       <input required type="text" class="form-control d-flex w-25 rounded-0" id="homenumber"
-                        aria-describedby="Cislo" placeholder="Číslo domu" />
+                        aria-describedby="Cislo" name="num" placeholder="Číslo domu" />
                     </div>
                     <div class="d-flex flex-row gap-2 "> <input required type="text"
-                        class="form-control d-flex w-75 rounded-0 " id="city" aria-describedby="Mesto"
+                        class="form-control d-flex w-75 rounded-0 " id="city" name="city" aria-describedby="Mesto"
                         placeholder="Mesto" />
                       <input required type="text" class="form-control d-flex w-25 rounded-0" id="zip"
-                        aria-describedby="PSC" placeholder="PSČ" />
+                        aria-describedby="PSC" name="zip" placeholder="PSČ" />
                     </div>
                     <div class="d-flex">
-                      <textarea type="text" class="form-control d-flex w-100 rounded-0" id="note"
+                      <textarea type="text" class="form-control d-flex w-100 rounded-0" id="note" name="note"
                         aria-describedby="Poznamka" placeholder="Poznámka k objednávke"></textarea>
                     </div>
-                  </form>
-                </div>
+                  </div>
 
                 <div class="col-12 col-md-12 flex flex-col gap-4 bg-gray-50 p-6">
                   <h2 class="text-2xl font-semibold">
@@ -61,14 +61,14 @@
                   <div class="d-flex flex-column column-gap-2 ">
                     <div class="form-check d-flex justify-content-between ">
                       <div>
-                      <input class="form-check-input" type="radio" name="doprava" id="dopravaPostou" data-price="4.5" onclick="recalculateTotal()">
+                      <input class="form-check-input" type="radio" name="doprava" id="dopravaPostou" value="posta" data-price="4.5" onclick="recalculateTotal()">
                       <label class="form-check-label" for="doprava">Doprava poštou</label>
                       </div>
                       <div id="kurierPrice">+ 4.50€</div>
                     </div>
                     <div class="form-check d-flex justify-content-between ">
                       <div>
-                        <input class="form-check-input" type="radio" name="doprava" id="osobnyOdber" data-price="0" onclick="recalculateTotal()">
+                        <input class="form-check-input" type="radio" name="doprava" id="osobnyOdber" value="odber" data-price="0" onclick="recalculateTotal()">
                         <label class="form-check-label" for="doprava">Osobný odber</label>
                       </div>
                       <div id="osobnyOdberPrice">+ 0.00€</div>
@@ -83,7 +83,7 @@
                   <div class="d-flex flex-column column-gap-2 ">
                     <div class="form-check d-flex justify-content-between ">
                       <div>
-                        <input class="form-check-input" type="radio" name="payment" id="card" data-price="0" onclick="recalculateTotal()">
+                        <input class="form-check-input" type="radio" name="payment" id="card" value="card" data-price="0" onclick="recalculateTotal()">
                         <label class="form-check-label" for="payment">
                           Karta
                         </label>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="form-check d-flex justify-content-between ">
                       <div>
-                        <input class="form-check-input" type="radio" name="payment" id="cash" data-price="1" onclick="recalculateTotal()">
+                        <input class="form-check-input" type="radio" name="payment" id="cash" value="cash" data-price="1" onclick="recalculateTotal()">
                         <label class="form-check-label" for="payment">
                           Hotovosť
                         </label>
@@ -121,9 +121,11 @@
                       <div id="total">{{ $total }}€</div>
                     </div>
                   </div>
+                  <input type="hidden" name="total" value="{{ $total }}">
                   <button type="submit" class="p-[10px] bg-black text-white">
                     Pokračovať k platbe
                   </button>
+                </form>
                 </div>
               </div>
             </div>

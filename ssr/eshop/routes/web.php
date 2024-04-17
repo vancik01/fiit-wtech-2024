@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\ShopPageController;
 use App\Http\Controllers\UserController;
@@ -30,7 +31,7 @@ Route::get('/kosik', [CartController::class, 'index'])->name('cart');
 Route::post('kosik/', [CartController::class, 'refresh'])->name('cart.refresh');
 
 Route::get('/objednavka', [CheckoutController::class, 'index'])->name('checkout');
-Route::post('/objednavka', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::post('/objednavka', [OrderController::class, 'store'])->name('order.store');
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 

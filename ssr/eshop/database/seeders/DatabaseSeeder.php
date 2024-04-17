@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\GalleryImage;
@@ -27,6 +29,11 @@ class DatabaseSeeder extends Seeder
             'id' => 9223372036854775807,
             'name' => 'Test User',
             'email' => 'test@example.com',
+        ]);
+
+        DB::table('carts')->insert([
+            'id' => 2,
+            'user_id' => 9223372036854775807,
         ]);
 
         // Create products and assign each to a random category
