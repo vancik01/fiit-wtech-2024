@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\GalleryImage;

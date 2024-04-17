@@ -32,7 +32,8 @@ class OrderController extends Controller
         $order->note = $request->note;
 
         $order->save();
+        
 
-        return response()->json(['message' => 'Order created successfully'], 201);
+        return back()->with('success', 'Objednávka odoslaná!');
     }
 }
