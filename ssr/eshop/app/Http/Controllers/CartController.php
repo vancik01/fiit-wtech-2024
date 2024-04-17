@@ -38,7 +38,7 @@ class CartController extends Controller
             $cart->products()->attach($product->id, ['quantity' => $quantity]);
         }
     
-        return back();
+        return back()->with('success', '"'.$product->title.'"'. ' bol pridaný do košíka!');
     }
     
     public function remove(Request $request)
