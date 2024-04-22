@@ -5,7 +5,7 @@
 @section('content')
     <!-- intro -->
     <div class="intro d-flex flex-column justify-content-center align-items-center relative" style="height: 320px;">
-        <img src="/cover.png" alt="hlavný obrázok" class="w-full h-full ovject-cover">
+        <img src="/cover.png" alt="hlavný obrázok" class="w-full h-full object-cover">
         <h1 class="absolute text-[#102650]">Introduction Text</h1>
     </div>
     <!-- intro -->
