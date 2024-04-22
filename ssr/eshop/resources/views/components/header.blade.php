@@ -27,7 +27,7 @@
         <div class="d-flex align-items-center gap-5">
             <div>
                 <ul class="nav">
-                    @foreach (['homepage', 'about', 'shop'] as $navItem)
+                    @foreach (['homepage', 'about_us', 'shop'] as $navItem)
                         <li class="nav-item">
                             <a class="nav-link" href={{ config('urls')[$navItem]['url'] }}>
                                 {{ config('urls')[$navItem]['title'] }}
@@ -111,7 +111,7 @@
                             <div class="modal-body flex justify-center items-center">
 
                                 <ul class="nav flex-column align-content-center text-center gap-4 fs-4">
-                                    @foreach (['homepage', 'about', 'shop'] as $navItem)
+                                    @foreach (['homepage', 'about_us', 'shop'] as $navItem)
                                         <li class="nav-item">
                                             <a class="nav-link" href={{ config('urls')[$navItem]['url'] }}>
                                                 {{ config('urls')[$navItem]['title'] }}

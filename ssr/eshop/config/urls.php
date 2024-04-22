@@ -65,6 +65,11 @@ return [
         'title' => 'Objednať produkty'
     ],
 
+    'about_us' => [
+        'url' => '/o-nas',
+        'title' => 'O nás'
+    ],
+
     'admin_view_products' => [
         'url' => '/admin/produkty',
         'title' => 'Všetky produkty'

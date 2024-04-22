@@ -62,4 +62,8 @@ Route::get(config("urls.admin_view_products.url"), function () {
     return view('admin.view_products');
 });
 
+Route::get(config("urls.about_us.url"), function () {
+    return view('about_us');
+});
+
 Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
