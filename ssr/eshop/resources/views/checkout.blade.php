@@ -186,6 +186,11 @@
 
             var subtotal = parseFloat(document.getElementById('subtotal').textContent);
             shippingPrice = shippingPrice + paymentPrice;
+            if (subtotal > 50) {
+                shippingPrice = 0;
+            } else {
+                shippingPrice = shippingPrice;
+            }
             var total = subtotal + shippingPrice;
 
             document.getElementById('shipping').textContent = shippingPrice.toFixed(2) + '€';
