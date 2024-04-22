@@ -85,7 +85,11 @@
             <a href={{ config('urls.cart.url') }} class="text-decoration-none position-relative">
                 <i class="fas fa-shopping-cart"></i>
                 <div class="position-absolute kosik">
-                    12
+                    @if ($totalQuantity > 0)
+                        <div id="cardInfoBadge">
+                            {{ $totalQuantity }}
+                        </div>
+                    @endif
                 </div>
             </a>
             <div>

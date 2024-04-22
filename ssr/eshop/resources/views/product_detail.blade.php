@@ -47,24 +47,32 @@
                         </p>
                     </div>
                     <div class="d-flex flex-row align-items-between">
-                        <div class="d-flex flex-row border-1">
-                            <button onclick="changeCount(event, -1)" class="w-[30px] focus:outline-none hover:text-blue-500">
-                                -
-                            </button>
-                            <input id="inputNumber" type="number" min="1" class="d-flex text-center max-w-[60px]" value="1" />
-                            <button onclick="changeCount(event, 1)" class="w-[30px] focus:outline-none  hover:text-blue-500">
-                                +
-                            </button>
-                        </div>
 
-                        <form action="{{ route('cart.add') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <input type="hidden" id="quantity" name="quantity" value="1">
-                            <button class="btn btn-primary rounded-none" type="submit">
-                                Pridať do košíka
+                        @if ($product->availability == 'OUT_OF_STOCK')
+                            <button class="btn btn-secondary rounded-none" disabled>
+                                Produkt momentálne nie je skladom
                             </button>
-                        </form>
+                        @else
+                        <div class="d-flex flex-row border-1">
+                                <button onclick="changeCount(event, -1)" class="w-[30px] focus:outline-none hover:text-blue-500">
+                                    -
+                                </button>
+                                <input id="inputNumber" type="number" min="1" class="d-flex text-center max-w-[60px]" value="1" />
+                                <button onclick="changeCount(event, 1)" class="w-[30px] focus:outline-none  hover:text-blue-500">
+                                    +
+                                </button>
+                            </div>
+
+                            <form action="{{ route('cart.add') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <input type="hidden" id="quantity" name="quantity" value="1">
+                                <button class="btn btn-primary rounded-none" type="submit">
+                                    Pridať do košíka
+                                </button>
+                            </form>
+                        @endif
+
                     </div>
                 </div>
             </div>
