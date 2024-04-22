@@ -12,7 +12,7 @@
     <div class="py-1">{{ $product->manufacturer->name }}</div>
     <div class="py-1 flex flex-row gap-2">
         <div class="action-button-wraper h-fit hover:text-red-500">
-            <a href="/produkty/produktXYZ"
+            <a href="{{ config('urls.admin_delete_product.getPathBuilder')($product->id) }}"
                 class="w-[32px] h-[32px] bg-gray-100 flex justify-center items-center rounded-2 text-base">
                 <i class="fas fa-solid fa-trash"></i>
             </a>
@@ -26,7 +26,7 @@
             <div class="custom-tooltip">Upraviť</div>
         </div>
         <div class="action-button-wraper h-fit hover:text-green-500">
-            <a href="{{ config('urls.product_detail.getPathBuilder')($product->id) }} "
+            <a href="{{ config('urls.product_detail.getPathBuilder')($product->slug) }} "
                 class="w-[32px] h-[32px] bg-gray-100 flex justify-center items-center rounded-2 text-base">
                 <i class="fas fa-solid fa-link"></i>
             </a>

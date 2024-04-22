@@ -87,4 +87,13 @@ return [
         'url' => '/admin/upravit-produkt/{productId}',
         'title' => 'Upraviť produkt'
     ],
+
+    'admin_delete_product' => [
+        'getPathBuilder' => function ($productId) {
+            return "/admin/vymazat-produkt/$productId";
+        },
+        'url' => '/admin/vymazat-produkt/{productId}',
+        'title' => 'Vymazať produkt'
+    ],
 ];
+
