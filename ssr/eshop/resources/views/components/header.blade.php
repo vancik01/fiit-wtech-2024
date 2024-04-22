@@ -34,7 +34,13 @@
                             </a>
                         </li>
                     @endforeach
-
+                    @if (Auth::check() && Auth::user()->role == 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href={{ config('urls.admin_view_products.url') }}>
+                                Dashboard
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
 
@@ -47,7 +53,7 @@
                         </div>
                     @endif
                 </a>
-
+            
                 @if (Auth::check())
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -118,6 +124,13 @@
                                             </a>
                                         </li>
                                     @endforeach
+                                    @if (Auth::check() && Auth::user()->role == 'admin')
+                                        <li class="nav-item">
+                                            <a class="nav-link" href={{ config('urls.admin.url') }}>
+                                                Dashboard
+                                            </a>
+                                        </li>
+                                    @endif
                                     @if (Auth::check())
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf

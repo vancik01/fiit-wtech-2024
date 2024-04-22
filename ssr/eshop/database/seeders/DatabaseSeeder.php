@@ -30,6 +30,15 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
+        // Create an admin user
+        User::factory()->create([
+            'id' => 9223372036854775806,
+            'name' => 'Admin User',
+            'email' => 'admin@stuba.sk',
+            'role' => 'admin',
+            'password' => bcrypt('123456789'),
+        ]);
+
         DB::table('carts')->insert([
             'id' => 2,
             'user_id' => 9223372036854775807,
