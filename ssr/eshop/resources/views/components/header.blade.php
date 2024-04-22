@@ -7,14 +7,14 @@
         </div>
     </div>
 
-    <div class="d-none d-lg-flex container py-4 justify-content-between align-items-center ">
+    <div class="d-none d-xl-flex container py-4 justify-content-between align-items-center ">
         <a href="/">
             <div>
                 <img src="/logo.svg" width="32" alt="" />
             </div>
         </a>
 
-        <form action={{ config('urls.search_results.url') }} class="d-none d-lg-block w-[350px]">
+        <form action={{ config('urls.search_results.url') }} class="d-none d-xl-block w-[350px]">
             <div class="input-group rounded">
                 <input type="search" class="form-control rounded" name="hladat" placeholder="Hladajte produkty..."
                     aria-label="Hladajte produkty..." aria-describedby="search-addon" />
@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <div class="d-flex w-100 d-lg-none container py-4 justify-content-between align-items-center">
+    <div class="d-flex w-100 d-xl-none container py-4 justify-content-between align-items-center">
         <a href="/">
             <div class="">
                 <img src="/logo.svg" height="32px" width="32px" alt="" />
