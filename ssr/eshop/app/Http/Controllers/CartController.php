@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
+use App\Models\Cart;
 
 class CartController extends Controller
 {
@@ -37,9 +39,14 @@ class CartController extends Controller
         } 
 
         if ($request->user()->cart == null) {
-            $request->user()->cart()->create();
+            DB::table('carts')->insert([
+                'id' => time() * rand(1, 1000),
+                'user_id' => $request->user()->id,
+            ]);
+            $cart = Cart::where('user_id', $request->user()->id)->first();
+            $user = $request->user();
+            $user->cart = $cart;
         }
-        $cart = $request->user()->cart;
     
         $pivot = $cart->products()->where('product_id', $product->id)->first();
     
