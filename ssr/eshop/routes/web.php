@@ -62,6 +62,8 @@ Route::get(config("urls.register.url"), function () {
 Route::get(config("urls.admin_view_products.url"), [AdminController::class, 'index']); 
 Route::get(config("urls.admin_edit_product.url"), [AdminController::class, 'edit']);
 Route::get(config("urls.admin_delete_product.url"), [AdminController::class, 'delete']);
+Route::get(config("urls.admin_new_product.url"), [AdminController::class, 'create']);
+Route::post(config("urls.admin_new_product.url"), [AdminController::class, 'store'])->name('product.store');
 
 Route::get(config("urls.about_us.url"), function () {
     return view('about_us');
