@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex flex-column flex-md-row justify-content-between">
+        <div class="d-flex flex-column gap-5 gap-md-0 flex-md-row justify-content-between">
             <div class="d-flex flex-column">
                 <h5 class="font-semibold">Kontaktné údaje</h5>
                 <ul class="list-unstyled">

@@ -69,7 +69,7 @@ class CartController extends Controller
         $cart->products()->detach($product);
         }
     
-        return back();
+        return back()->with('success', '"'.$product->title.'"'. ' bol odstránený z košíka!');
     }
 
     public function refresh(Request $request) {

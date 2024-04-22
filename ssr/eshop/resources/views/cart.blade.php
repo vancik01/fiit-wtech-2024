@@ -4,6 +4,11 @@
 
 @section('content')
     <div class="container mt-8 lg:mt-16 flex flex-col gap-3">
+        @if(session('success'))
+                <div class="alert alert-success">
+                <p>{{ session('success') }}</p>
+            </div>
+        @endif
         <div class="gap-5 w-full max-w-[1200px] mx-auto">
             <div class="w-100 mb-4">
                 <h1 class="fs-1">Košík</h1>
