@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\ShopPageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SearchResultController;
+use App\Http\Controllers\AdminController;
 
 
 Route::get('/', function () {
@@ -58,9 +59,7 @@ Route::get(config("urls.register.url"), function () {
     return view('users.register');
 });
 
-Route::get(config("urls.admin_view_products.url"), function () {
-    return view('admin.view_products');
-});
+Route::get(config("urls.admin_view_products.url"), [AdminController::class, 'index']); 
 
 Route::get(config("urls.about_us.url"), function () {
     return view('about_us');

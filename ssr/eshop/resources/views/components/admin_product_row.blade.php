@@ -1,15 +1,15 @@
 <div class="product-row p-2">
     <div class="flex gap-2 w-full gap-3">
-        <img src="https://picsum.photos/300" alt="" class="w-[100px] h-full rounded-md aspect-square" />
+        <img src="{{ $product->featuredImage }}" alt="" class="w-[100px] h-full rounded-md aspect-square" />
         <div class="w-full">
             <h2 class="font-semibold py-1 text-lg">
-                Product name that can be even this long
+                {{ $product->title }}
             </h2>
         </div>
     </div>
-    <div class="py-1">12.99€</div>
-    <div class="py-1">Kategória XYZ</div>
-    <div class="py-1">Výrobca 123</div>
+    <div class="py-1">{{ $product->price }}€</div>
+    <div class="py-1">{{ $product->category->name }}</div>
+    <div class="py-1">{{ $product->manufacturer->name }}</div>
     <div class="py-1 flex flex-row gap-2">
         <div class="action-button-wraper h-fit hover:text-red-500">
             <a href="/produkty/produktXYZ"

@@ -21,10 +21,12 @@
                 <div>Akcie</div>
             </div>
 
-            @for ($i = 0; $i < 5; $i++)
-                @component('components.admin_product_row')
+            @foreach($products as $product)
+                @component('components.admin_product_row', [
+                    'product' => $product,
+                ])
                 @endcomponent
-            @endfor
+            @endforeach
         </div>
     </main>
 
