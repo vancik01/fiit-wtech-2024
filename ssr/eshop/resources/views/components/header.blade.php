@@ -39,13 +39,13 @@
             </div>
 
             <div class="d-flex flex-row gap-2 justify-content-center align-items-center">
-                <a href={{ config('urls.cart.url') }} class="text-decoration-none position-relative">
+                <a href={{ config('urls.cart.url') }} class="text-decoration-none relative">
                     <i class="fas fa-shopping-cart"></i>
-                        @if ($totalQuantity > 0)
+                    @if ($totalQuantity > 0)
                         <div id="cardInfoBadge">
-                                {{ $totalQuantity }}
+                            {{ $totalQuantity }}
                         </div>
-                        @endif
+                    @endif
                 </a>
 
                 @if (Auth::check())
@@ -85,6 +85,7 @@
             <a href={{ config('urls.cart.url') }} class="text-decoration-none position-relative">
                 <i class="fas fa-shopping-cart"></i>
                 <div class="position-absolute kosik">
+                    12
                 </div>
             </a>
             <div>

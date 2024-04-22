@@ -1,4 +1,4 @@
-<a href="#" class="d-flex ">
+<a href="{{ config('urls.category_archive.getPathBuilder')($category->slug) }}" class="d-flex ">
 
     <!-- Category Card -->
     <div class="category-card d-flex gap-3 p-[8px] pr-8 align-items-center bg-white">
