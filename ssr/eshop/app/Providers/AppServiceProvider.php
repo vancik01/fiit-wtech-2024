@@ -29,7 +29,11 @@ class AppServiceProvider extends ServiceProvider
             $cart = Auth::user()->cart;
             }
             // count only products id, not quantity
-            $totalQuantity = $cart->products->count();
+            if ($cart == null) {
+                $totalQuantity = 0;
+            } else {
+                $totalQuantity = $cart->products->count();
+            }
             $view->with('totalQuantity', $totalQuantity);
         });
     }
