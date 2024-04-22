@@ -34,7 +34,12 @@ class CartController extends Controller
             if (!$cart) {
                 $cart = $request->user()->cart()->create();
             }
+        } 
+
+        if ($request->user()->cart == null) {
+            $request->user()->cart()->create();
         }
+        $cart = $request->user()->cart;
     
         $pivot = $cart->products()->where('product_id', $product->id)->first();
     
@@ -53,8 +58,9 @@ class CartController extends Controller
 
         if ($request->user() == null) {
             $user = User::where('name', 'Test User')->first();
-
+            if (!$user->cart) {
             $user->cart()->create();
+            }
             $cart = $user->cart;
             $cart->products()->detach($product);
 

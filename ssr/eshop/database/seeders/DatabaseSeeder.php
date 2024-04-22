@@ -44,6 +44,11 @@ class DatabaseSeeder extends Seeder
             'user_id' => 9223372036854775807,
         ]);
 
+        DB::table('carts')->insert([
+            'id' => 3,
+            'user_id' => 9223372036854775806,
+        ]);
+
         // Create products and assign each to a random category
         Product::factory()->count(30)->create()->each(function ($product) use ($categories, $manufacturers) {
             // Randomly pick a category and assign it to the product
