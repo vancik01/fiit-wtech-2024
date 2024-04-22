@@ -23,17 +23,33 @@ class AdminController extends Controller
     {
         return view('admin.edit_product', [
             'product' => Product::find($productId),
+            'categories' => Category::get(),
+            'manufacturers' => Manufacturer::get(),
+            'availabilities' => ProductAvailability::cases(),
         ]);
     }
 
     public function update(Request $request, $productId)
     {
         $product = Product::find($productId);
-        $product->name = $request->name;
-        $product->description = $request->description;
+        $category = Category::find($request->category);
+        $manufacturer = Manufacturer::find($request->manufacturer);
+        if ($request->productName != null) {
+            $product->title = $request->productName; }
+        
+        $product->slug = Str::slug($request->productName);
+
         $product->price = $request->price;
-        $product->categoryId = $request->categoryId;
-        $product->manufacturerId = $request->manufacturerId;
+        $product->category()->associate($category->id);
+        $product->manufacturer()->associate($manufacturer->id);
+        $product->availability = $request->availability;
+        $product->shortDescription = $request->shortDescription;
+        $product->longDescription = $request->detailedDescription;
+        
+        # $product->featuredImage = $request->productImage;
+        $galery = $request->galleryImages;
+
+        error_log($product);
         $product->save();
 
         return redirect(config('urls.admin_view_products.url'));
@@ -41,13 +57,10 @@ class AdminController extends Controller
 
     public function create()
     {
-        $categories = Category::get();
-        $manufacturers = Manufacturer::get();
-        $availabilities = ProductAvailability::cases();
         return view('admin.create_product', [
-            'categories' => $categories,
-            'manufacturers' => $manufacturers,
-            'availabilities' => $availabilities,
+            'categories' => Category::get(),
+            'manufacturers' => Manufacturer::get(),
+            'availabilities' => ProductAvailability::cases(),
         ]);
     }
 
@@ -63,14 +76,14 @@ class AdminController extends Controller
         $product->slug = Str::slug($request->productName);
 
         $product->title = $request->productName;
-        $product->featuredImage = $request->productImage;
         $product->price = $request->price;
         $product->category()->associate($category->id);
         $product->manufacturer()->associate($manufacturer->id);
         $product->availability = $request->availability;
         $product->shortDescription = $request->shortDescription;
         $product->longDescription = $request->detailedDescription;
-
+        
+        $product->featuredImage = $request->productImage;
         $galery = $request->galleryImages;
 
         $product->save();
