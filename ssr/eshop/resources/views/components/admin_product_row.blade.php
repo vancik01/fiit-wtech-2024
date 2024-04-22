@@ -19,14 +19,14 @@
             <div class="custom-tooltip">Zmazať</div>
         </div>
         <div class="action-button-wraper h-fit hover:text-blue-500">
-            <a href="{{ config('urls.admin_edit_product.getPathBuilder')('product-slug') }}"
+            <a href="{{ config('urls.admin_edit_product.getPathBuilder')($product->id) }}"
                 class="w-[32px] h-[32px] bg-gray-100 flex justify-center items-center rounded-2 text-base">
                 <i class="fas fa-solid fa-marker"></i>
             </a>
             <div class="custom-tooltip">Upraviť</div>
         </div>
         <div class="action-button-wraper h-fit hover:text-green-500">
-            <a href="{{ config('urls.product_detail.getPathBuilder')('product-slug') }} "
+            <a href="{{ config('urls.product_detail.getPathBuilder')($product->id) }} "
                 class="w-[32px] h-[32px] bg-gray-100 flex justify-center items-center rounded-2 text-base">
                 <i class="fas fa-solid fa-link"></i>
             </a>
