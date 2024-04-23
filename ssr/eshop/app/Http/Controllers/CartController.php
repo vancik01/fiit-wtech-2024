@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cart;
+use Illuminate\Support\Str;
 
 class CartController extends Controller
 {
@@ -23,7 +24,7 @@ class CartController extends Controller
         $quantity = $request->quantity;
 
         if ($request->user() == null) {
-            $user = User::where('name', 'Test User')->first();
+            $user = User::where('name', 'Guest User')->first();
     
             if (!$user->cart) {
                 $user->cart()->create();
@@ -31,20 +32,20 @@ class CartController extends Controller
     
             $cart = $user->cart;
         } else {
-            $cart = $request->user()->cart;
+            $user = $request->user();
+            $cart = $user->cart;
     
             if (!$cart) {
-                $cart = $request->user()->cart()->create();
+                $cart = $user->cart()->create();
             }
         } 
 
-        if ($request->user()->cart == null) {
+        if ($user->cart == null) {
             DB::table('carts')->insert([
                 'id' => time() * rand(1, 1000),
-                'user_id' => $request->user()->id,
+                'user_id' => $user->id,
             ]);
-            $cart = Cart::where('user_id', $request->user()->id)->first();
-            $user = $request->user();
+            $cart = Cart::where('user_id', $user->id)->first();
             $user->cart = $cart;
         }
     
@@ -53,7 +54,7 @@ class CartController extends Controller
         if ($pivot) {
             $cart->products()->updateExistingPivot($product->id, ['quantity' => $pivot->pivot->quantity + $quantity]);
         } else {
-            $cart->products()->attach($product->id, ['quantity' => $quantity]);
+           $cart->products()->attach($product->id, ['id' => (string) Str::uuid(), 'quantity' => $quantity]);
         }
     
         return back()->with('success', '"'.$product->title.'"'. ' bol pridaný do košíka!');
@@ -64,7 +65,7 @@ class CartController extends Controller
         $product = Product::find($request->product_id);
 
         if ($request->user() == null) {
-            $user = User::where('name', 'Test User')->first();
+            $user = User::where('name', 'Guest User')->first();
             if (!$user->cart) {
             $user->cart()->create();
             }
@@ -94,7 +95,7 @@ class CartController extends Controller
         // Check if the product is not null
         if ($product !== null) {
             if ($request->user() == null) {
-                $user = User::where('name', 'Test User')->first();
+                $user = User::where('name', 'Guest User')->first();
     
                 if (!$user->cart) {
                     $user->cart()->create();
@@ -138,7 +139,7 @@ class CartController extends Controller
         $total = 0;
 
         if (!$request->user() ) {
-            $user = User::where('name', 'Test User')->first();
+            $user = User::where('name', 'Guest User')->first();
             $cart = $user->cart;
         }
         else {

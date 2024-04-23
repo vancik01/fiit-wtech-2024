@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
@@ -14,11 +15,12 @@ class OrderController extends Controller
 
         $user = auth()->user();
         if (!$user) {
-            $user = User::where('name', 'Test User')->first();
+            $user = User::where('name', 'Guest User')->first();
         }
         $order = new Order;
+        // generate new uuid
+        $order->id = (string) Str::uuid();
         $order->user_id = $user->id;
-
         $order->name = $request->name;
         $order->surname = $request->surname;
         $order->email = $request->email;
@@ -35,9 +37,12 @@ class OrderController extends Controller
         $cart = $user->cart;
         $cart->products()->detach();
 
+        error_log($order);
         $order->save();
         
 
-        return redirect()->route('cart.empty')->with('success', 'Vaša objednávka bola úspešne odoslaná!');
+        #return redirect()->route('cart.empty')->with('success', 'Vaša objednávka bola úspešne odoslaná!');
+        return view('order_success', ['order' => $order->id]);
     }
+
 }

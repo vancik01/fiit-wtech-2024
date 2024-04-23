@@ -27,7 +27,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
     
-        return redirect()->route('user.show', auth()->user()->id);
+        return redirect()->intended('/');
     }
 
     /**

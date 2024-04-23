@@ -11,7 +11,7 @@ class CheckoutController extends Controller
     public function index(Request $request)
     {
         if (!$request->user() ) {
-            $user = User::where('name', 'Test User')->first();
+            $user = User::where('name', 'Guest User')->first();
         } else {
             $user = $request->user();
         }

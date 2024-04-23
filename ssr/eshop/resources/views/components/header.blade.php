@@ -24,7 +24,7 @@
             </div>
         </form>
 
-        <div class="d-flex align-items-center gap-5">
+        <div class="d-flex align-items-center gap-4">
             <div>
                 <ul class="nav">
                     @foreach (['homepage', 'about_us', 'shop'] as $navItem)
@@ -37,7 +37,7 @@
                     @if (Auth::check() && Auth::user()->role == 'admin')
                         <li class="nav-item">
                             <a class="nav-link" href={{ config('urls.admin_view_products.url') }}>
-                                Dashboard
+                                AdminBoard
                             </a>
                         </li>
                     @endif
@@ -55,11 +55,11 @@
                 </a>
             
                 @if (Auth::check())
+                    <span class="mr-2 ml-2">
+                        <a class="nav-link" href="{{route('profile.edit')}}">{{ Auth::user()->name }}</a>
+                    </span>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <span class="mr-2 ml-2">
-                            {{ Auth::user()->name }}
-                        </span>
                         <!-- Authentication -->
                         <button href="route('logout')" type="submit">
                             Odhlásiť sa
@@ -127,7 +127,7 @@
                                     @if (Auth::check() && Auth::user()->role == 'admin')
                                         <li class="nav-item">
                                             <a class="nav-link" href={{ config('urls.admin.url') }}>
-                                                Dashboard
+                                                AdminBoard
                                             </a>
                                         </li>
                                     @endif

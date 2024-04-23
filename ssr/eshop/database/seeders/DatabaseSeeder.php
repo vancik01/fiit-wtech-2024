@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\GalleryImage;
 use App\Models\Manufacturer;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 include app_path('Helpers/randomImage.php');
 
@@ -23,11 +24,11 @@ class DatabaseSeeder extends Seeder
         $categories = Category::factory()->count(5)->create();
         $manufacturers = Manufacturer::factory()->count(5)->create();
 
-        // Create a test user
+        // Create a guest user
         User::factory()->create([
             'id' => 9223372036854775807,
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Guest User',
+            'email' => 'guest@example.com',
         ]);
 
         // Create an admin user
@@ -40,12 +41,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('carts')->insert([
-            'id' => 2,
+            'id' => Str::uuid(),
             'user_id' => 9223372036854775807,
         ]);
 
         DB::table('carts')->insert([
-            'id' => 3,
+            'id' => Str::uuid(),
             'user_id' => 9223372036854775806,
         ]);
 

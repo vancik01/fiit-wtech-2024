@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('components.header', function ($view) {
             if (!Auth::check()) {
-                $cart = Cart::find(2);
+                $cart = Cart::where('user_id', 9223372036854775807)->first();
             } else {
             $cart = Auth::user()->cart;
             }

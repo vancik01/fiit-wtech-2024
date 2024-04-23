@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,8 @@ class ProfileController extends Controller
     {
         $request->user()->fill($request->validated());
 
+        error_log($request);
+
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
@@ -42,19 +45,27 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
-
+        $password = $request->input('current_password');
         $user = $request->user();
+        $password_from_db = $user->password;
+        if (password_verify($password, $password_from_db)) {
+            $users_cart = $user->cart;
+            $users_cart->delete();
+            $users_orders = $user->orders;
+            if ($users_orders != null) {
+                foreach ($users_orders as $order) {
+                    $order->delete();
+                }
+            }
+            User::destroy($user->id);
+            Auth::logout();
 
-        Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
 
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+            return Redirect::to('/');
+        } else {
+            return Redirect::route('profile.edit')->with('status', 'wrong-password');
+        }
     }
 }
