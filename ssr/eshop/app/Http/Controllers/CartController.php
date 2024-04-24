@@ -14,18 +14,14 @@ class CartController extends Controller
 {
     public function add(Request $request)
     {
-        $product = Product::find($request->product_id);
-        $product_status = $product->availability;
-
-        if($product_status == 'OUT_OF_STOCK') {
-            return back()->with('error', '"'.$product->title.'"'. ' je momentálne nedostupný!');
-        }
-    
+        $product = Product::find($request->product_id);   
         $quantity = $request->quantity;
 
         if ($request->user() == null) {
+            // zmeniť na local id bez toho aby sme pouzili DB
             $user = User::where('name', 'Guest User')->first();
     
+            // nejaky local udaj pre kosik bez pouzicia DB - ako potom riešiť order?
             if (!$user->cart) {
                 $user->cart()->create();
             }

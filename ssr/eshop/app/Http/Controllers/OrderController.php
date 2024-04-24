@@ -18,7 +18,6 @@ class OrderController extends Controller
             $user = User::where('name', 'Guest User')->first();
         }
         $order = new Order;
-        // generate new uuid
         $order->id = (string) Str::uuid();
         $order->user_id = $user->id;
         $order->name = $request->name;
@@ -38,16 +37,13 @@ class OrderController extends Controller
         foreach ($products as $product) {
             $order->products()->attach($product->id);
         }
-        // empty cart
         $cart = $user->cart;
         $cart->products()->detach();
 
 
-        $X = Order::find($order->id);
+        $order = Order::find($order->id);
         
-        return view('order_success', ['order' => $X]);
-
-        #return view('order_success', ['order' => $order->id, 'user' => $user->name]);
+        return view('order_success', ['order' => $order]);
     }
 
 }
