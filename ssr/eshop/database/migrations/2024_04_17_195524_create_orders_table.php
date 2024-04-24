@@ -24,10 +24,25 @@ class CreateOrdersTable extends Migration
             $table->text('note')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('order_product', function (Blueprint $table) {
+            $table->uuid('order_id');
+            $table->uuid('product_id');
+            $table->primary(['order_id', 'product_id']);
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('product_id')->references('id')->on('Product');
+            $table->timestamps();
+        });
     }
 
     public function down()
     {
+        Schema::table('order_product', function (Blueprint $table) {
+            $table->dropForeign(['order_id']);
+            $table->dropForeign(['product_id']);
+        });
+
+        Schema::dropIfExists('order_product');
         Schema::dropIfExists('orders');
     }
 }

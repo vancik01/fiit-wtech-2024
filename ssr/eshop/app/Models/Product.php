@@ -34,6 +34,11 @@ class Product extends Model
         return $this->belongsToMany(Cart::class);
     }
 
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
+
     protected $fillable = [
         'featuredImage',
         'title',

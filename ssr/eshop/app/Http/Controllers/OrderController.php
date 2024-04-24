@@ -33,16 +33,21 @@ class OrderController extends Controller
         $order->price = $request->total;
         $order->note = $request->note;
 
+        $order->save();
+        $products = $user->cart->products;
+        foreach ($products as $product) {
+            $order->products()->attach($product->id);
+        }
         // empty cart
         $cart = $user->cart;
         $cart->products()->detach();
 
-        error_log($order);
-        $order->save();
-        
 
-        #return redirect()->route('cart.empty')->with('success', 'Vaša objednávka bola úspešne odoslaná!');
-        return view('order_success', ['order' => $order->id]);
+        $X = Order::find($order->id);
+        
+        return view('order_success', ['order' => $X]);
+
+        #return view('order_success', ['order' => $order->id, 'user' => $user->name]);
     }
 
 }
