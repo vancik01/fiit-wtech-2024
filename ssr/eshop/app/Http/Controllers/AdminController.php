@@ -74,7 +74,6 @@ class AdminController extends Controller
 
         $product->id = (string) Str::uuid();
         $product->slug = Str::slug($request->productName);
-
         $product->title = $request->productName;
         $product->price = $request->price;
         $product->category()->associate($category->id);
@@ -87,8 +86,6 @@ class AdminController extends Controller
         $galery = $request->galleryImages;
 
         $product->save();
-
-        
 
         return redirect(config('urls.admin_view_products.url'));
     }

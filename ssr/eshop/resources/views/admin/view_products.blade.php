@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('urls.register.title'))
+@section('title', config('urls.admin_view_products.title'))
 
 @section('content')
     <main class="container py-5 flex flex-col gap-8 admin-product-listing">
