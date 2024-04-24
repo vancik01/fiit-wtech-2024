@@ -35,9 +35,10 @@ class AdminController extends Controller
         $category = Category::find($request->category);
         $manufacturer = Manufacturer::find($request->manufacturer);
         if ($request->productName != null) {
-            $product->title = $request->productName; }
+            $product->title = $request->productName; 
+            $product->slug = Str::slug($request->productName);
+        }
         
-        $product->slug = Str::slug($request->productName);
 
         $product->price = $request->price;
         $product->category()->associate($category->id);
@@ -49,7 +50,6 @@ class AdminController extends Controller
         # $product->featuredImage = $request->productImage;
         $galery = $request->galleryImages;
 
-        error_log($product);
         $product->save();
 
         return redirect(config('urls.admin_view_products.url'));
