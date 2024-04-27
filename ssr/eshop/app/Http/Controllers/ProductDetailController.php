@@ -22,7 +22,6 @@ class ProductDetailController extends Controller
         return view('product_detail', [
             'product' => $product,
             'featuredProducts' => $featuredProducts
-
         ]);
     }
 }

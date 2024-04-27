@@ -53,10 +53,10 @@
                         </div>
                     @endif
                 </a>
-            
+
                 @if (Auth::check())
                     <span class="mr-2 ml-2">
-                        <a class="nav-link" href="{{route('profile.edit')}}">{{ Auth::user()->name }}</a>
+                        <a class="nav-link" href="{{ route('profile.edit') }}">{{ Auth::user()->name }}</a>
                     </span>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -126,7 +126,7 @@
                                     @endforeach
                                     @if (Auth::check() && Auth::user()->role == 'admin')
                                         <li class="nav-item">
-                                            <a class="nav-link" href={{ config('urls.admin.url') }}>
+                                            <a class="nav-link" href={{ config('urls.admin_view_products.url') }}>
                                                 AdminBoard
                                             </a>
                                         </li>

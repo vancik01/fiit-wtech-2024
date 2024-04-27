@@ -18,9 +18,9 @@ return new class extends Migration
             $table->uuid("manufacturerId")->nullable();
             $table->string('featuredImage');
             $table->string('title', 48);
-            $table->string('slug', 48);
-            $table->string('shortDescription', 200);
-            $table->text('longDescription', 2000);
+            $table->string('slug', 48)->unique();
+            $table->string('shortDescription', 200)->nullable();
+            $table->text('longDescription', 2000)->nullable();
             $table->float('price');
             $table->enum('availability', ['IN_STOCK', 'IN_SHOP', 'OUT_OF_STOCK'])->default("IN_STOCK");
             $table->timestamps();
