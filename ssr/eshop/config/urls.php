@@ -60,6 +60,11 @@ return [
         'title' => 'Košík'
     ],
 
+    'cart-conflict' => [
+        'url' => '/konflikt-kosikov',
+        'title' => 'Konflikt košíkov'
+    ],
+
     'checkout' => [
         'url' => '/objednat',
         'title' => 'Objednať produkty'
@@ -96,4 +101,3 @@ return [
         'title' => 'Vymazať produkt'
     ],
 ];
-

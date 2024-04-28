@@ -11,7 +11,7 @@ use App\Http\Controllers\ShopPageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SearchResultController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Middleware\EnsureUserIsAdmin;
 
 Route::get('/', function () {
     return view('homepage');
@@ -31,6 +31,11 @@ Route::post('/kosik/remove', [CartController::class, 'remove'])->name('cart.remo
 Route::get('/kosik', [CartController::class, 'index'])->name('cart');
 Route::post('kosik/', [CartController::class, 'refresh'])->name('cart.refresh');
 Route::get('kosik/e', [CartController::class, 'empty'])->name('cart.empty');
+Route::get('kosik/konflikt', [CartController::class, 'merge'])->name('cart.conflict');
+
+Route::post('/kosik/merge', [CartController::class, 'mergeCarts'])->name('cart.merge');
+Route::post('/kosik/accept-current', [CartController::class, 'acceptCurrent'])->name('cart.accept.current');
+Route::post('/kosik/accept-account', [CartController::class, 'acceptAccount'])->name('cart.accept.account');
 
 Route::get('/objednavka', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/objednavka', [OrderController::class, 'store'])->name('order.store');
@@ -59,15 +64,20 @@ Route::get(config("urls.register.url"), function () {
     return view('users.register');
 });
 
-Route::get(config("urls.admin_view_products.url"), [AdminController::class, 'index']); 
-Route::get(config("urls.admin_edit_product.url"), [AdminController::class, 'edit']);
-Route::get(config("urls.admin_delete_product.url"), [AdminController::class, 'delete']);
-Route::get(config("urls.admin_new_product.url"), [AdminController::class, 'create']);
-Route::post(config("urls.admin_new_product.url"), [AdminController::class, 'store'])->name('product.store');
-Route::get(config("urls.admin_edit_product.url"), [AdminController::class, 'edit']);
-Route::post(config("urls.admin_edit_product.url"), [AdminController::class, 'update'])->name('product.update');
 Route::get(config("urls.about_us.url"), function () {
     return view('about_us');
 });
+
+Route::middleware([EnsureUserIsAdmin::class])->group(function () {
+    Route::get(config("urls.admin_view_products.url"), [AdminController::class, 'index']);
+    Route::get(config("urls.admin_edit_product.url"), [AdminController::class, 'edit']);
+    Route::get(config("urls.admin_delete_product.url"), [AdminController::class, 'delete']);
+    Route::get(config("urls.admin_new_product.url"), [AdminController::class, 'create']);
+    Route::post(config("urls.admin_new_product.url"), [AdminController::class, 'store'])->name('product.store');
+    Route::get(config("urls.admin_edit_product.url"), [AdminController::class, 'edit']);
+    Route::post(config("urls.admin_edit_product.url"), [AdminController::class, 'update'])->name('product.update');
+});
+
+
 
 Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');

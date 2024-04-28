@@ -76,8 +76,8 @@
                             @foreach ($products as $product)
                                 <div class="flex flex-col justify-between items-start">
                                     <h3>{{ $product->title }}</h3>
-                                    <div>Počet kusov: {{ $product->pivot->quantity }}</div>
-                                    <div>{{ $product->price * $product->pivot->quantity }}€</div>
+                                    <div>Počet kusov: {{ $product->quantity }}</div>
+                                    <div>{{ $product->price * $product->quantity }}€</div>
                                 </div>
                                 <div class="h-[1px] bg-secondary"></div>
                             @endforeach

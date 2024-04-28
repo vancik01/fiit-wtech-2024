@@ -10,7 +10,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->nullable();
             $table->string('name');
             $table->string('surname');
             $table->string('email');
@@ -21,13 +21,15 @@ class CreateOrdersTable extends Migration
             $table->string('shipping_type_id');
             $table->string('payment_type');
             $table->decimal('price', 8, 2);
-            $table->text('note')->nullable();
+            $table->string('note', 400)->nullable();
             $table->timestamps();
         });
 
         Schema::create('order_product', function (Blueprint $table) {
             $table->uuid('order_id');
             $table->uuid('product_id');
+            $table->integer('priceAtPurchace');
+            $table->integer('quantity');
             $table->primary(['order_id', 'product_id']);
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('product_id')->references('id')->on('Product');

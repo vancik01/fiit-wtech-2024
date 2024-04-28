@@ -5,18 +5,21 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
     public function store(Request $request)
     {
-
         $user = auth()->user();
         if (!$user) {
-            $user = User::where('name', 'Guest User')->first();
+            $user = new User();
+            $user->id = null;
         }
+
         $order = new Order;
         $order->id = (string) Str::uuid();
         $order->user_id = $user->id;
@@ -33,17 +36,28 @@ class OrderController extends Controller
         $order->note = $request->note;
 
         $order->save();
-        $products = $user->cart->products;
-        foreach ($products as $product) {
-            $order->products()->attach($product->id);
-        }
-        $cart = $user->cart;
-        $cart->products()->detach();
 
+        $cartItems = $user->id ? $user->cart->products : Session::get('cart', []);
+        foreach ($cartItems as $productId => $details) {
+            $quantity = $user->id ? $details->pivot->quantity : $details['quantity'];
+            $product = Product::find($productId);
+            $priceAtPurchase = $product->price;
+
+            $order->products()->attach($productId, [
+                'priceAtPurchace' => $priceAtPurchase * 100,
+                'quantity' => $quantity
+            ]);
+        }
+
+
+        if ($user->id) {
+            $user->cart->products()->detach();
+        } else {
+            Session::remove("cart");
+        }
 
         $order = Order::find($order->id);
-        
+
         return view('order_success', ['order' => $order]);
     }
-
 }

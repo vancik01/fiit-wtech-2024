@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Models\Cart;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,17 +24,21 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('components.header', function ($view) {
+            $totalQuantity = 0;
+
             if (!Auth::check()) {
-                $cart = Cart::where('user_id', 9223372036854775807)->first();
+                $cart = Session::get("cart", []);
+                $totalQuantity = sizeof($cart);
             } else {
-            $cart = Auth::user()->cart;
+                $cart = Auth::user()->cart;
+                if ($cart == null) {
+                    $totalQuantity = 0;
+                } else {
+                    $totalQuantity = $cart->products->count();
+                }
             }
             // count only products id, not quantity
-            if ($cart == null) {
-                $totalQuantity = 0;
-            } else {
-                $totalQuantity = $cart->products->count();
-            }
+
             $view->with('totalQuantity', $totalQuantity);
         });
     }

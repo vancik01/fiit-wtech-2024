@@ -4,8 +4,8 @@
 
 @section('content')
     <div class="container mt-8 lg:mt-16 flex flex-col gap-3">
-        @if(session('success'))
-                <div class="alert alert-success">
+        @if (session('success'))
+            <div class="alert alert-success">
                 <p>{{ session('success') }}</p>
             </div>
         @endif
@@ -23,12 +23,11 @@
 
             <div class="w-full gap-5 flex lg:flex-row flex-col justify-between">
                 <div class="w-full lg:max-w-[600px] flex flex-col gap-10 p-0">
-                    @if ($cart)
+                    @if (sizeof($products) > 0)
                         @foreach ($products as $product)
                             @component('components.product_in_cart', [
-                                'cart' => $cart,
                                 'product' => $product,
-                                'quantity' => $product->pivot->quantity,
+                                'quantity' => $product->quantity,
                             ])
                             @endcomponent
                         @endforeach

@@ -3,32 +3,58 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 
 class CheckoutController extends Controller
 {
     public function index(Request $request)
     {
-        if (!$request->user() ) {
-            $user = User::where('name', 'Guest User')->first();
-        } else {
-            $user = $request->user();
-        }
-
+        $productsData = [];
         $total = 0;
-        foreach ($user->cart->products as $product) {
-            $total += $product->price*$product->pivot->quantity;
-        };
 
-        $num_of_products = $user->cart->products->count();
-        if ($num_of_products == 0) {
-            return back();
+        if (!$request->user()) {
+            // Handle guest users with session cart
+            $cart = Session::get('cart', []);
+            foreach ($cart as $productId => $details) {
+                $productsData[$productId] = [
+                    'quantity' => $details['quantity']
+                ];
+            }
+        } else {
+            // Handle logged-in users with cart stored in database
+            $user = $request->user();
+            $cart = $user->cart()->with('products')->first();
+
+            if ($cart) {
+                foreach ($cart->products as $product) {
+                    $productsData[$product->id] = [
+                        'quantity' => $product->pivot->quantity
+                    ];
+                }
+            }
         }
 
-        return view('checkout',
-            ['products' => $user->cart->products,
-            'total' => $total,
+        // Check if there are products to process
+        if (empty($productsData)) {
+            return back()->with('error', 'Your cart is empty.');
+        }
+
+        // Load products in one query using the array of IDs
+        $productIds = array_keys($productsData);
+        $products = Product::findMany($productIds);
+
+        // Calculate total and map quantity to each product object
+        foreach ($products as $product) {
+            $product->quantity = $productsData[$product->id]['quantity'];
+            $total += $product->price * $product->quantity;
+        }
+
+        return view('checkout', [
+            'products' => $products,
+            'total' => $total
         ]);
     }
 }
