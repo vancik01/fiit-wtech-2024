@@ -9,32 +9,35 @@ use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cart;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
+
 
 class CartController extends Controller
 {
     public function add(Request $request)
     {
-        $product = Product::find($request->product_id);   
+        $product = Product::find($request->product_id);
         $quantity = $request->quantity;
 
         if ($request->user() == null) {
             // zmeniť na local id bez toho aby sme pouzili DB
             $user = User::where('name', 'Guest User')->first();
-    
+
             // nejaky local udaj pre kosik bez pouzicia DB - ako potom riešiť order?
             if (!$user->cart) {
                 $user->cart()->create();
             }
-    
+
             $cart = $user->cart;
         } else {
             $user = $request->user();
             $cart = $user->cart;
-    
+
             if (!$cart) {
                 $cart = $user->cart()->create();
             }
-        } 
+        }
 
         if ($user->cart == null) {
             DB::table('carts')->insert([
@@ -44,18 +47,18 @@ class CartController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $user->cart = $cart;
         }
-    
+
         $pivot = $cart->products()->where('product_id', $product->id)->first();
-    
+
         if ($pivot) {
             $cart->products()->updateExistingPivot($product->id, ['quantity' => $pivot->pivot->quantity + $quantity]);
         } else {
-           $cart->products()->attach($product->id, ['id' => (string) Str::uuid(), 'quantity' => $quantity]);
+            $cart->products()->attach($product->id, ['id' => (string) Str::uuid(), 'quantity' => $quantity]);
         }
-    
-        return back()->with('success', '"'.$product->title.'"'. ' bol pridaný do košíka!');
+
+        return back()->with('success', '"' . $product->title . '"' . ' bol pridaný do košíka!');
     }
-    
+
     public function remove(Request $request)
     {
         $product = Product::find($request->product_id);
@@ -63,82 +66,82 @@ class CartController extends Controller
         if ($request->user() == null) {
             $user = User::where('name', 'Guest User')->first();
             if (!$user->cart) {
-            $user->cart()->create();
+                $user->cart()->create();
             }
             $cart = $user->cart;
             $cart->products()->detach($product);
-
         } else {
             $cart = $request->user()->cart;
-        
+
             if (!$cart) {
                 $request->user()->cart()->create();
             }
-        
-    
-        $cart->products()->detach($product);
+
+
+            $cart->products()->detach($product);
         }
-    
-        return back()->with('success', '"'.$product->title.'"'. ' bol odstránený z košíka!');
+
+        return back()->with('success', '"' . $product->title . '"' . ' bol odstránený z košíka!');
     }
 
-    public function refresh(Request $request) {
+    public function refresh(Request $request)
+    {
         // Get the quantities array from the form data
         $quantities = $request->input('quantity');
         $product_id = $request->input('product_id');
         $product = Product::find($product_id);
-    
+
         // Check if the product is not null
         if ($product !== null) {
             if ($request->user() == null) {
                 $user = User::where('name', 'Guest User')->first();
-    
+
                 if (!$user->cart) {
                     $user->cart()->create();
                 }
-    
+
                 $cart = $user->cart;
             } else {
                 $cart = $request->user()->cart;
-    
+
                 if (!$cart) {
                     $cart = $request->user()->cart()->create();
                 }
             }
-    
+
             $pivot = $cart->products()->where('product_id', $product->id)->first();
-    
+
             if ($pivot) {
                 // Get the quantity for the specific product
                 $quantity = $quantities[$product->id];
-    
+
                 $cart->products()->updateExistingPivot($product->id, ['quantity' => $quantity]);
             } else {
                 // Get the quantity for the specific product
                 $quantity = $quantities[$product->id];
-    
+
                 $cart->products()->attach($product->id, ['quantity' => $quantity]);
             }
         }
-    
+
         // After database is updated, return back to index function
         return $this->index($request);
     }
 
-    public function empty() {  
+    public function empty()
+    {
         return view('empty_cart')->with('success', 'Objednávka odoslaná!');
     }
 
-    
+
     public function index(Request $request)
     {
         $total = 0;
 
-        if (!$request->user() ) {
+        if (!$request->user()) {
             $user = User::where('name', 'Guest User')->first();
             $cart = $user->cart;
-        }
-        else {
+        } else {
             $user = $request->user();
             $cart = $user->cart()->with('products')->first();
 
