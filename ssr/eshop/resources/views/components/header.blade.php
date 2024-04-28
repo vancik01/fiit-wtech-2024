@@ -37,7 +37,7 @@
                     @if (Auth::check() && Auth::user()->role == 'admin')
                         <li class="nav-item">
                             <a class="nav-link" href={{ config('urls.admin_view_products.url') }}>
-                                AdminBoard
+                                Správa produktov
                             </a>
                         </li>
                     @endif
@@ -90,13 +90,13 @@
 
             <a href={{ config('urls.cart.url') }} class="text-decoration-none position-relative">
                 <i class="fas fa-shopping-cart"></i>
-                <div class="position-absolute kosik">
-                    @if ($totalQuantity > 0)
-                        <div id="cardInfoBadge">
-                            {{ $totalQuantity }}
-                        </div>
-                    @endif
-                </div>
+
+                @if ($totalQuantity > 0)
+                    <div id="cardInfoBadge">
+                        {{ $totalQuantity }}
+                    </div>
+                @endif
+
             </a>
             <div>
                 <button class="btn p-1 border-0" data-bs-toggle="modal" data-bs-target="#mobile-menu">
@@ -127,7 +127,7 @@
                                     @if (Auth::check() && Auth::user()->role == 'admin')
                                         <li class="nav-item">
                                             <a class="nav-link" href={{ config('urls.admin_view_products.url') }}>
-                                                AdminBoard
+                                                Správa produktov
                                             </a>
                                         </li>
                                     @endif

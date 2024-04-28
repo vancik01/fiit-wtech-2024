@@ -67,7 +67,6 @@ class AdminController extends Controller
         $galery = $request->galleryImages;
 
         if ($request->galleryImagesToRemove != "") {
-            error_log($request->galleryImagesToRemove);
             $imageIds = explode(',', $request->galleryImagesToRemove); // Split the string back into an array
             foreach ($imageIds as $imageId) {
                 $image = GalleryImage::find($imageId);
