@@ -16,7 +16,7 @@
     <div class="py-1">{{ $product->manufacturer->name }}</div>
     <div class="py-1 flex flex-row gap-2">
         <div class="action-button-wraper h-fit hover:text-red-500">
-            <a href="{{ config('urls.admin_delete_product.getPathBuilder')($product->slug) }}"
+            <a href="{{ config('urls.admin_delete_product.getPathBuilder')($product->id) }}"
                 class="w-[32px] h-[32px] bg-gray-100 flex justify-center items-center rounded-2 text-base">
                 <i class="fas fa-solid fa-trash"></i>
             </a>
