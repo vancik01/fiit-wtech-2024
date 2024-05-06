@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class ProductFactory extends Factory
 {
     protected $model = Product::class;
-    protected $table = "Product";
+    protected $table = "products";
 
     public function definition()
     {

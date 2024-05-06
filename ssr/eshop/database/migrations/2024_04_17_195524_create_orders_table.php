@@ -32,7 +32,7 @@ class CreateOrdersTable extends Migration
             $table->integer('quantity');
             $table->primary(['order_id', 'product_id']);
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('product_id')->references('id')->on('Product');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
         });
     }

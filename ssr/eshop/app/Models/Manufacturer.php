@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Manufacturer extends Model
 {
-    protected $table = "Manufacturer";
+    protected $table = "manufacturers";
     protected $fillable = ['name', 'slug', 'image'];
     protected $primaryKey = 'id';
     public $incrementing = false;

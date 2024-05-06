@@ -22,7 +22,7 @@ return new class extends Migration
             $table->uuid("cart_id");
             $table->uuid("product_id");
             $table->foreign('cart_id')->references('id')->on('carts');
-            $table->foreign('product_id')->references('id')->on('Product');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->integer('quantity');
             $table->timestamps();
         });

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes; // If you're using soft deletes
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $table = "Product";
+    protected $table = "products";
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;

@@ -10,7 +10,7 @@ class GalleryImage extends Model
     use HasFactory;
 
     protected $fillable = ['id', 'imageURL', 'productId'];
-    protected $table = "GalleryImage";
+    protected $table = "galleryImages";
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
