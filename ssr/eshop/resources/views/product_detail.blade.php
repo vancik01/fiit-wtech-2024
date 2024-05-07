@@ -82,7 +82,7 @@
 
                             <div>
                                 @if ($isInCart)
-                                    <div class="flex flex-col md:flex-row gap-2 mt-2">
+                                    <div class="flex flex-col  gap-2 mt-2">
                                         <p>Produkt sa nachádza v košíku {{ $cartQuantity }}-krát</p>
                                         <form action="{{ route('cart.remove') }}" method="post">
                                             @csrf
