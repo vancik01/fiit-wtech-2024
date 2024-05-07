@@ -1,7 +1,7 @@
 <!-- Cart card -->
 <div class="flex flex-col sm:flex-row cart-card align-items-start bg-gray-50">
     <div class="h-full w-full">
-        <img src="{{ $product->featuredImage }}" alt="{{ $product->title }}" class="object-contain h-full" />
+        <img src="{{ $product->featuredImage }}" alt="{{ $product->title }}" class="object-cover h-full" />
     </div>
     <div class="d-flex flex-col  w-full h-full justify-between gap-2 p-3 md:p-4">
         <div class="flex flex-col gap-2">

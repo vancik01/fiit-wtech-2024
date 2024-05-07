@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('urls.product_detail.getPathBuilder')('QWER'))
+@section('title', $product->title)
 
 @section('content')
     <script>
@@ -14,12 +14,12 @@
     </script>
 
     <div class="container pt-5">
-        @if(session('success'))
+        @if (session('success'))
             <div class="alert alert-success">
                 <h4>{{ session('success') }}</h4>
             </div>
         @endif
-        @if(session('error'))
+        @if (session('error'))
             <div class="alert alert-danger">
                 <h4>{{ session('error') }}</h4>
             </div>
@@ -27,7 +27,7 @@
         <div class="detail d-flex gap-5 flex-column flex-md-row">
             <div class="d-flex flex-column p-0 col-md-7">
                 <img src=" {{ $product->featuredImage }} " alt="{{ $product->title }}"
-                    class="max-h-[600px] h-[500px] w-full object-cover" />
+                    class="max-h-[600px] md:h-[500px] w-full object-cover" />
             </div>
             <div class="d-flex flex-column gap-5 p-2 col-md-5">
                 <div class="d-flex flex-column h-100 justify-content-center gap-6">
@@ -46,31 +46,54 @@
                             {{ $product->shortDescription }}
                         </p>
                     </div>
-                    <div class="d-flex flex-row align-items-between">
+                    <div class="">
 
                         @if ($product->availability == 'OUT_OF_STOCK')
                             <button class="btn btn-secondary rounded-none" disabled>
                                 Produkt momentálne nie je skladom
                             </button>
                         @else
-                        <div class="d-flex flex-row border-1">
-                                <button onclick="changeCount(event, -1)" class="w-[30px] focus:outline-none hover:text-blue-500">
-                                    -
-                                </button>
-                                <input id="inputNumber" type="number" min="1" class="d-flex text-center max-w-[60px]" value="1" />
-                                <button onclick="changeCount(event, 1)" class="w-[30px] focus:outline-none  hover:text-blue-500">
-                                    +
-                                </button>
+                            <div class="d-flex flex-row align-items-between">
+                                <div class="d-flex flex-row border-1">
+                                    <button onclick="changeCount(event, -1)"
+                                        class="w-[30px] focus:outline-none hover:text-blue-500">
+                                        -
+                                    </button>
+                                    <input id="inputNumber" type="number" min="1"
+                                        class="d-flex text-center max-w-[60px]" value="1" />
+                                    <button onclick="changeCount(event, 1)"
+                                        class="w-[30px] focus:outline-none  hover:text-blue-500">
+                                        +
+                                    </button>
+                                </div>
+
+                                <div>
+                                    <form action="{{ route('cart.add') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <input type="hidden" id="quantity" name="quantity" value="1">
+                                        <button class="btn btn-primary rounded-none" type="submit">
+                                            Pridať do košíka
+                                        </button>
+                                    </form>
+
+                                </div>
                             </div>
 
-                            <form action="{{ route('cart.add') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <input type="hidden" id="quantity" name="quantity" value="1">
-                                <button class="btn btn-primary rounded-none" type="submit">
-                                    Pridať do košíka
-                                </button>
-                            </form>
+                            <div>
+                                @if ($isInCart)
+                                    <div class="flex flex-col md:flex-row gap-2 mt-2">
+                                        <p>Produkt sa nachádza v košíku {{ $cartQuantity }}-krát</p>
+                                        <form action="{{ route('cart.remove') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <button class="underline" type="submit">
+                                                Odstrániť z košíka
+                                            </button>
+                                        </form>
+                                    </div>
+                                @endif
+                            </div>
                         @endif
 
                     </div>
