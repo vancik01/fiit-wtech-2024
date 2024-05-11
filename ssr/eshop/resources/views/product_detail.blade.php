@@ -114,7 +114,8 @@
                     <div class="row row-cols-md-3 row-cols-2 g-2 ">
                         @foreach ($product->galleryImages as $image)
                             <div class="col">
-                                <img src="{{ $image->imageURL }}" alt="gallery image" class="w-100" />
+                                <img src="{{ $image->imageURL }}" alt="gallery image"
+                                    class="w-100 object-cover aspect-square" />
                             </div>
                         @endforeach
                     </div>

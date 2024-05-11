@@ -60,8 +60,8 @@
                 @csrf
                 <div class="d-flex flex-column col-12 col-md-5">
                     <h1 class="h1 mt-3">Nový produkt</h1>
-                    <input value="Product name" type="text" class="form-control mt-3 rounded-0" name="productName"
-                        id="productName" placeholder="Zadajte názov produktu">
+                    <input type="text" class="form-control mt-3 rounded-0" name="productName" id="productName"
+                        placeholder="Zadajte názov produktu">
                 </div>
 
                 <!-- Product image upload -->
@@ -113,7 +113,7 @@
                             <div class="input-group">
                                 <span class="input-group-text">€</span>
                                 <input type="number" step="0.01" class="form-control rounded-0" id="price"
-                                    name="price" placeholder="Zadajte cenu v EUR" value="12">
+                                    name="price" placeholder="Zadajte cenu v EUR">
                             </div>
                         </div>
                         <div class="col-md-6 d-flex flex-column">

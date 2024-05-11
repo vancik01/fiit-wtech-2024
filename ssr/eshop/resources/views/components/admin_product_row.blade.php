@@ -1,6 +1,7 @@
 <div class="product-row p-2">
     <div class="flex gap-2 w-full gap-3">
-        <img src="{{ $product->featuredImage }}" alt="" class="w-[100px] h-full rounded-md aspect-square" />
+        <img src="{{ $product->featuredImage }}" alt=""
+            class="w-[100px] h-full rounded-md aspect-square object-cover" />
         <div class="w-full flex flex-col justify-center">
             <span class="font-semibold text-sm" style="color:{{ avaliabilityEnumValueColor($product->availability) }}">
                 {{ avaliabilityEnumValuesToString($product->availability) }}

@@ -19,12 +19,24 @@ include app_path('Helpers/availabilityEnumDecoder.php');
 class AdminController extends Controller
 {
 
-    protected function uploadfile($file)
+    protected function uploadfile($file, $productId)
     {
         $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
-        $filePath = $file->storeAs('images/products', $filename, ['disk' => 's3', 'visibility' => 'public']);
+        $filePath = $file->storeAs('images/products/' . $productId, $filename, ['disk' => 's3', 'visibility' => 'public']);
 
         return env("AWS_URL") . "/" . env("AWS_BUCKET") . "/" . $filePath;
+    }
+
+    protected function deleteProductFolder($productId)
+    {
+        $folderPath = 'images/products/' . $productId;
+
+        $files = Storage::disk('s3')->allFiles($folderPath);
+
+        Storage::disk('s3')->delete($files);
+        Storage::disk('s3')->deleteDirectory($folderPath);
+
+        return 'Product folder deleted successfully.';
     }
 
     public function index()
@@ -62,7 +74,7 @@ class AdminController extends Controller
         $product->shortDescription = $request->shortDescription;
         $product->longDescription = $request->detailedDescription;
         if ($request->hasFile("productImage")) {
-            $product->featuredImage = $this->uploadfile($request->productImage);
+            $product->featuredImage = $this->uploadfile($request->productImage, $product->id);
         }
         $galery = $request->galleryImages;
 
@@ -79,16 +91,11 @@ class AdminController extends Controller
 
         if ($request->hasFile('galleryImages')) {
             foreach ($request->file('galleryImages') as $file) {
-                $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
-                $filePath = $file->storeAs('images/products', $filename, ['disk' => 's3', 'visibility' => 'public']);
-
-                $url = env("AWS_URL") . "/" . env("AWS_BUCKET") . "/" . $filePath;
-
                 // Create and save the GalleryImage for each file
                 $galleryImage = new GalleryImage([
                     'id' => Str::uuid(),
                     'productId' => $product->id,
-                    'imageURL' => $this->uploadfile($file)
+                    'imageURL' => $this->uploadfile($file, $product->id)
                 ]);
                 $galleryImage->save();
             }
@@ -112,10 +119,9 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'productName' => 'required|string|max:255',
             'price' => 'required|numeric',
-            // 'categoryID' => 'required|exists:Category,id',
-            // 'manufacturer' => 'required|exists:Manufacturer,id',
-            'productImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            // 'galleryImages.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'  // Validating array of images
+            'productImage' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'galleryImages' => 'nullable|array',
+            'galleryImages.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048'
         ]);
         if ($validator->fails()) {
             return redirect()->back()
@@ -138,32 +144,28 @@ class AdminController extends Controller
         $product->shortDescription = $request->shortDescription;
         $product->longDescription = $request->detailedDescription;
 
-        $product->featuredImage = $this->uploadfile($request->productImage);
+        $product->featuredImage = $this->uploadfile($request->productImage, $product->id);
         $galery = $request->galleryImages;
 
         try {
             $product->save();
+            if ($request->hasFile('galleryImages')) {
+                foreach ($request->file('galleryImages') as $file) {
+                    // Create and save the GalleryImage for each file
+                    $galleryImage = new GalleryImage([
+                        'id' => Str::uuid(),
+                        'productId' => $product->id,
+                        'imageURL' => $this->uploadfile($file, $product->id)
+                    ]);
+                    $galleryImage->save();
+                }
+            }
         } catch (Throwable $th) {
             return redirect()->back()
-                ->with('error', 'Chyba pri vytváraní produktu');
+                ->with('error', 'Chyba pri vytváraní produktu' . $th);
         }
 
-        if ($request->hasFile('galleryImages')) {
-            foreach ($request->file('galleryImages') as $file) {
-                $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
-                $filePath = $file->storeAs('images/products', $filename, ['disk' => 's3', 'visibility' => 'public']);
 
-                $url = env("AWS_URL") . "/" . env("AWS_BUCKET") . "/" . $filePath;
-
-                // Create and save the GalleryImage for each file
-                $galleryImage = new GalleryImage([
-                    'id' => Str::uuid(),
-                    'productId' => $product->id,
-                    'imageURL' => $this->uploadfile($file)
-                ]);
-                $galleryImage->save();
-            }
-        }
 
         return redirect(config('urls.admin_view_products.url'));
     }
@@ -171,6 +173,7 @@ class AdminController extends Controller
     public function delete($productId)
     {
         Product::destroy($productId);
+        $this->deleteProductFolder($productId);
 
         return redirect(config('urls.admin_view_products.url'));
     }

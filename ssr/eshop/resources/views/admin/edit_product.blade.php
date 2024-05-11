@@ -41,7 +41,7 @@
                 if (file.type.startsWith('image/')) { // Check if the file is an image.
                     const img = document.createElement('img');
                     img.src = URL.createObjectURL(file);
-                    img.classList.add('img-fluid', 'col'); // Adding classes
+                    img.classList.add('img-fluid', 'col', 'object-cover', 'aspect-square'); // Adding classes
                     img.onload = function() {
                         URL.revokeObjectURL(img.src); // Clean up memory after the image is loaded
                     };
